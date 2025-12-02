@@ -9,7 +9,6 @@ services:
     name: api-desafio 
     runtime: docker
     rootDir: backend-nestjs 
-    repo: '{{.RepositoryURL}}'
     pullRequest:
       autoDeploy: true
     env: production
@@ -29,7 +28,6 @@ services:
     name: python-collector
     runtime: docker
     rootDir: collector # Pasta correta para o collector
-    repo: '{{.RepositoryURL}}'
     pullRequest:
       autoDeploy: true
     plan: starter
@@ -50,7 +48,6 @@ services:
     name: go-worker
     runtime: docker
     rootDir: worker-go # Pasta correta para o worker Go
-    repo: '{{.RepositoryURL}}'
     pullRequest:
       autoDeploy: true
     plan: starter
