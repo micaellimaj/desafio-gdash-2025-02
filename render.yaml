@@ -35,7 +35,7 @@ services:
     plan: starter
     envVars:
       - key: REDIS_HOST # Usa o nome interno do host do serviço Redis
-        value: redis://red-d4ngtuadbo4c7391o7n0:6379
+        value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
         value: 6379 
       - key: WEATHER_API_KEY
@@ -56,7 +56,7 @@ services:
     plan: starter
     envVars:
       - key: REDIS_HOST
-        value: redis://red-d4ngtuadbo4c7391o7n0:6379
+        value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
         value: 6379
       # AJUSTE: Usa o nome interno do host do serviço NestJS
