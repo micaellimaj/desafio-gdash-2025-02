@@ -1,0 +1,67 @@
+# render.yaml
+# Blueprint para deploy de todos os serviços no Render
+
+services:
+  # ----------------------------------------------------------------------
+  # 1. NestJS API (Serviço Web Público) - Já configurado no painel, mas incluído aqui
+  # ----------------------------------------------------------------------
+  - type: web
+    name: api-desafio 
+    runtime: docker
+    rootDir: backend-nestjs 
+    repo: '{{.RepositoryURL}}'
+    pullRequest:
+      autoDeploy: true
+    env: production
+    plan: starter
+    port: 4000 
+    envVars:
+      - key: MONGO_URI
+        # Este valor será sobrescrito pelo segredo definido no painel do Render!
+        value: ${MONGO_DB_URL_ATLAS} 
+      - key: NODE_ENV
+        value: production
+    
+  # ----------------------------------------------------------------------
+  # 2. Python Collector (Serviço de Background/Worker)
+  # ----------------------------------------------------------------------
+  - type: worker
+    name: python-collector
+    runtime: docker
+    rootDir: collector # Pasta correta para o collector
+    repo: '{{.RepositoryURL}}'
+    pullRequest:
+      autoDeploy: true
+    plan: starter
+    envVars:
+      - key: REDIS_HOST # Usa o nome interno do host do serviço Redis
+        value: redis://red-d4ngtuadbo4c7391o7n0:6379
+      - key: REDIS_PORT
+        value: 6379 
+      - key: WEATHER_API_KEY
+        value: ${WEATHER_API_KEY} # Variável Secreta que deve ser definida no Painel
+      - key: CITY_NAME
+        value: 'Toritama'
+      
+  # ----------------------------------------------------------------------
+  # 3. Go Worker (Serviço de Background/Worker)
+  # ----------------------------------------------------------------------
+  - type: worker
+    name: go-worker
+    runtime: docker
+    rootDir: worker-go # Pasta correta para o worker Go
+    repo: '{{.RepositoryURL}}'
+    pullRequest:
+      autoDeploy: true
+    plan: starter
+    envVars:
+      - key: REDIS_HOST
+        value: redis://red-d4ngtuadbo4c7391o7n0:6379
+      - key: REDIS_PORT
+        value: 6379
+      # AJUSTE: Usa o nome interno do host do serviço NestJS
+      - key: NESTJS_API_URL
+        value: http://api-desafio:4000/weather/logs
+      # Se você tiver variáveis no .env que o Go Worker precisa:
+      # - key: OUTRA_VAR_SECRETA
+      #   value: ${OUTRA_VAR_SECRETA_VALUE}
