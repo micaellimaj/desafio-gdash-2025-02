@@ -6,16 +6,17 @@ services:
     name: api-desafio 
     runtime: docker
     plan: starter
-    # Porta exposta pelo container (EXPOSE 4000 no Dockerfile)
+    # Porta exposta pelo container (agora no nível superior, mas fora de "build")
     port: 4000 
     
-    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    # TODAS AS CONFIGURAÇÕES DE BUILD VÃO AQUI
     build:
-      # Onde o Render deve procurar o código e o Dockerfile
       rootDir: backend-nestjs 
-      # Opcional, mas útil para clareza
       dockerfilePath: backend-nestjs/Dockerfile
-      
+      pullRequest:
+        # AQUI É O FORMATO CORRETO PARA PULL REQUEST
+        autoDeploy: true
+        
     env: production
     envVars:
       - key: MONGO_URI
@@ -31,11 +32,13 @@ services:
     runtime: docker
     plan: starter
     
-    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    # TODAS AS CONFIGURAÇÕES DE BUILD VÃO AQUI
     build:
       rootDir: collector 
       dockerfilePath: collector/Dockerfile
-      
+      pullRequest:
+        autoDeploy: true
+        
     envVars:
       - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
@@ -54,11 +57,13 @@ services:
     runtime: docker
     plan: starter
 
-    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    # TODAS AS CONFIGURAÇÕES DE BUILD VÃO AQUI
     build:
       rootDir: worker-go 
       dockerfilePath: worker-go/Dockerfile
-      
+      pullRequest:
+        autoDeploy: true
+        
     envVars:
       - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
@@ -66,6 +71,5 @@ services:
         value: 6379
       - key: NESTJS_API_URL
         value: http://api-desafio:4000/weather/logs
-      # Variável secreta que deve ser definida no Painel
       - key: OUTRA_VAR_SECRETA
         value: ${OUTRA_VAR_SECRETA_VALUE}
