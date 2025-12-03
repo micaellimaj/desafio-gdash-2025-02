@@ -1,22 +1,24 @@
-# render.yaml
-# Blueprint para deploy de todos os serviços no Render
-
 services:
   # ----------------------------------------------------------------------
-  # 1. NestJS API (Serviço Web Público) - Já configurado no painel, mas incluído aqui
+  # 1. NestJS API (Serviço Web Público)
   # ----------------------------------------------------------------------
   - type: web
     name: api-desafio 
     runtime: docker
-    rootDir: backend-nestjs 
-    pullRequest:
-      autoDeploy: true
-    env: production
     plan: starter
+    # Porta exposta pelo container (EXPOSE 4000 no Dockerfile)
     port: 4000 
+    
+    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    build:
+      # Onde o Render deve procurar o código e o Dockerfile
+      rootDir: backend-nestjs 
+      # Opcional, mas útil para clareza
+      dockerfilePath: backend-nestjs/Dockerfile
+      
+    env: production
     envVars:
       - key: MONGO_URI
-        # Este valor será sobrescrito pelo segredo definido no painel do Render!
         value: ${MONGO_DB_URL_ATLAS} 
       - key: NODE_ENV
         value: production
@@ -27,17 +29,20 @@ services:
   - type: worker
     name: python-collector
     runtime: docker
-    rootDir: collector # Pasta correta para o collector
-    pullRequest:
-      autoDeploy: true
     plan: starter
+    
+    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    build:
+      rootDir: collector 
+      dockerfilePath: collector/Dockerfile
+      
     envVars:
-      - key: REDIS_HOST # Usa o nome interno do host do serviço Redis
+      - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
         value: 6379 
       - key: WEATHER_API_KEY
-        value: ${WEATHER_API_KEY} # Variável Secreta que deve ser definida no Painel
+        value: ${WEATHER_API_KEY} 
       - key: CITY_NAME
         value: 'Toritama'
       
@@ -47,18 +52,20 @@ services:
   - type: worker
     name: go-worker
     runtime: docker
-    rootDir: worker-go # Pasta correta para o worker Go
-    pullRequest:
-      autoDeploy: true
     plan: starter
+
+    # NOVOS CAMPOS: Configuração de Build para Monorepo
+    build:
+      rootDir: worker-go 
+      dockerfilePath: worker-go/Dockerfile
+      
     envVars:
       - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
         value: 6379
-      # AJUSTE: Usa o nome interno do host do serviço NestJS
       - key: NESTJS_API_URL
         value: http://api-desafio:4000/weather/logs
-      # Se você tiver variáveis no .env que o Go Worker precisa:
-      # - key: OUTRA_VAR_SECRETA
-      #   value: ${OUTRA_VAR_SECRETA_VALUE}
+      # Variável secreta que deve ser definida no Painel
+      - key: OUTRA_VAR_SECRETA
+        value: ${OUTRA_VAR_SECRETA_VALUE}
