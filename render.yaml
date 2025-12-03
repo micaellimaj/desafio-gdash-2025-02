@@ -3,68 +3,54 @@ services:
   # 1. NestJS API (Serviço Web Público)
   # ----------------------------------------------------------------------
   - type: web
-    name: api-desafio 
-    runtime: docker
+    name: api-desafio
+    env: docker
     plan: starter
-    port: 4000 
-    
-    build:
-      rootDir: backend-nestjs 
-      dockerfilePath: backend-nestjs/Dockerfile
-      pullRequest:
-        autoDeploy: true
-        
-    env: production
+    dockerfilePath: ./backend-nestjs/Dockerfile
+    autoDeploy: true
+
     envVars:
       - key: MONGO_URI
-        value: ${MONGO_DB_URL_ATLAS} 
+        sync: false
       - key: NODE_ENV
         value: production
-    
+
   # ----------------------------------------------------------------------
-  # 2. Python Collector (Serviço de Background/Worker)
+  # 2. Python Collector (Worker)
   # ----------------------------------------------------------------------
   - type: worker
     name: python-collector
-    runtime: docker
+    env: docker
     plan: starter
-    
-    build:
-      rootDir: collector 
-      dockerfilePath: collector/Dockerfile
-      pullRequest:
-        autoDeploy: true
-        
+    dockerfilePath: ./collector/Dockerfile
+    autoDeploy: true
+
     envVars:
       - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
-        value: 6379 
+        value: "6379"
       - key: WEATHER_API_KEY
-        value: ${WEATHER_API_KEY} 
+        sync: false
       - key: CITY_NAME
-        value: 'Toritama'
-      
+        value: "Toritama"
+
   # ----------------------------------------------------------------------
-  # 3. Go Worker (Serviço de Background/Worker)
+  # 3. Go Worker
   # ----------------------------------------------------------------------
   - type: worker
     name: go-worker
-    runtime: docker
+    env: docker
     plan: starter
+    dockerfilePath: ./worker-go/Dockerfile
+    autoDeploy: true
 
-    build:
-      rootDir: worker-go 
-      dockerfilePath: worker-go/Dockerfile
-      pullRequest:
-        autoDeploy: true
-        
     envVars:
       - key: REDIS_HOST
         value: red-d4ngtuadbo4c7391o7n0
       - key: REDIS_PORT
-        value: 6379
+        value: "6379"
       - key: NESTJS_API_URL
-        value: http://api-desafio:4000/weather/logs
+        value: https://api-desafio.onrender.com/weather/logs
       - key: OUTRA_VAR_SECRETA
-        value: ${OUTRA_VAR_SECRETA_VALUE}
+        sync: false
