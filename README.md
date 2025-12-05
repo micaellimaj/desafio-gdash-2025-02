@@ -1,3 +1,5 @@
+# Desafio Dev: Climate Brain - IA e Dados para um Mundo Sustentável
+
 ## Introdução do Projeto:
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
@@ -16,32 +18,6 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
 * Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, frontend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
 
 ##  Tecnologias Utilizadas:
-
-
-Este projeto foi construído sobre uma arquitetura de microsserviços e full-stack moderna, utilizando as seguintes tecnologias principais:
-
-* Backend & API:
-  * Framework: NestJS
-  * Linguagem: TypeScript
-  * Banco de Dados: MongoDB
-  * Autenticação: Passport.js (ou outro, dependendo da sua escolha)
-
-* Worker & Coleta de Dados:
-  * Worker: Go (Golang)
-  * Collector: Python
-  * Message Broker: Redis
-
-* Frontend & Dashboard:
-  * Biblioteca: React
-  * Build Tool: Vite
-  * Estilização: Tailwind CSS
-  * Componentes UI: shadcn/ui
-
-* DevOps & Conteinerização:
-  * Conteinerização: Docker & Docker Compose
-
-* Análise de Dados:
-  * Geração de Insights: Inteligência Artificial (IA) (Especifique a ferramenta que você usou, ex: Google Gemini API, OpenAI GPT, etc.)
 
 <p align="center">
   <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" />
