@@ -1,4 +1,7 @@
-# Desafio Dev: Climate Brain - IA e Dados para um Mundo Sustentável
+# Desafio Dev FullStack : Climate Brain
+
+
+![logo](readme/climatebrainlogo.png)
 
 ## Introdução do Projeto:
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
