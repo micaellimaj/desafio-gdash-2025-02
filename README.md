@@ -1,14 +1,14 @@
-# Desafio Dev FullStack : Climate Brain
+# <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyMTgydTZlZGdzaXRicmd0bTV3ZGR4bGs5aW43dTBzaGRyZWR1ZDRlOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ZR9nqLI2ZhUU8/giphy.gif" alt="class" width="50" height="50" /> Desafio Dev FullStack : Climate Brain
 
 
 ![logo](readme/climatebrainlogo.png)
 
-## Introdução do Projeto:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto:
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
 A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) para transformar dados brutos em insights acionáveis sobre o clima, elevando a aplicação de um simples dashboard para uma ferramenta de análise preditiva e informativa.
 
-## Objetivo do Projeto:
+##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto:
 O principal objetivo deste projeto é construir um sistema completo e resiliente que demonstre proficiência na integração de stacks tecnológicas diversas e modernas. Especificamente, o projeto visa:
 
 * Coleta de Dados em Tempo Real: Estabelecer um serviço (collector em Python) para obter dados climáticos periódicos e reais de uma localização específica.
@@ -20,7 +20,7 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
 
 * Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, frontend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
 
-##  Tecnologias Utilizadas:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMGEwMnhiemI0ZHN1c2Z1Ynd5MXl4b2Rpc2s1NXozanczMHgwZjNjMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/46yPfgO81ZalJSKu74/giphy.gif" alt="class" width="35" height="35" /> Tecnologias Utilizadas:
 
 <p align="center">
   <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" />
@@ -34,10 +34,10 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
   <img src="https://img.shields.io/badge/Artificial%20Intelligence-FF6600?style=for-the-badge&logo=google&logoColor=white" />
 </p>
 
-## Etapas do Projeto & Funcionalidades
+## <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUycGRrZHJkazl3OTNtZDdvOXA2ZjFtYXJiM2o5aGxyMW5yaGF0bjA5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jJe90kHmZFpte/giphy.gif" alt="class" width="35" height="35" /> Etapas do Projeto & Funcionalidades
 O projeto foi dividido em quatro grandes módulos interconectados, cada um responsável por uma parte do ciclo de vida dos dados climáticos e do gerenciamento do sistema.
 
-1. Módulo de Coleta e Processamento de Dados
+### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Módulo de Coleta e Processamento de Dados
 Esta etapa garante a captura de dados em tempo real e seu processamento assíncrono.
 * Coleta Periódica (collector-python):
   * Funcionalidade: Coleta dados climáticos (temperatura, umidade, vento, etc.) de uma API externa (Open-Meteo ou OpenWeather) para uma localização definida.
@@ -47,7 +47,7 @@ Esta etapa garante a captura de dados em tempo real e seu processamento assíncr
   * Funcionalidade: Consome a fila de mensagens (RabbitMQ/Redis) de forma persistente.
   * Funcionalidade: Realiza a validação e formatação final dos dados antes de enviá-los à API NestJS para persistência.
 
-2. Backend Core (backend-nestjs)
+### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Backend Core (backend-nestjs)
 A API central que serve como a fonte única de verdade para toda a aplicação.
 
 * API de Dados Climáticos:
@@ -64,7 +64,7 @@ A API central que serve como a fonte única de verdade para toda a aplicação.
 * Exportação de Dados:
   * Funcionalidade: Exportação sob demanda dos dados climáticos ou de logs para formatos CSV ou XLSX.
 
-3.  Frontend & Dashboard (frontend-project)
+### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" />  Frontend & Dashboard (frontend-project)
 A interface do usuário, focada em visualização e interação.
 
 * Dashboard de Clima:
@@ -77,16 +77,16 @@ A interface do usuário, focada em visualização e interação.
 * Página de Insights:
   * Funcionalidade: Exibição dos resultados e análises geradas pelo Módulo de IA.
  
-## Como Executar o Projeto:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZnVscGxwcWdweGdrZ2pwbWM2aHl0OW4xczlwcG5sMDZyemI2OWMwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l378zKVk7Eh3yHoJi/giphy.gif" alt="class" width="35" height="35" />  Como Executar o Projeto:
 
-###  Pré-requisitos
+### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" />  Pré-requisitos
 Certifique-se de ter instalado em sua máquina:
 
 - **Git** – para clonar o repositório.
 - **Docker** – versão 20.10 ou superior.
 - **Docker Compose** – versão 1.29 ou superior (ou o comando `docker compose` integrado).
 
-###  Instruções de inicialização
+### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Instruções de inicialização
 
 1. **Clonar o repositório**
    - Abra o terminal e execute:
@@ -117,7 +117,7 @@ Certifique-se de ter instalado em sua máquina:
 4. **Verificar o status**
    - Use `docker-compose ps` para garantir que todos os serviços (mongo, rabbitmq, backend, worker, collector, frontend) estejam `Up`.
   
-###  Comandos úteis
+### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Comandos úteis
 
 - **Subir e reconstruir serviços**
   ```bash
@@ -139,7 +139,7 @@ Certifique-se de ter instalado em sua máquina:
   docker-compose logs -f backend
   ```
 
-  ###  Endpoints de acesso
+### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Endpoints de acesso
 
 - **Dashboard (frontend React)**
   - URL: http://localhost:3000 (ou porta configurada em `PORT` no `.env`).
@@ -148,13 +148,13 @@ Certifique-se de ter instalado em sua máquina:
   - URL base: http://localhost:3001 (ou porta configurada em `API_PORT`).
   - Swagger/Documentação: http://localhost:3001/api/docs (se habilitado).
  
-###  Boas práticas
+### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Boas práticas
 
 - Sempre atualize as variáveis de ambiente antes de subir novos contêineres.
 - Use `docker-compose logs -f <servico>` para depurar problemas específicos.
 - Execute `docker-compose down` ao final do dia para liberar recursos da máquina, se necessário.
 
-## Estrutura do Repositório:
+## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGw4eDUzd3dybzhnY3Q3bG1md243ZmtsM2R0M2hwN3lsc3I1bTlmbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KhdHwaqRgo8JB3omMg/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Repositório:
 
 ```
 DESAFIO-GDASH-2025-02/
