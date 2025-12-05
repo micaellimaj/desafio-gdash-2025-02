@@ -175,4 +175,69 @@ Certifique-se de ter instalado em sua máquina:
 - Use `docker-compose logs -f <servico>` para depurar problemas específicos.
 - Execute `docker-compose down` ao final do dia para liberar recursos da máquina, se necessário.
 
+## Estrutura do Repositório:
 
+```
+DESAFIO-GDASH-2025-02/
+├── backend-nestjs/
+│   ├── src/
+│   │   ├── auth/                        # Módulo de Autenticação e Autorização (Login/JWT)
+│   │   │   ├── dto/
+│   │   │   ├── guards/
+│   │   │   ├── strategies/
+│   │   │   ├── auth.controller.ts
+│   │   │   ├── auth.service.ts
+│   │   │   └── auth.module.ts
+│   │   │
+│   │   ├── common/                      # Classes e utilitários compartilhados (Decorators)
+│   │   ├── pokemon/                     # Módulo Opcional de Integração com PokéAPI
+│   │   ├── users/                       # Módulo de Gerenciamento de Usuários (CRUD)
+│   │   └── weather/                     # Módulo de Dados e Logs Climáticos
+│   │
+│   ├── .env                           # Variáveis de ambiente específicas do backend
+│   └── Dockerfile
+│
+├── collector/                       # Serviço de Coleta Periódica (Python)
+│   ├── collector.py                   # Script principal que coleta dados e envia para o Redis
+│   ├── Dockerfile                     # Imagem Docker do coletor
+│   └── requirements.txt               # Dependências Python (requests, client Redis/RabbitMQ)
+│
+├── frontend-project/                # Aplicação Frontend (Next.js/React)
+│   ├── app/                           # Diretório de roteamento baseado em arquivos (App Router)
+│   │   ├── (auth)/                      # Grupo de rotas de Autenticação (sign-in, sign-up)
+│   │   │   ├── sign-in/page.tsx           # Página de login
+│   │   │   └── sign-up/page.tsx           # Página de registro
+│   │   │
+│   │   ├── (dashboard)/                 # Grupo de rotas principais da Aplicação
+│   │   │   ├── dashboard/page.tsx         # Dashboard principal com dados de clima e insights
+│   │   │   ├── explore/[id]/page.tsx      # Rota dinâmica para detalhe da API opcional
+│   │   │   ├── notifications/page.tsx     # Área de notificações/alertas
+│   │   │   ├── profile/page.tsx           # Configurações do perfil do usuário
+│   │   │   ├── tables/page.tsx            # Visualização tabular e exportação de dados climáticos
+│   │   │   └── layout.tsx                 # Layouts específicos do dashboard
+│   │   ├── layout.tsx                   # Layouts raiz
+│   │   └── global.css                   # Estilos globais
+│   │
+│   ├── components/
+│   │   ├── ui/                          # Componentes de UI (shadcn/ui)
+│   │   └── theme-provider.tsx           # Provedor de tema/modo escuro
+│   │
+│   ├── hooks/
+│   │   ├── use-mobile.ts                # Hook para detecção de dispositivo móvel
+│   │   └── use-toast.ts                 # Hook para notificações toast
+│   │
+│   ├── lib/                           # Funções utilitárias e de conexão
+│   ├── public/                        # Arquivos estáticos (imagens, ícones)
+│   └── styles/
+│
+├── worker-go/                       # Serviço Worker Assíncrono (Go)
+│   ├── Dockerfile                     # Imagem Docker do worker
+│   ├── go.mod                         # Dependências do Go
+│   ├── go.sum
+│   └── main.go                        # Lógica principal: consome a fila e envia dados para o NestJS
+│
+├── .env                             # Variáveis de ambiente globais (Docker Compose, secrets)
+├── docker-compose.yml               # Orquestração de todos os serviços (Backend, Frontend, Worker, Collector, DB, Redis)
+└── README.md
+
+```
