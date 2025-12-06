@@ -6,19 +6,18 @@
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto:
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
-A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) para transformar dados brutos em insights acionáveis sobre o clima, elevando a aplicação de um simples dashboard para uma ferramenta de análise preditiva e informativa.
+A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) para transformar dados brutos em insights acionáveis sobre o clima, elevando a aplicação de um simples dashboard para uma ferramenta de análise através de IA.
 
 ##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto:
 O principal objetivo deste projeto é construir um sistema completo e resiliente que demonstre proficiência na integração de stacks tecnológicas diversas e modernas. Especificamente, o projeto visa:
 
-* Coleta de Dados em Tempo Real: Estabelecer um serviço (collector em Python) para obter dados climáticos periódicos e reais de uma localização específica.
-* Integração Assíncrona: Utilizar uma arquitetura de mensagens (via RabbitMQ/Redis) para garantir que a coleta e o processamento dos dados sejam desacoplados e resilientes, sendo processados por um Worker em Go.
-* Desenvolvimento de API Robusta: Criar um backend (NestJS com MongoDB) que sirva como a fonte única de verdade para os dados climáticos e inclua funcionalidades essenciais, como CRUD de Usuários e Autenticação (Auth).
+* Coleta de Dados em Tempo Real: Estabelecer um serviço (collector em Python) para obter dados climáticos periódicos e reais de uma localização específica (Toritama).
+* Integração Assíncrona: Utilizar uma arquitetura de mensagens (via Redis) para garantir que a coleta e o processamento dos dados sejam desacoplados e resilientes, sendo processados por um Worker em Go.
+* Desenvolvimento de API Robusta: Criar um backend (NestJS com MongoDB) que sirva como a fonte única de verdade para os dados climáticos e inclua funcionalidades essenciais, como CRUD de Usuários, Autenticação (Auth), conexão de dados de API externa (PokéAPI) e do Worker.
 * Visualização Dinâmica: Desenvolver um frontend moderno (React + Vite + Tailwind + shadcn/ui) para exibir os dados coletados de forma clara e intuitiva em um Dashboard.
-* Geração de Insights com IA: Implementar um módulo que utilize Inteligência Artificial para gerar análises e insights valiosos (ex.: tendências climáticas, alertas de eventos extremos) a partir dos dados armazenados.
-* Gerenciamento de Dados: Incluir recursos de exportação de dados (CSV/XLSX) e, opcionalmente, integrar e exibir dados de uma API pública paginada (como a PokéAPI).
-
-* Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, frontend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
+* Geração de Insights com IA: Implementar um módulo que utilize Inteligência Artificial para gerar insights valiosos, através de um chat de IA com perguntas e respostas com base nos dados de tempo do banco.
+* Gerenciamento de Dados: Incluir recursos de exportação de dados (CSV/XLSX).
+* Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
 
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMGEwMnhiemI0ZHN1c2Z1Ynd5MXl4b2Rpc2s1NXozanczMHgwZjNjMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/46yPfgO81ZalJSKu74/giphy.gif" alt="class" width="35" height="35" /> Tecnologias Utilizadas:
 
@@ -40,11 +39,11 @@ O projeto foi dividido em quatro grandes módulos interconectados, cada um respo
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Módulo de Coleta e Processamento de Dados
 Esta etapa garante a captura de dados em tempo real e seu processamento assíncrono.
 * Coleta Periódica (collector-python):
-  * Funcionalidade: Coleta dados climáticos (temperatura, umidade, vento, etc.) de uma API externa (Open-Meteo ou OpenWeather) para uma localização definida.
+  * Funcionalidade: Coleta dados climáticos (temperatura, umidade, vento, etc.) de uma API externa (OpenWeather) para uma localização definida (Toritama).
   Funcionalidade: Serializa e envia o objeto de dados em tempo real para o Message Broker.
 
 * Worker Assíncrono (worker-go):
-  * Funcionalidade: Consome a fila de mensagens (RabbitMQ/Redis) de forma persistente.
+  * Funcionalidade: Consome a fila de mensagens (Redis) de forma persistente.
   * Funcionalidade: Realiza a validação e formatação final dos dados antes de enviá-los à API NestJS para persistência.
 
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Backend Core (backend-nestjs)
