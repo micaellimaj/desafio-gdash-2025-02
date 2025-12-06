@@ -158,7 +158,12 @@ Certifique-se de ter instalado em sua máquina:
 - **Backend NestJS**
   - URL base: http://localhost:3001 (ou porta configurada em `API_PORT`).
   - Swagger/Documentação: http://localhost:3001/api/docs (se habilitado).
- 
+
+- **Fast API Python**
+
+  - URL base: http://localhost:8000 (ou porta configurada em `API_PORT`).
+  - Swagger/Documentação: http://localhost:8000/docs (se habilitado).
+
 ### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Boas práticas
 
 - Sempre atualize as variáveis de ambiente antes de subir novos contêineres.
