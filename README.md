@@ -48,33 +48,35 @@ Esta etapa garante a captura de dados em tempo real e seu processamento assíncr
 
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Backend Core (backend-nestjs)
 A API central que serve como a fonte única de verdade para toda a aplicação.
-
 * API de Dados Climáticos:
-  * Funcionalidade: CRUD para gerenciar os logs climáticos no MongoDB.
+  * Funcionalidade: Rotas para gerenciar os logs climáticos no MongoDB e criaçãode rotas personalizadas para as visualizações do dashboard.
   * Funcionalidade: Endpoints otimizados para consulta paginada e filtrada dos dados de clima.
 
 * Gerenciamento de Usuários (CRUD):
   * Funcionalidade: Criação, leitura, atualização e exclusão de usuários.
-  * Funcionalidade: Autenticação (Auth) completa com geração de tokens (ex: JWT) e rotas protegidas.
+  * Funcionalidade: Autenticação (Auth) completa com geração de tokens (JWT) e rotas protegidas.
 
 * Integração Opcional:
-  * Funcionalidade: Endpoint para consumo e exibição de uma API pública externa paginada (ex: PokéAPI ou Star Wars API).
+  * Funcionalidade: Endpoint para consumo e exibição de uma API pública externa paginada (PokéAPI).
 
 * Exportação de Dados:
-  * Funcionalidade: Exportação sob demanda dos dados climáticos ou de logs para formatos CSV ou XLSX.
+  * Funcionalidade: Exportação sob demanda dos dados climáticos de logs para formatos CSV ou XLSX.
 
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" />  Frontend & Dashboard (frontend-project)
 A interface do usuário, focada em visualização e interação.
 
 * Dashboard de Clima:
-  * Funcionalidade: Exibição gráfica e tabular dos dados climáticos mais recentes e históricos.
+  * Funcionalidade: Exibição gráfica de dados climáticos da minha localização (Toritama) recentes, históricos e insights através de Kpise gráficos.
   * Funcionalidade: Filtros e paginação para navegar pelos logs climáticos.
 
-* Página de Usuários:
-  * Funcionalidade: Interface administrativa para gerenciar o CRUD de usuários.
+* Página de Perfil:
+  * Funcionalidade: Página para o usuário logado gerenciar suas informações de cadastro, como edição e deleção dos próprios dados.
 
-* Página de Insights:
-  * Funcionalidade: Exibição dos resultados e análises geradas pelo Módulo de IA.
+* Página de Explorar:
+ * Funcionalidade: Chama a API do backend de dados externos (pokemon) e renderiza uma lista com os pokemons e dados detalhados deste.
+
+* Página de Chat IA:
+  * Funcionalidade: Chat interativo que traz informações relevantes conforme as perguntas enviadas pelo usuário e de acordo com os logs de clima do banco.
  
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZnVscGxwcWdweGdrZ2pwbWM2aHl0OW4xczlwcG5sMDZyemI2OWMwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l378zKVk7Eh3yHoJi/giphy.gif" alt="class" width="35" height="35" />  Como Executar o Projeto:
 
