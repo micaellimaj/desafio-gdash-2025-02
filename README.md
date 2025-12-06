@@ -6,7 +6,8 @@
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto:
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
-A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) para transformar dados brutos em insights acionáveis sobre o clima, elevando a aplicação de um simples dashboard para uma ferramenta de análise através de IA.
+A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades.Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
+
 
 ##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto:
 O principal objetivo deste projeto é construir um sistema completo e resiliente que demonstre proficiência na integração de stacks tecnológicas diversas e modernas. Especificamente, o projeto visa:
@@ -15,7 +16,7 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
 * Integração Assíncrona: Utilizar uma arquitetura de mensagens (via Redis) para garantir que a coleta e o processamento dos dados sejam desacoplados e resilientes, sendo processados por um Worker em Go.
 * Desenvolvimento de API Robusta: Criar um backend (NestJS com MongoDB) que sirva como a fonte única de verdade para os dados climáticos e inclua funcionalidades essenciais, como CRUD de Usuários, Autenticação (Auth), conexão de dados de API externa (PokéAPI) e do Worker.
 * Visualização Dinâmica: Desenvolver um frontend moderno (React + Vite + Tailwind + shadcn/ui) para exibir os dados coletados de forma clara e intuitiva em um Dashboard.
-* Geração de Insights com IA: Implementar um módulo que utilize Inteligência Artificial para gerar insights valiosos, através de um chat de IA com perguntas e respostas com base nos dados de tempo do banco.
+* Geração de Insights com IA: Implementar um **serviço dedicado (`ai-service` em FastAPI/Python)** que se conecta à API do **Google Gemini** para ler os dados de clima do MongoDB via NestJS e responder às perguntas do usuário em um **Chat IA interativo**.
 * Gerenciamento de Dados: Incluir recursos de exportação de dados (CSV/XLSX).
 * Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
 
@@ -27,11 +28,11 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
   <img src="https://img.shields.io/badge/Redis-%23DC382D.svg?style=for-the-badge&logo=redis&logoColor=white" />
   <img src="https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white" />
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
-  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi" /> <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" />
   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" />
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
-  <img src="https://img.shields.io/badge/Artificial%20Intelligence-FF6600?style=for-the-badge&logo=google&logoColor=white" />
-</p>
+  <img src="https://img.shields.io/badge/Google%20Gemini-FF6600?style=for-the-badge&logo=google&logoColor=white" /> </p>
+
 
 ## <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUycGRrZHJkazl3OTNtZDdvOXA2ZjFtYXJiM2o5aGxyMW5yaGF0bjA5NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jJe90kHmZFpte/giphy.gif" alt="class" width="35" height="35" /> Etapas do Projeto & Funcionalidades
 O projeto foi dividido em quatro grandes módulos interconectados, cada um responsável por uma parte do ciclo de vida dos dados climáticos e do gerenciamento do sistema.
