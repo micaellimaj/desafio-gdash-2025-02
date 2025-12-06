@@ -127,6 +127,20 @@ Certifique-se de ter instalado em sua máquina:
 
 4. **Verificar o status**
    - Use `docker-compose ps` para garantir que todos os serviços (mongo, rabbitmq, backend, worker, collector, frontend) estejam `Up`.
+
+5. **Executar o front-end**
+  - Entre na pasta, execute:
+     ```bash
+     cd frontend-project
+     ```
+  - Instale as Dependências, execute:
+     ```bash
+     npm install
+     ```
+  - Rodar o Projeto, execute:
+     ```bash
+     npm run dev
+     ```
   
 ### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" /> Comandos úteis
 
