@@ -21,8 +21,9 @@ import {
     ApiResponse, 
     ApiBody, 
     ApiBearerAuth,
-    ApiQuery 
+    ApiQuery,
 } from '@nestjs/swagger';
+
 
 @ApiBearerAuth()
 @ApiTags('Weather')
@@ -66,6 +67,12 @@ export class WeatherController {
   async exportCsv(@Res() res: Response) {
     const logs = await this.weatherService.findLogsForExport();
     if (!logs.length) return res.status(204).send();
+
+    const formattedLogs = logs.map(log => ({
+        ...log.toJSON(), 
+
+        timestamp: new Date(log.timestamp).toLocaleString('pt-BR'), 
+    }));
     const fields = [
       'city',
       'timestamp',
@@ -73,11 +80,10 @@ export class WeatherController {
       'humidityPercent',
       'windSpeedMS',
       'conditionDescription',
-      'rainProbabilityPercent',
     ];
 
     const parser = new Parser({ fields });
-    const csvData = parser.parse(logs);
+    const csvData = parser.parse(formattedLogs);
 
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader(
@@ -106,7 +112,6 @@ export class WeatherController {
       { header: 'Umidade (%)', key: 'humidityPercent', width: 12 },
       { header: 'Vento (m/s)', key: 'windSpeedMS', width: 12 },
       { header: 'Condição', key: 'conditionDescription', width: 30 },
-      { header: 'Chuva (%)', key: 'rainProbabilityPercent', width: 12 },
     ];
 
     logs.forEach((log) => worksheet.addRow(log.toJSON()));
@@ -146,13 +151,6 @@ export class WeatherController {
     return this.weatherService.getWindTimeline();
   }
 
-  @Get('chart/rain')
-  @ApiOperation({ summary: 'Obtém a linha do tempo da probabilidade de chuva' })
-  @ApiResponse({ status: 200, description: 'Lista de objetos {timestamp, rainProbabilityPercent}.' })
-  getRainChart() {
-    return this.weatherService.getRainTimeline();
-  }
-
   @Get('chart/temp-vs-humidity')
   @ApiOperation({ summary: 'Obtém dados para Scatter Plot: Temperatura vs Umidade' })
   @ApiResponse({ status: 200, description: 'Lista de objetos {x: temp, y: humidity}.' })
@@ -187,4 +185,19 @@ export class WeatherController {
   getExtremes() {
     return this.weatherService.getExtremes();
   }
+
+ 
+  @Get('chart/scatter-temp-humidity')
+  @ApiOperation({
+    summary: 'Obtém dados para Scatter Plot (Temperatura × Umidade × Velocidade do vento)',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de objetos contendo temperaturaCelsius, humidityPercent, windSpeedMS e timestamp.',
+    type: Object,
+  })
+  getScatterTempHumidity() {
+    return this.weatherService.getScatterTempHumidity();
+  }
+
 }

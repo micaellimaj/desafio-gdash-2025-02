@@ -15,6 +15,7 @@ import {
     ApiQuery 
 } from '@nestjs/swagger';
 import { UserResponse } from './schemas/user.schema';
+import { Public } from '../common/decorators/public.decorator';
 
   @ApiBearerAuth() 
   @ApiTags('Users')
@@ -23,6 +24,7 @@ import { UserResponse } from './schemas/user.schema';
   export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
+  @Public()
   @Post()
   @ApiOperation({ summary: 'Cria um novo usuário' })
   @ApiBody({ type: CreateUserDto })

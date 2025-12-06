@@ -34,10 +34,6 @@ export class WeatherLog {
   @Prop({ required: true })
   conditionDescription: string;
   
-  @ApiProperty({ description: 'Probabilidade de chuva (%)', example: 60 })
-  @Prop({ required: true })
-  rainProbabilityPercent: number;
-
   @ApiProperty({ description: 'Data de criação do log', example: '2025-03-15T10:00:00.000Z', required: false })
   createdAt?: Date;
 }

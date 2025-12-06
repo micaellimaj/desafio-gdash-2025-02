@@ -5,23 +5,22 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"strings"
 	"time"
 
 	"github.com/go-redis/redis/v8"
-	"io"
 )
 
 type WeatherData struct {
-	City                   string  `json:"city"`
-	Timestamp              int64   `json:"timestamp"`
-	TemperatureCelsius     float64 `json:"temperature_celsius"`
-	HumidityPercent        int     `json:"humidity_percent"`
-	WindSpeedMS            float64 `json:"wind_speed_m_s"`
-	ConditionDescription   string  `json:"condition_description"`
-	RainProbabilityPercent int     `json:"rain_probability_percent"`
+	City                 string  `json:"city"`
+	Timestamp            string  `json:"timestamp"`
+	TemperatureCelsius   float64 `json:"temperature_celsius"`
+	HumidityPercent      int     `json:"humidity_percent"`
+	WindSpeedMS          float64 `json:"wind_speed_m_s"`
+	ConditionDescription string  `json:"condition_description"`
 }
 
 type LoginPayload struct {
@@ -34,31 +33,32 @@ type LoginResponse struct {
 }
 
 type NestJSPayload struct {
-	City                   string  `json:"city"`
-	Timestamp              int64   `json:"timestamp"`
-	TemperatureCelsius     float64 `json:"temperatureCelsius"`
-	HumidityPercent        int     `json:"humidityPercent"`
-	WindSpeedMS            float64 `json:"windSpeedMS"`
-	ConditionDescription   string  `json:"conditionDescription"`
-	RainProbabilityPercent int     `json:"rainProbabilityPercent"`
+	City                 string  `json:"city"`
+	Timestamp            string  `json:"timestamp"`
+	TemperatureCelsius   float64 `json:"temperatureCelsius"`
+	HumidityPercent      int     `json:"humidityPercent"`
+	WindSpeedMS          float64 `json:"windSpeedMS"`
+	ConditionDescription string  `json:"conditionDescription"`
 }
 
 const (
-	QUEUE_NAME         = "weather_data_queue"
-	MAX_RETRIES        = 3
-	RETRY_DELAY        = 5 * time.Second
-	API_TIMEOUT        = 10 * time.Second
-	REDIS_BLOCK_TIME   = 30 * time.Second
+	QUEUE_NAME       = "weather_data_queue"
+	MAX_RETRIES      = 3
+	RETRY_DELAY      = 5 * time.Second
+	API_TIMEOUT      = 10 * time.Second
+	REDIS_BLOCK_TIME = 30 * time.Second
 )
 
 var ctx = context.Background()
 
 var (
-	apiBaseURL    string
-	apiLoginURL   string
-	adminEmail    string
-	adminPassword string
-	authToken string
+	apiBaseURL     string
+	apiLoginURL    string
+	adminEmail     string
+	adminPassword  string
+	authToken      string
+	aiServiceURL   string // <- NOVO
+	enableAISend   bool   // <- NOVO
 )
 
 func main() {
@@ -68,8 +68,12 @@ func main() {
 	adminEmail = os.Getenv("ADMIN_EMAIL")
 	adminPassword = os.Getenv("ADMIN_PASSWORD")
 
+	// NOVO — leitura opcional do serviço de IA
+	aiServiceURL = os.Getenv("AI_SERVICE_URL")
+	enableAISend = aiServiceURL != ""
+
 	if fullAPIURL == "" || redisHost == "" || redisPort == "" || adminEmail == "" || adminPassword == "" {
-		fmt.Println("Erro: Variáveis de ambiente incompletas (REDIS_HOST, REDIS_PORT, NESTJS_API_URL, ADMIN_EMAIL, ADMIN_PASSWORD).")
+		fmt.Println("Erro: Variáveis obrigatórias não configuradas.")
 		os.Exit(1)
 	}
 
@@ -85,26 +89,25 @@ func main() {
 		fmt.Printf("Erro ao conectar ao Redis: %v\n", err)
 		os.Exit(1)
 	}
+
 	fmt.Println("Conexão com Redis estabelecida.")
 
 	fmt.Println("Tentando login na API NestJS...")
 	authToken = loginAndGetToken()
 	if authToken == "" {
-		fmt.Println("💀 Erro FATAL: Não foi possível obter o token JWT. Verifique as credenciais e se a rota /auth/login está no ar.")
+		fmt.Println("Erro ao obter token JWT.")
 		os.Exit(1)
 	}
-	fmt.Println("✅ Login bem-sucedido. Token JWT obtido.")
 
-	fmt.Println("Worker iniciando o consumo da fila...")
+	fmt.Println("Worker iniciado...")
 
 	for {
 		result, err := rdb.BLPop(ctx, REDIS_BLOCK_TIME, QUEUE_NAME).Result()
-
 		if err == redis.Nil {
-			fmt.Printf("Aguardando novas mensagens na fila '%s'...\n", QUEUE_NAME)
 			continue
-		} else if err != nil {
-			fmt.Printf("Erro ao consumir do Redis: %v. Tentando novamente em 5s.\n", err)
+		}
+		if err != nil {
+			fmt.Printf("Erro ao consumir Redis: %v\n", err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
@@ -116,44 +119,58 @@ func main() {
 }
 
 func processMessage(payload string, apiURL string) {
-	fmt.Printf("\nRecebido do Redis: %s\n", payload)
+    fmt.Printf("\nRecebido: %s\n", payload)
 
-	var data WeatherData
-	err := json.Unmarshal([]byte(payload), &data)
-	if err != nil {
-		fmt.Printf("💀 FALHA: Erro ao deserializar JSON (dado corrompido): %v. Descartando.\n", err)
-		return
-	}
+    var data WeatherData
+    if err := json.Unmarshal([]byte(payload), &data); err != nil {
+        fmt.Printf("Erro ao parsear JSON recebido: %v\n", err)
+        return
+    }
 
-	fmt.Printf("Dados lidos: Cidade=%s, Temp=%.2f°C\n", data.City, data.TemperatureCelsius)
+    nestPayload := NestJSPayload(data)
+    bodyBytes, err := json.Marshal(nestPayload)
+    if err != nil {
+        fmt.Printf("Erro ao serializar Nest payload: %v\n", err)
+        return
+    }
 
-	nestData := NestJSPayload(data)
+    fmt.Println("Enviando dados ao NestJS...")
+    if err := sendWithRetry(func() error {
+        return sendToNestJSAPI(string(bodyBytes), apiURL, authToken)
+    }); err != nil {
+        fmt.Printf("NestJS falhou após %d tentativas: %v\n", MAX_RETRIES, err)
+    } else {
+        fmt.Println("OK — enviado ao NestJS.")
+    }
 
-	newPayloadBytes, err := json.Marshal(nestData)
-	if err != nil {
-		fmt.Printf("💀 FALHA: Erro ao serializar JSON para NestJS: %v. Descartando.\n", err)
-		return
-	}
-	newPayload := string(newPayloadBytes)
+    if !enableAISend || aiServiceURL == "" {
+        fmt.Println("AI Service desabilitado (AI_SERVICE_URL vazio).")
+        return
+    }
 
-	fmt.Printf("Payload gerado para NestJS: %s\n", newPayload)
-
-	var lastErr error
-	for attempt := 0; attempt < MAX_RETRIES; attempt++ {
-		err := sendToNestJSAPI(newPayload, apiURL, authToken)
-		if err == nil {
-			fmt.Println("✅ Sucesso: Dados enviados para a API NestJS.")
-			return
-		}
-
-		lastErr = err
-		fmt.Printf("❌ Erro no envio (Tentativa %d/%d): %v\n", attempt+1, MAX_RETRIES, err)
-		if attempt < MAX_RETRIES-1 {
-			time.Sleep(RETRY_DELAY)
-		}
-	}
-	fmt.Printf("💀 FALHA FATAL: Mensagem descartada após %d tentativas. Último Erro: %v\n", MAX_RETRIES, lastErr)
+    fmt.Printf("Enviando dados ao AI-Service em %s...\n", aiServiceURL)
+    if err := sendWithRetry(func() error {
+        return sendToAIService(nestPayload)
+    }); err != nil {
+        fmt.Printf("AI-Service falhou após %d tentativas: %v\n", MAX_RETRIES, err)
+    } else {
+        fmt.Println("OK — enviado ao AI-Service.")
+    }
 }
+
+func sendWithRetry(fn func() error) error {
+    var lastErr error
+    for attempt := 0; attempt < MAX_RETRIES; attempt++ {
+        if err := fn(); err == nil {
+            return nil
+        } else {
+            lastErr = err
+            time.Sleep(RETRY_DELAY)
+        }
+    }
+    return fmt.Errorf("último erro: %w", lastErr)
+}
+
 
 func loginAndGetToken() string {
 	client := http.Client{Timeout: API_TIMEOUT}
@@ -163,58 +180,76 @@ func loginAndGetToken() string {
 
 	req, err := http.NewRequest("POST", apiLoginURL, bytes.NewBuffer(jsonPayload))
 	if err != nil {
-		fmt.Printf("Erro ao criar requisição de login: %v\n", err)
 		return ""
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Printf("Erro de rede/conexão no login: %v\n", err)
 		return ""
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated {
-		fmt.Printf("Erro de login. Status: %d. Verifique as credenciais ADMIN_EMAIL/ADMIN_PASSWORD.\n", resp.StatusCode)
 		return ""
 	}
 
 	var loginResp LoginResponse
-	err = json.NewDecoder(resp.Body).Decode(&loginResp)
-	if err != nil {
-		fmt.Printf("Erro ao decodificar resposta de login: %v\n", err)
-		return ""
-	}
+	json.NewDecoder(resp.Body).Decode(&loginResp)
 
 	return loginResp.AccessToken
 }
 
 func sendToNestJSAPI(jsonPayload string, url string, token string) error {
 	client := http.Client{Timeout: API_TIMEOUT}
-
-	bodyReader := strings.NewReader(jsonPayload)
-
-	req, err := http.NewRequest("POST", url, bodyReader)
+	req, err := http.NewRequest("POST", url, strings.NewReader(jsonPayload))
 	if err != nil {
-		return fmt.Errorf("erro ao criar requisição: %w", err)
+		return err
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", token))
+	req.Header.Set("Authorization", "Bearer "+token)
 
 	resp, err := client.Do(req)
-
 	if err != nil {
-		return fmt.Errorf("erro de rede/conexão: %w", err)
+		return err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
-		bodyBytes, _ := io.ReadAll(resp.Body)
-		bodyString := string(bodyBytes)
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("ai-service retornou erro: %d — %s", resp.StatusCode, string(body))
 
-		return fmt.Errorf("API retornou status de erro: %d. Detalhes: %s", resp.StatusCode, bodyString)
+	}
+
+	return nil
+}
+
+//
+// 🔥 NOVO — Função para enviar ao AI-Service
+//
+func sendToAIService(payload NestJSPayload) error {
+	client := http.Client{Timeout: API_TIMEOUT}
+
+	bodyBytes, _ := json.Marshal(payload)
+	req, err := http.NewRequest("POST", aiServiceURL, bytes.NewBuffer(bodyBytes))
+
+	if err != nil {
+		return err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	defer resp.Body.Close()
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("AI-Service retornou erro: %d — %s", resp.StatusCode, string(body))
 	}
 
 	return nil

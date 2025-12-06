@@ -2,20 +2,34 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, Suspense, useEffect } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Home, User, Table, Bell, Settings, Search, Menu, X, HelpCircle, Zap, Compass } from "lucide-react"
-import { Suspense } from "react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+  Home,
+  User,
+  Bot,
+  Bell,
+  Search,
+  Menu,
+  X,
+  HelpCircle,
+  Zap,
+  Compass,
+} from "lucide-react"
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Home },
   { href: "/explore", label: "Explore", icon: Compass },
   { href: "/profile", label: "Profile", icon: User },
-  { href: "/tables", label: "Tables", icon: Table },
-  { href: "/notifications", label: "Notifications", icon: Bell },
+  { href: "/chatIA", label: "ChatIA", icon: Bot },
 ]
 
 export default function DashboardLayout({
@@ -25,10 +39,23 @@ export default function DashboardLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const pathname = usePathname()
+  const [isMounted, setIsMounted] = useState(false)
+  const router = useRouter()
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // 🔥 Função de logout
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    router.push("/sign-in")
+  }
 
   return (
     <div className="flex h-screen bg-background">
-      {/* Sidebar - Soft UI Style */}
+      {/* Sidebar */}
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-0"
@@ -42,7 +69,7 @@ export default function DashboardLayout({
           </div>
         </div>
 
-        {/* Navigation - Soft rounded buttons */}
+        {/* Navigation */}
         <nav className="flex-1 space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon
@@ -58,7 +85,11 @@ export default function DashboardLayout({
                 }`}
                 onClick={() => setSidebarOpen(false)}
               >
-                <div className={`p-2 rounded-md ${isActive ? "bg-primary-foreground/20" : "bg-secondary/50"}`}>
+                <div
+                  className={`p-2 rounded-md ${
+                    isActive ? "bg-primary-foreground/20" : "bg-secondary/50"
+                  }`}
+                >
                   <Icon size={18} />
                 </div>
                 <span className="font-medium text-sm">{item.label}</span>
@@ -66,20 +97,6 @@ export default function DashboardLayout({
             )
           })}
         </nav>
-
-        {/* Account Section */}
-        <div className="space-y-2 mb-6">
-          <p className="text-xs font-semibold text-muted-foreground px-2 uppercase tracking-wider">Account Pages</p>
-          <Link
-            href="/profile"
-            className="flex items-center gap-3 px-4 py-2 rounded-lg text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-all text-sm"
-          >
-            <div className="p-2 rounded-md bg-secondary/50">
-              <User size={16} />
-            </div>
-            <span>Profile</span>
-          </Link>
-        </div>
 
         {/* Help Card */}
         <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl p-4 text-white mb-3 shadow-md">
@@ -115,6 +132,7 @@ export default function DashboardLayout({
             >
               {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+
             <Suspense fallback={<div>Loading...</div>}>
               <div className="hidden md:flex items-center gap-2 bg-secondary px-4 py-2 rounded-lg flex-1 max-w-md">
                 <Search size={18} className="text-muted-foreground" />
@@ -127,25 +145,30 @@ export default function DashboardLayout({
             </Suspense>
           </div>
 
+          {/* Right side */}
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-secondary rounded-lg transition-colors">
-              <Bell size={20} className="text-foreground" />
-            </button>
-            <button className="p-2 hover:bg-secondary rounded-lg transition-colors">
-              <Settings size={20} className="text-foreground" />
-            </button>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground font-bold flex items-center justify-center hover:opacity-90 transition-opacity">
-                  RD
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem className="text-destructive">Logout</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            
+
+            {/* User Menu */}
+            {isMounted && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-90 transition-opacity">
+                    <User size={20} /> {/* ÍCONE EM VEZ DE RD */}
+                  </button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => router.push("/profile")}>
+                    Profile
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
         </header>
 

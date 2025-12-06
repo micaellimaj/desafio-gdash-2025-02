@@ -3,10 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { WeatherLog, WeatherLogDocument } from './schemas/weather.schema';
 import { WeatherLogDto } from './dto/weather-log.dto';
+import { HttpService } from '@nestjs/axios';
+
 
 @Injectable()
 export class WeatherService {
   private readonly logger = new Logger(WeatherService.name);
+  private readonly httpService: HttpService
 
   constructor(
     @InjectModel(WeatherLog.name)
@@ -17,7 +20,6 @@ export class WeatherService {
   async createLog(logData: WeatherLogDto): Promise<WeatherLog> {
     const logToPersist = {
       ...logData,
-      timestamp: new Date(logData.timestamp),
     };
 
     const created = new this.weatherModel(logToPersist);
@@ -42,10 +44,6 @@ export class WeatherService {
           humidityPercent: 1,
           windSpeedMS: 1,
           conditionDescription: 1,
-          rainProbabilityPercent: 1,
-          cloudinessPercent: 1,
-          rainVolume3hMM: 1,
-          windGustMS: 1,
         },
       )
       .exec();
@@ -61,10 +59,6 @@ export class WeatherService {
 
   async getWindTimeline() {
     return this.weatherModel.find({}, { timestamp: 1, windSpeedMS: 1, _id: 0 }).sort({ timestamp: 1 }).exec();
-  }
-
-  async getRainTimeline() {
-    return this.weatherModel.find({}, { timestamp: 1, rainProbabilityPercent: 1, _id: 0 }).sort({ timestamp: 1 }).exec();
   }
 
   async getTempVsHumidity() {
@@ -109,11 +103,67 @@ export class WeatherService {
   }
 
   async getExtremes() {
-    const maxTemp = await this.weatherModel.findOne({}, { _id: 0 }).sort({ temperatureCelsius: -1 }).exec();
-    const minTemp = await this.weatherModel.findOne({}, { _id: 0 }).sort({ temperatureCelsius: 1 }).exec();
-    const maxWind = await this.weatherModel.findOne({}, { _id: 0 }).sort({ windSpeedMS: -1 }).exec();
-    const minHumidity = await this.weatherModel.findOne({}, { _id: 0 }).sort({ humidityPercent: 1 }).exec();
+  // Maior temperatura
+  const maxTemperature = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ temperatureCelsius: -1 })
+    .exec();
 
-    return { maxTemperature: maxTemp, minTemperature: minTemp, maxWindSpeed: maxWind, minHumidity: minHumidity };
-  }
+  // Menor temperatura
+  const minTemperature = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ temperatureCelsius: 1 })
+    .exec();
+
+  // Maior velocidade do vento
+  const maxWindSpeed = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ windSpeedMS: -1 })
+    .exec();
+
+  // Menor velocidade do vento
+  const minWindSpeed = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ windSpeedMS: 1 })
+    .exec();
+
+  // Maior umidade
+  const maxHumidity = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ humidityPercent: -1 })
+    .exec();
+
+  // Menor umidade
+  const minHumidity = await this.weatherModel
+    .findOne({}, { _id: 0 })
+    .sort({ humidityPercent: 1 })
+    .exec();
+
+  return {
+    maxTemperature,
+    minTemperature,
+    maxWindSpeed,
+    minWindSpeed,
+    maxHumidity,
+    minHumidity,
+  };
+}
+
+  async getScatterTempHumidity() {
+  return this.weatherModel
+    .find(
+      {},
+      {
+        _id: 0,
+        temperatureCelsius: 1,
+        humidityPercent: 1,
+        windSpeedMS: 1,
+        timestamp: 1,
+      },
+    )
+    .sort({ timestamp: 1 })
+    .exec();
+}
+
+
 }

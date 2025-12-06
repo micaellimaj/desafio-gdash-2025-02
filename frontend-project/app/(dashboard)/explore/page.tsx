@@ -2,54 +2,75 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Loader } from "lucide-react"
 
 interface Pokemon {
   name: string
-  url: string
+  id: string
 }
 
 interface ApiResponse {
   count: number
-  next: string | null
-  previous: string | null
+  next: boolean | null
+  previous: boolean | null
   results: Pokemon[]
 }
 
 export default function ExplorePage() {
+  const router = useRouter()
   const [pokemon, setPokemon] = useState<Pokemon[]>([])
   const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalCount, setTotalCount] = useState(0)
-  const itemsPerPage = 12
+  const itemsPerPage = 20
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const user = localStorage.getItem("user")
+
+    if (!token || !user) {
+      router.push("/sign-in")
+      return
+    }
+
     const fetchPokemon = async () => {
       try {
         setLoading(true)
-        const offset = (currentPage - 1) * itemsPerPage
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${itemsPerPage}&offset=${offset}`)
+        setError(null)
+
+        const response = await fetch(
+          `http://localhost:4000/pokemon/list?page=${currentPage}&limit=${itemsPerPage}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch Pokémon")
+        }
+
         const data: ApiResponse = await response.json()
-        setPokemon(data.results)
-        setTotalCount(data.count)
+        setPokemon(data.results || [])
+        setTotalCount(data.count || 0)
       } catch (error) {
         console.error("Error fetching Pokemon:", error)
+        setError("Failed to load Pokémon. Please try again.")
       } finally {
         setLoading(false)
       }
     }
 
     fetchPokemon()
-  }, [currentPage])
+  }, [currentPage, router])
 
   const totalPages = Math.ceil(totalCount / itemsPerPage)
-
-  const getPokemonId = (url: string) => {
-    const parts = url.split("/")
-    return parts[parts.length - 2]
-  }
 
   const handlePrevious = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1))
@@ -66,24 +87,27 @@ export default function ExplorePage() {
         <p className="text-muted-foreground">Discover and learn about different Pokémon from the Pokédex</p>
       </div>
 
+      {error && <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">{error}</div>}
+
       {loading ? (
         <div className="flex items-center justify-center py-12">
           <Loader className="animate-spin text-primary" size={32} />
         </div>
       ) : (
         <>
+          {/* Pokémon Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {pokemon.map((poke) => {
-              const pokemonId = getPokemonId(poke.url)
+              const pokemonId = poke.id
               const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/pokemon/other/official-artwork/${pokemonId}.png`
 
               return (
-                <Link key={poke.name} href={`/explore/${pokemonId}`}>
+                <Link key={poke.id} href={`/explore/${pokemonId}`}>
                   <Card className="hover:shadow-lg transition-all duration-200 cursor-pointer hover:border-primary overflow-hidden h-full">
                     <CardContent className="p-4">
                       <div className="aspect-square bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                         <img
-                          src={imageUrl || "/placeholder.svg"}
+                          src={imageUrl}
                           alt={poke.name}
                           className="w-full h-full object-contain p-4"
                         />
@@ -97,6 +121,7 @@ export default function ExplorePage() {
             })}
           </div>
 
+          {/* Pagination */}
           <div className="flex items-center justify-between bg-card border border-border rounded-lg p-4 mt-8">
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={handlePrevious} disabled={currentPage === 1}>

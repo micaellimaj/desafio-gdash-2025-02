@@ -1,5 +1,5 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
@@ -19,19 +19,29 @@ import { AuthService } from './auth/auth.service';
     ScheduleModule.forRoot(),
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    ConfigService
+  ],
 })
 export class AppModule implements OnModuleInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private configService: ConfigService,
+  ) {}
 
   async onModuleInit() {
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
-    const adminPass = process.env.ADMIN_PASSWORD || '123456';
+    const adminEmail = this.configService.get<string>('ADMIN_EMAIL');
+    const adminPass = this.configService.get<string>('ADMIN_PASSWORD');
+    const adminName = this.configService.get<string>('ADMIN_NAME') || 'Admin Padrão';
 
-    await this.authService.createDefaultAdmin(
-      adminEmail,
-      adminPass,
-      'Admin Padrão',
-    );
-  }
+    if (adminEmail && adminPass && adminPass.length >= 6) {
+      await this.authService.createDefaultAdmin(
+        adminEmail,
+        adminPass,
+        adminName,
+      );
+      console.log(`\n✅ Usuário Admin Padrão (${adminEmail}) verificado/criado.`);
+    } else {
+      console.warn('\n⚠️ WARNING: As variáveis ADMIN_EMAIL e ADMIN_PASSWORD não foram encontradas no .env. Nenhum usuário administrador padrão foi criado.');
+    } }
 }

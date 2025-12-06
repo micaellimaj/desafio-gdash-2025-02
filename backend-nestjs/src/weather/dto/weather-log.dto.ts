@@ -1,4 +1,4 @@
-import { IsNumber, IsString, IsNotEmpty, IsInt, Min, Max } from 'class-validator';
+import { IsNumber,IsISO8601, IsString, IsNotEmpty, IsInt, Min, Max } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -9,14 +9,16 @@ export class WeatherLogDto {
     city: string;
 
     @ApiProperty({ 
-        description: 'Timestamp Unix (segundos) da coleta do dado.', 
-        example: 1678886400,
-        type: Number 
+        description: 'Data e hora da coleta no formato ISO 8601.', 
+        example: '2025-03-15T10:00:00.000Z',
+        type: String
     })
-    @Type(() => Number)
-    @IsInt({ message: 'O timestamp deve ser um número inteiro (Unix).' })
+    @IsISO8601({}, { 
+        message: 'O timestamp deve estar no formato ISO 8601 válido.' 
+    })
+    @IsString({ message: 'O timestamp deve ser uma string.' })
     @IsNotEmpty({ message: 'O timestamp é obrigatório.' })
-    timestamp: number;
+    timestamp: string;
 
     @ApiProperty({ description: 'Temperatura em graus Celsius.', example: 28.5, minimum: -100, maximum: 100 })
     @IsNumber({}, { message: 'A temperatura deve ser um número.' })
@@ -43,10 +45,4 @@ export class WeatherLogDto {
     @IsNotEmpty({ message: 'A descrição da condição é obrigatória.' })
     conditionDescription: string;
 
-    @ApiProperty({ description: 'Probabilidade de chuva em porcentagem.', example: 60, minimum: 0, maximum: 100 })
-    @IsNumber({}, { message: 'A probabilidade de chuva deve ser um número.' })
-    @Min(0, { message: 'A probabilidade mínima de chuva é 0.' })
-    @Max(100, { message: 'A probabilidade máxima de chuva é 100.' })
-    @IsNotEmpty({ message: 'A probabilidade de chuva é obrigatória.' })
-    rainProbabilityPercent: number;
 }

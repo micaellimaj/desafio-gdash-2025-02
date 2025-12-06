@@ -8,36 +8,20 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, Loader } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
+interface PokemonStat {
+  name: string
+  base_stat: number
+}
+
 interface PokemonDetail {
   id: number
   name: string
   height: number
   weight: number
-  base_experience: number
-  types: Array<{
-    type: {
-      name: string
-    }
-  }>
-  abilities: Array<{
-    ability: {
-      name: string
-    }
-    is_hidden: boolean
-  }>
-  stats: Array<{
-    base_stat: number
-    stat: {
-      name: string
-    }
-  }>
-  sprites: {
-    other: {
-      "official-artwork": {
-        front_default: string
-      }
-    }
-  }
+  spriteUrl: string
+  types: string[]
+  abilities: string[]
+  stats: PokemonStat[]
 }
 
 const typeColors: Record<string, string> = {
@@ -68,23 +52,45 @@ export default function PokemonDetailPage() {
 
   const [pokemon, setPokemon] = useState<PokemonDetail | null>(null)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    const token = localStorage.getItem("token")
+    const user = localStorage.getItem("user")
+
+    if (!token || !user) {
+      router.push("/sign-in")
+      return
+    }
+
     const fetchPokemonDetail = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        setError(null)
+
+        const response = await fetch(`http://localhost:4000/pokemon/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch Pokémon details")
+        }
+
         const data: PokemonDetail = await response.json()
         setPokemon(data)
       } catch (error) {
         console.error("Error fetching Pokemon detail:", error)
+        setError("Failed to load Pokémon details. Please try again.")
       } finally {
         setLoading(false)
       }
     }
 
     fetchPokemonDetail()
-  }, [id])
+  }, [id, router])
 
   if (loading) {
     return (
@@ -94,10 +100,10 @@ export default function PokemonDetailPage() {
     )
   }
 
-  if (!pokemon) {
+  if (!pokemon || error) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <p className="text-lg text-muted-foreground mb-4">Pokémon not found</p>
+        <p className="text-lg text-muted-foreground mb-4">{error || "Pokémon not found"}</p>
         <Link href="/explore">
           <Button>Back to Explore</Button>
         </Link>
@@ -107,6 +113,7 @@ export default function PokemonDetailPage() {
 
   return (
     <div className="space-y-6">
+      {/* Back Button */}
       <Link href="/explore">
         <Button variant="outline" size="sm">
           <ArrowLeft size={18} className="mr-2" />
@@ -114,6 +121,7 @@ export default function PokemonDetailPage() {
         </Button>
       </Link>
 
+      {/* Main Detail Card */}
       <Card>
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -121,8 +129,9 @@ export default function PokemonDetailPage() {
               <CardTitle className="text-3xl capitalize mb-2">{pokemon.name}</CardTitle>
               <CardDescription>Pokémon ID: #{pokemon.id}</CardDescription>
             </div>
+
             <img
-              src={pokemon.sprites.other["official-artwork"].front_default || "/placeholder.svg"}
+              src={pokemon.spriteUrl}
               alt={pokemon.name}
               className="w-40 h-40 object-contain"
             />
@@ -131,6 +140,7 @@ export default function PokemonDetailPage() {
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Types */}
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Classification</CardTitle>
@@ -138,25 +148,11 @@ export default function PokemonDetailPage() {
           <CardContent className="space-y-4">
             <div>
               <p className="text-sm font-semibold text-muted-foreground mb-2">Types</p>
+
               <div className="flex flex-wrap gap-2">
                 {pokemon.types.map((type) => (
-                  <Badge
-                    key={type.type.name}
-                    className={`${typeColors[type.type.name] || "bg-gray-500"} text-white capitalize`}
-                  >
-                    {type.type.name}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-2">Abilities</p>
-              <div className="flex flex-wrap gap-2">
-                {pokemon.abilities.map((ability) => (
-                  <Badge key={ability.ability.name} variant="outline" className="capitalize">
-                    {ability.ability.name}
-                    {ability.is_hidden && " (Hidden)"}
+                  <Badge key={type} className={`${typeColors[type] || "bg-gray-500"} text-white capitalize`}>
+                    {type}
                   </Badge>
                 ))}
               </div>
@@ -164,6 +160,7 @@ export default function PokemonDetailPage() {
           </CardContent>
         </Card>
 
+        {/* Physical Characteristics */}
         <Card>
           <CardHeader>
             <CardTitle className="text-lg">Physical Characteristics</CardTitle>
@@ -173,18 +170,15 @@ export default function PokemonDetailPage() {
               <span className="text-sm font-medium text-muted-foreground">Height</span>
               <span className="text-lg font-semibold text-foreground">{(pokemon.height / 10).toFixed(1)} m</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-border">
+            <div className="flex justify-between items-center py-2">
               <span className="text-sm font-medium text-muted-foreground">Weight</span>
               <span className="text-lg font-semibold text-foreground">{(pokemon.weight / 10).toFixed(1)} kg</span>
-            </div>
-            <div className="flex justify-between items-center py-2">
-              <span className="text-sm font-medium text-muted-foreground">Base Experience</span>
-              <span className="text-lg font-semibold text-foreground">{pokemon.base_experience}</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
+      {/* Stats */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Base Stats</CardTitle>
@@ -192,9 +186,9 @@ export default function PokemonDetailPage() {
         <CardContent>
           <div className="space-y-3">
             {pokemon.stats.map((stat) => (
-              <div key={stat.stat.name} className="space-y-1">
+              <div key={stat.name} className="space-y-1">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-muted-foreground capitalize">{stat.stat.name}</span>
+                  <span className="text-sm font-medium text-muted-foreground capitalize">{stat.name}</span>
                   <span className="text-sm font-semibold text-foreground">{stat.base_stat}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-2">

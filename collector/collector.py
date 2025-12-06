@@ -47,15 +47,17 @@ def fetch_weather_data():
     except requests.exceptions.RequestException as e:
         print(f"Erro ao buscar dados da API: {e}")
         return None
+    
+    unix_timestamp = raw_data.get('dt', int(time.time()))
+    iso_timestamp = datetime.utcfromtimestamp(unix_timestamp).isoformat() + 'Z'
 
     normalized_data = {
         "city": CITY_NAME,
-        "timestamp": raw_data.get('dt', int(time.time())), 
+        "timestamp": iso_timestamp, 
         "temperature_celsius": raw_data['main']['temp'],
         "humidity_percent": raw_data['main']['humidity'],
         "wind_speed_m_s": raw_data['wind']['speed'],
         "condition_description": raw_data['weather'][0]['description'],
-        "rain_probability_percent": raw_data.get('pop', 0), 
     }
     
     return normalized_data

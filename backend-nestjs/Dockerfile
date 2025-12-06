@@ -32,7 +32,7 @@ RUN npm ci --only=production
 
 COPY --from=builder /app/dist ./dist
 
-#COPY .env .env
+COPY .env .env
 
 RUN chown -R node:node /app
 

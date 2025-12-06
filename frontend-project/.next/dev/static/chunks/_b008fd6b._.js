@@ -224,17 +224,34 @@ function PokemonDetailPage() {
     const id = params.id;
     const [pokemon, setPokemon] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "PokemonDetailPage.useEffect": ()=>{
+            const token = localStorage.getItem("token");
+            const user = localStorage.getItem("user");
+            if (!token || !user) {
+                router.push("/sign-in");
+                return;
+            }
             const fetchPokemonDetail = {
                 "PokemonDetailPage.useEffect.fetchPokemonDetail": async ()=>{
                     try {
                         setLoading(true);
-                        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                        setError(null);
+                        const response = await fetch(`http://localhost:4000/pokemon/${id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`,
+                                "Content-Type": "application/json"
+                            }
+                        });
+                        if (!response.ok) {
+                            throw new Error("Failed to fetch Pokémon details");
+                        }
                         const data = await response.json();
                         setPokemon(data);
                     } catch (error) {
                         console.error("Error fetching Pokemon detail:", error);
+                        setError("Failed to load Pokémon details. Please try again.");
                     } finally{
                         setLoading(false);
                     }
@@ -243,7 +260,8 @@ function PokemonDetailPage() {
             fetchPokemonDetail();
         }
     }["PokemonDetailPage.useEffect"], [
-        id
+        id,
+        router
     ]);
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -253,25 +271,25 @@ function PokemonDetailPage() {
                 size: 32
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                lineNumber: 92,
+                lineNumber: 98,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-            lineNumber: 91,
+            lineNumber: 97,
             columnNumber: 7
         }, this);
     }
-    if (!pokemon) {
+    if (!pokemon || error) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex flex-col items-center justify-center py-12",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-lg text-muted-foreground mb-4",
-                    children: "Pokémon not found"
+                    children: error || "Pokémon not found"
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                    lineNumber: 100,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -280,18 +298,18 @@ function PokemonDetailPage() {
                         children: "Back to Explore"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 102,
+                        lineNumber: 108,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                    lineNumber: 101,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-            lineNumber: 99,
+            lineNumber: 105,
             columnNumber: 7
         }, this);
     }
@@ -309,19 +327,19 @@ function PokemonDetailPage() {
                             className: "mr-2"
                         }, void 0, false, {
                             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                            lineNumber: 113,
+                            lineNumber: 119,
                             columnNumber: 11
                         }, this),
                         "Back to Explore"
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                    lineNumber: 112,
+                    lineNumber: 118,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                lineNumber: 111,
+                lineNumber: 117,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -336,7 +354,7 @@ function PokemonDetailPage() {
                                         children: pokemon.name
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 123,
+                                        lineNumber: 129,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -346,38 +364,38 @@ function PokemonDetailPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 130,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 122,
+                                lineNumber: 128,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: pokemon.sprites.other["official-artwork"].front_default || "/placeholder.svg",
+                                src: pokemon.spriteUrl,
                                 alt: pokemon.name,
                                 className: "w-40 h-40 object-contain"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 126,
+                                lineNumber: 133,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 121,
+                        lineNumber: 127,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                    lineNumber: 120,
+                    lineNumber: 126,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                lineNumber: 119,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -391,93 +409,56 @@ function PokemonDetailPage() {
                                     children: "Classification"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 146,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 138,
+                                lineNumber: 145,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                                 className: "space-y-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm font-semibold text-muted-foreground mb-2",
-                                                children: "Types"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 143,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex flex-wrap gap-2",
-                                                children: pokemon.types.map((type)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                                                        className: `${typeColors[type.type.name] || "bg-gray-500"} text-white capitalize`,
-                                                        children: type.type.name
-                                                    }, type.type.name, false, {
-                                                        fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                        lineNumber: 146,
-                                                        columnNumber: 19
-                                                    }, this))
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 144,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 142,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm font-semibold text-muted-foreground mb-2",
-                                                children: "Abilities"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 157,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "flex flex-wrap gap-2",
-                                                children: pokemon.abilities.map((ability)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                                                        variant: "outline",
-                                                        className: "capitalize",
-                                                        children: [
-                                                            ability.ability.name,
-                                                            ability.is_hidden && " (Hidden)"
-                                                        ]
-                                                    }, ability.ability.name, true, {
-                                                        fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                        lineNumber: 160,
-                                                        columnNumber: 19
-                                                    }, this))
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 158,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 156,
-                                        columnNumber: 13
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-sm font-semibold text-muted-foreground mb-2",
+                                            children: "Types"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
+                                            lineNumber: 150,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex flex-wrap gap-2",
+                                            children: pokemon.types.map((type)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                                                    className: `${typeColors[type] || "bg-gray-500"} text-white capitalize`,
+                                                    children: type
+                                                }, type, false, {
+                                                    fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
+                                                    lineNumber: 154,
+                                                    columnNumber: 19
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
+                                            lineNumber: 152,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
+                                    lineNumber: 149,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 141,
+                                lineNumber: 148,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 137,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -488,12 +469,12 @@ function PokemonDetailPage() {
                                     children: "Physical Characteristics"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 166,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 172,
+                                lineNumber: 165,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -507,7 +488,7 @@ function PokemonDetailPage() {
                                                 children: "Height"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 177,
+                                                lineNumber: 170,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -518,24 +499,24 @@ function PokemonDetailPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 178,
+                                                lineNumber: 171,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 176,
+                                        lineNumber: 169,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex justify-between items-center py-2 border-b border-border",
+                                        className: "flex justify-between items-center py-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 className: "text-sm font-medium text-muted-foreground",
                                                 children: "Weight"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 174,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -546,56 +527,31 @@ function PokemonDetailPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 182,
+                                                lineNumber: 175,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 180,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex justify-between items-center py-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-sm font-medium text-muted-foreground",
-                                                children: "Base Experience"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 185,
-                                                columnNumber: 15
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-lg font-semibold text-foreground",
-                                                children: pokemon.base_experience
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 186,
-                                                columnNumber: 15
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 173,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                lineNumber: 175,
+                                lineNumber: 168,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 164,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                lineNumber: 135,
+                lineNumber: 142,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -606,12 +562,12 @@ function PokemonDetailPage() {
                             children: "Base Stats"
                         }, void 0, false, {
                             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                            lineNumber: 195,
+                            lineNumber: 184,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 194,
+                        lineNumber: 183,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -625,10 +581,10 @@ function PokemonDetailPage() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: "text-sm font-medium text-muted-foreground capitalize",
-                                                    children: stat.stat.name
+                                                    children: stat.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                    lineNumber: 202,
+                                                    lineNumber: 191,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -636,13 +592,13 @@ function PokemonDetailPage() {
                                                     children: stat.base_stat
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                    lineNumber: 203,
+                                                    lineNumber: 192,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                            lineNumber: 201,
+                                            lineNumber: 190,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -654,44 +610,44 @@ function PokemonDetailPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                                lineNumber: 206,
+                                                lineNumber: 195,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                            lineNumber: 205,
+                                            lineNumber: 194,
                                             columnNumber: 17
                                         }, this)
                                     ]
-                                }, stat.stat.name, true, {
+                                }, stat.name, true, {
                                     fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 189,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                            lineNumber: 198,
+                            lineNumber: 187,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                        lineNumber: 197,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-                lineNumber: 193,
+                lineNumber: 182,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(dashboard)/explore/[id]/page.tsx",
-        lineNumber: 109,
+        lineNumber: 115,
         columnNumber: 5
     }, this);
 }
-_s(PokemonDetailPage, "W2GRb7TKPKZfb0Gs1xE+qJtDhcU=", false, function() {
+_s(PokemonDetailPage, "ZZPpfhQHEoDu2Jr/qIwnucFGFgM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
