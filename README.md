@@ -63,6 +63,15 @@ A API central que serve como a fonte única de verdade para toda a aplicação.
 * Exportação de Dados:
   * Funcionalidade: Exportação sob demanda dos dados climáticos de logs para formatos CSV ou XLSX.
 
+### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Módulo de Análise e Chat IA (ai-service)
+Este serviço utiliza o FastAPI para fornecer um endpoint de chat baseado nos dados climáticos.
+
+* Serviço de Chat IA (ai-service - FastAPI/Python):
+  * Funcionalidade: Recebe perguntas do usuário via API.
+  * Funcionalidade: Consulta os dados climáticos do MongoDB (via NestJS ou acesso direto) para fornecer contexto ao Gemini.
+  * Funcionalidade: Utiliza a API do **Google Gemini** para gerar respostas e *insights* em tempo real com base no contexto dos logs de clima.
+
+
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" />  Frontend & Dashboard (frontend-project)
 A interface do usuário, focada em visualização e interação.
 
