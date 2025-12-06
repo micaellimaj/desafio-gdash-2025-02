@@ -169,6 +169,18 @@ Certifique-se de ter instalado em sua máquina:
 
 ```
 DESAFIO-GDASH-2025-02/
+
+│
+├── ai-service/                      # NOVO: Serviço de Chat IA (FastAPI/Python)
+│ ├── app/
+│ │ ├── gemini.py                    # Lógica de conexão e chamada da API do Gemini
+│ │ ├── models.py                    # Definição de modelos de dados (ex: Pydantic)
+│ │ └── router.py                    # Roteamento do FastAPI (Endpoint /chat)
+│ ├── .env                           # Variáveis de ambiente (AI_API_KEY, etc.)
+│ ├── Dockerfile                     # Instruções para construir a imagem Docker
+│ ├── main.py                        # Ponto de entrada do FastAPI
+│ └── requirements.txt               # Dependências Python (fastapi, google-genai, uvicorn)
+|
 ├── backend-nestjs/
 │   ├── src/
 │   │   ├── auth/                        # Módulo de Autenticação e Autorização (Login/JWT)
