@@ -230,6 +230,70 @@ Certifique-se de ter instalado em sua máquina:
 - Use `docker-compose logs -f <servico>` para depurar problemas específicos.
 - Execute `docker-compose down` ao final do dia para liberar recursos da máquina, se necessário.
 
+## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Testando as Rotas da API:
+
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" /> Tabela de Endpoints da API (nestjs)
+
+* Para testar os endpoints do backend NestJS, utilize ferramentas como Postman ou Insomnia. O backend geralmente está disponível em http://localhost:3001 (ou a porta configurada no seu .env).
+* Dica: A maioria das rotas requer autenticação. Comece sempre pelas rotas de Auth para obter seu token JWT.
+
+| Entidade      | Método | Rota Base | Rota Completa                   | Descrição                                               |
+| ------------- | ------ | --------- | ------------------------------- | ------------------------------------------------------- |
+| **Auth**      | POST   | /auth     | /auth/login                     | Realiza o login e retorna o token JWT                   |
+| **Users** ❌   | POST   | /users    | /users                          | Cria um novo usuário (rota pública)                     |
+| **Users** ❌   | GET    | /users    | /users                          | Lista todos os usuários (paginação via `?page=&limit=`) |
+| **Users** ✅   | GET    | /users    | /users/:id                      | Busca um usuário por ID                                 |
+| **Users** ✅   | PATCH  | /users    | /users/:id                      | Atualiza campos de um usuário                           |
+| **Users** ✅   | DELETE | /users    | /users/:id                      | Remove um usuário por ID                                |
+| **Weather** ✅ | POST   | /weather  | /weather/logs                   | Registra um novo log climático                          |
+| **Weather** ✅ | GET    | /weather  | /weather/logs                   | Obtém logs com paginação (`?page=&limit=`)              |
+| **Weather** ✅ | GET    | /weather  | /weather/export.csv             | Exporta logs em CSV                                     |
+| **Weather** ✅ | GET    | /weather  | /weather/export.xlsx            | Exporta logs em XLSX                                    |
+| **Weather** ✅ | GET    | /weather  | /weather/chart/temperature      | Linha do tempo da temperatura                           |
+| **Weather** ✅ | GET    | /weather  | /weather/chart/humidity         | Linha do tempo da umidade                               |
+| **Weather** ✅ | GET    | /weather  | /weather/chart/temp-vs-humidity | Dados para gráfico de dispersão                         |
+| **Pokemon** ✅ | GET    | /pokemon  | /pokemon/list                   | Lista de Pokémons (paginação)                           |
+| **Pokemon** ✅ | GET    | /pokemon  | /pokemon/:nameOrId              | Detalhes de um Pokémon por nome ou ID                   |
+
+1. Guia de Autenticação (JWT)
+
+| Legenda | Descrição                                                               |
+| ------- | ----------------------------------------------------------------------- |
+| ✅       | Requer Token JWT. Use no header:<br>`Authorization: Bearer <seu_token>` |
+| ❌       | Rota pública. Não requer autenticação.                                  |
+
+2. Passos para Teste:
+* Registro: Envie um POST para http://localhost:3001/users (rota pública) com name, email e password.
+* Login: Use o novo e-mail e senha em um POST para http://localhost:3001/auth/login. Salve o token JWT retornado.
+* Acesso Protegido: Utilize o token salvo no Header de todas as demais rotas para acessar os dados.
+
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" />  Serviço Dedicado: AI Service (FastAPI)
+* Este serviço está separado do NestJS e é o responsável pela lógica do Chat IA. O serviço base é http://localhost:3002 (ou a porta configurada).
+* Observação importante:
+  * Todas as rotas abaixo estão públicas (❌).
+  * No ideal, essas rotas deveriam ser privadas e consumidas pelo backend NestJS, utilizando a estrutura centralizada de autenticação JWT já existente.
+Devido ao pouco tempo de desenvolvimento, essa integração ainda não foi implementada, por isso as rotas seguem públicas.
+
+| Entidade | Método | Rota Base | Rota Completa   | Descrição                                                                                |
+| -------- | ------ | --------- | --------------- | ---------------------------------------------------------------------------------------- |
+| **AI** ❌ | POST   | /         | /ingest         | Recebe logs climáticos enviados automaticamente pelo Worker Go (rota pública temporária) |
+| **AI** ❌ | POST   | /         | /chat           | Envia uma pergunta ao Chat IA, que responde com base nos dados climáticos armazenados    |
+| **AI** ❌ | GET    | /         | /weather/latest | Retorna o último registro climático salvo e o status do serviço                          |
+| **AI** ❌ | GET    | /         | /health         | Endpoint de verificação de saúde do serviço (healthcheck)                                |
+
+1. Observação sobre Autenticação:
+
+| Legenda | Descrição                                          |
+| ------- | -------------------------------------------------- |
+| ❌       | **Rota pública**. Atualmente não requer token JWT. |
+
+2. Nota para desenvolvimento futuro:
+* Estas rotas do AI Service deveriam ser privadas, atendidas apenas via requisições internas do backend NestJS, onde já existe todo o sistema de autenticação JWT estruturado.
+Assim, o NestJS faria a ponte entre o frontend e o AI Service, mantendo segurança e centralizando o fluxo de autenticação.
+Por falta de tempo, este refinamento ainda não foi implementado.
+
+
+
 ## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGw4eDUzd3dybzhnY3Q3bG1md243ZmtsM2R0M2hwN3lsc3I1bTlmbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KhdHwaqRgo8JB3omMg/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Repositório:
 
 ```
