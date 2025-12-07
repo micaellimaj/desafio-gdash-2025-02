@@ -251,8 +251,8 @@ Certifique-se de ter instalado em sua máquina:
   - URL: http://localhost:3000 (ou porta configurada em `PORT` no `.env`).
 
 - **Backend NestJS**
-  - URL base: http://localhost:3001 (ou porta configurada em `API_PORT`).
-  - Swagger/Documentação: http://localhost:3001/api/docs (se habilitado).
+  - URL base: http://localhost:4000 (ou porta configurada em `API_PORT`).
+  - Swagger/Documentação: http://localhost:4000/api/docs (se habilitado).
 
 - **Fast API Python**
 
@@ -269,7 +269,7 @@ Certifique-se de ter instalado em sua máquina:
 
 ### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" /> Tabela de Endpoints da API (nestjs)
 
-* Para testar os endpoints do backend NestJS, utilize ferramentas como Postman ou Insomnia. O backend geralmente está disponível em http://localhost:3001 (ou a porta configurada no seu .env).
+* Para testar os endpoints do backend NestJS, utilize ferramentas como Postman ou Insomnia. O backend geralmente está disponível em http://localhost:4000 (ou a porta configurada no seu .env).
 * Dica: A maioria das rotas requer autenticação. Comece sempre pelas rotas de Auth para obter seu token JWT.
 
 | Entidade      | Método | Rota Base | Rota Completa                   | Descrição                                               |
@@ -298,12 +298,12 @@ Certifique-se de ter instalado em sua máquina:
 | ❌       | Rota pública. Não requer autenticação.                                  |
 
 2. Passos para Teste:
-* Registro: Envie um POST para http://localhost:3001/users (rota pública) com name, email e password.
-* Login: Use o novo e-mail e senha em um POST para http://localhost:3001/auth/login. Salve o token JWT retornado.
+* Registro: Envie um POST para http://localhost:4000/users (rota pública) com name, email e password.
+* Login: Use o novo e-mail e senha em um POST para http://localhost:4000/auth/login. Salve o token JWT retornado.
 * Acesso Protegido: Utilize o token salvo no Header de todas as demais rotas para acessar os dados.
 
 ### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" />  Serviço Dedicado: AI Service (FastAPI)
-* Este serviço está separado do NestJS e é o responsável pela lógica do Chat IA. O serviço base é http://localhost:3002 (ou a porta configurada).
+* Este serviço está separado do NestJS e é o responsável pela lógica do Chat IA. O serviço base é http://localhost:8000 (ou a porta configurada).
 * Observação importante:
   * Todas as rotas abaixo estão públicas (❌).
   * No ideal, essas rotas deveriam ser privadas e consumidas pelo backend NestJS, utilizando a estrutura centralizada de autenticação JWT já existente.
