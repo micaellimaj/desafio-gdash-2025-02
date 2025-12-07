@@ -88,6 +88,52 @@ A interface do usuário, focada em visualização e interação.
 * Página de Chat IA:
   * Funcionalidade: Chat interativo que traz informações relevantes conforme as perguntas enviadas pelo usuário e de acordo com os logs de clima do banco.
  
+## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Banco de Dados:
+
+A persistência do projeto é feita utilizando MongoDB em conjunto com Mongoose no backend NestJS. As tabelas a seguir representam os principais schemas e coleções de dados da aplicação.
+
+### <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTh4bDJ5bDc1a2tqcnFkdHJiNXVvN2tkYjBsaWVhbmwzdzVzdTV6cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PtgBUWepLWMHqGsApe/giphy.gif" alt="class" width="25" height="25" />  Entidade: Usuário (users)
+
+
+| Campo       | Tipo              | Descrição                                         |
+| ----------- | ----------------- | ------------------------------------------------- |
+| `_id`       | String (ObjectId) | ID único do usuário                               |
+| `name`      | String            | Nome completo do usuário **(obrigatório)**        |
+| `email`     | String            | E-mail único do usuário (login) **(obrigatório)** |
+| `password`  | String            | Senha criptografada com hash **(obrigatório)**    |
+| `isActive`  | Boolean           | Status de atividade do usuário (padrão: true)     |
+| `createdAt` | Date              | Data de criação do registro                       |
+| `updatedAt` | Date              | Data da última atualização                        |
+
+### <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTh4bDJ5bDc1a2tqcnFkdHJiNXVvN2tkYjBsaWVhbmwzdzVzdTV6cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PtgBUWepLWMHqGsApe/giphy.gif" alt="class" width="25" height="25" /> Entidade: Log Climático (weather_logs)
+Esta coleção é o coração da aplicação, armazenando os dados coletados pelo collector e processados pelo worker-go.
+
+| Campo                  | Tipo   | Descrição                                            |
+| ---------------------- | ------ | ---------------------------------------------------- |
+| `city`                 | String | Nome da cidade onde o dado foi coletado *(indexado)* |
+| `temperatureCelsius`   | Number | Temperatura registrada em graus Celsius              |
+| `humidityPercent`      | Number | Umidade relativa do ar (%)                           |
+| `timestamp`            | Date   | Data e hora exata da coleta *(indexado)*             |
+| `windSpeedMS`          | Number | Velocidade do vento (m/s)                            |
+| `conditionDescription` | String | Descrição da condição climática (ex: “Céu limpo”)    |
+| `createdAt`            | Date   | Data de inserção do log                              |
+
+
+### <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTh4bDJ5bDc1a2tqcnFkdHJiNXVvN2tkYjBsaWVhbmwzdzVzdTV6cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/PtgBUWepLWMHqGsApe/giphy.gif" alt="class" width="25" height="25" /> Módulo de Integração Externa: Pokemon (PokéAPI)
+Este módulo não armazena dados em uma coleção interna, mas sim normaliza a resposta da API pública para uso do frontend. A tabela a seguir descreve a estrutura dos dados normalizados recebidos e utilizados pelo frontend (via NormalizedPokemonDetails).
+
+| Campo       | Tipo     | Descrição                                               |
+| ----------- | -------- | ------------------------------------------------------- |
+| `id`        | Number   | ID oficial do Pokémon                                   |
+| `name`      | String   | Nome do Pokémon                                         |
+| `height`    | Number   | Altura (decímetros)                                     |
+| `weight`    | Number   | Peso (hectogramas)                                      |
+| `types`     | String[] | Array de tipos elementais                               |
+| `abilities` | String[] | Habilidades                                             |
+| `spriteUrl` | String   | URL da imagem padrão                                    |
+| `stats`     | Object[] | Estatísticas base (ex: `{ name: 'hp', base_stat: 45 }`) |
+
+ 
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZnVscGxwcWdweGdrZ2pwbWM2aHl0OW4xczlwcG5sMDZyemI2OWMwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l378zKVk7Eh3yHoJi/giphy.gif" alt="class" width="35" height="35" />  Como Executar o Projeto:
 
 ### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" />  Pré-requisitos
