@@ -373,7 +373,7 @@ DESAFIO-GDASH-2025-02/
 
 ```
 
-## <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Y2eXRyODd2eTJybnBxaGtnM2VsOGpvZDJqcHB6dW81ZXRuN3RpNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jqqamef1hDwEDdfzNQ/giphy.gif" alt="class" width="35" height="35" /> Conclusão:
+## <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHZxNm5zdGlqMzEzNWNoc3lxaThmb202YnZvZWVpeGVnYW8wODZqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3ohhwApOcJ6sh2VT7W/giphy.gif" alt="class" width="35" height="35" /> Conclusão:
 
 O Climate Brain demonstrou proficiência na implementação de uma arquitetura de microsserviços heterogêneos totalmente conteinerizada pelo Docker Compose.
 Os principais desenvolvimentos envolveram:
@@ -384,3 +384,8 @@ Os principais desenvolvimentos envolveram:
 5. Backend Robusto: Desenvolvimento de uma API com NestJS/MongoDB que gerencia autenticação JWT, CRUD e funcionalidades avançadas de manipulação e exportação de dados (CSV/XLSX).
 
 Este projeto atesta a capacidade de construir sistemas escaláveis, resilientes e com funcionalidades inteligentes, entregando uma solução de ponta a ponta com alta qualidade técnica em todas as camadas.
+
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Y2eXRyODd2eTJybnBxaGtnM2VsOGpvZDJqcHB6dW81ZXRuN3RpNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jqqamef1hDwEDdfzNQ/giphy.gif" alt="class" width="35" height="35" /> Agradecimento
+Agradeço imensamente a atenção e o interesse em acompanhar o projeto Climate Brain. Este trabalho é fruto de dedicação contínua e aprendizado prático em arquitetura de microsserviços e integração de IA, e representa mais do que uma aplicação funcional — é um passo concreto na jornada de evolução como desenvolvedor full-stack.
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:00777F,100:00777F&height=115&section=footer&text=✨Mesmo%20sob%20forte%20turbul%C3%AAncia,%20a%20arquitetura%20se%20mant%C3%A9m%20est%C3%A1vel.%20Agrade%C3%A7o%20a%20chance%20de%20construir%20este%20ecossistema!✨&fontSize=14&textColor=ffffff&fontAlign=center&fontAlignY=middle"/>
