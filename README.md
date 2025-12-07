@@ -91,7 +91,38 @@ A interface do usuário, focada em visualização e interação.
 
 * Página de Chat IA:
   * Funcionalidade: Chat interativo que traz informações relevantes conforme as perguntas enviadas pelo usuário e de acordo com os logs de clima do banco.
+
+
+## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNtdHd0a2F4ZWMyejF4bWxuMXV2OWp0ank2Y3Z4ZGRlbnhwcDNtcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mmpkmOp2fA84o/giphy.gif" alt="class" width="35" height="35" /> Visualização da Plataforma:
+
+![plataforma](readme/plataforma.gif)
+
+##  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzI2ZjA5bnA2dXVmejNlMGRkM2QwZGNtcGF4dm9jczFuN2d5amE5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LoNV9fDvRFTDZC9znd/giphy.gif" alt="class" width="35" height="35" /> Orientações para Análise e Insights (Dashboard):
+
+A seção de Insights do Climate Brain foi projetada para apoiar a análise exploratória dos dados climáticos. Em vez de apresentar conclusões estáticas, esta seção orienta o usuário sobre como interpretar as tendências e correlações nos gráficos.
+
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWJia2Ztbm5iczRtYWE3c2lpMXA2cm5wYnkyemoxYzIzNTd6MXZlYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l17KV1N4q7PjzYkfsg/giphy.gif" alt="class" width="25" height="25" />  Análise da Estabilidade e Variação
+Esta análise é crucial para entender a dinâmica do clima no período registrado:
+* Gráficos de Linha do Tempo (Temperatura, Umidade, Vento): Observe a inclinação das curvas.
+  * Tendência Plana (Flatlining): Indica extrema estabilidade nos dados. Se a temperatura e o vento estiverem estáticos, o ambiente não está sujeito a mudanças rápidas.
+  * Flutuação: Grandes variações (picos e vales) em curtos períodos sugerem instabilidade ou a influência de eventos climáticos localizados.
+* Extremos Meteorológicos: A comparação entre valores Máximos e Mínimos indica a amplitude da variação. Uma diferença pequena sinaliza alta estabilidade; uma diferença grande aponta para mudanças bruscas no ambiente (ex.: queda rápida de temperatura).
+
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWJia2Ztbm5iczRtYWE3c2lpMXA2cm5wYnkyemoxYzIzNTd6MXZlYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l17KV1N4q7PjzYkfsg/giphy.gif" alt="class" width="25" height="25" />  Análise de Correlação (Temp vs Umidade)
+O gráfico de Correlação entre Temperatura e Umidade é vital para identificar padrões de conforto térmico e potencial de precipitação:
+* Padrão Incomum (Clima Seco): Identificar pontos com Temperatura Alta  e Umidade Baixa:
+  * Insight Analítico: Isso sugere condições de stress hídrico e ar seco, que podem ser prejudiciais à saúde ou indicar condições de seca persistente, mesmo que haja nebulosidade ("overcast clouds"), como observado nos logs.
+* Relação Clássica (Clima Úmido): Baixa temperatura e alta umidade podem indicar proximidade de chuvas ou neblina.
+  * Insight Analítico: Use o gráfico de correlação para identificar se a umidade alta coincide com a temperatura mais amena.
  
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWJia2Ztbm5iczRtYWE3c2lpMXA2cm5wYnkyemoxYzIzNTd6MXZlYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l17KV1N4q7PjzYkfsg/giphy.gif" alt="class" width="25" height="25" /> Análise da Distribuição de Condições
+ 
+O gráfico de Distribuição de Condições Climáticas é essencial para entender a condição de tempo dominante:
+* Dominância de uma Condição: Se 100% dos logs apontam para "overcast clouds" (nuvens encobertas) em um dia com umidade crítica, o insight é que a nebulosidade não está mitigando a baixa umidade.
+  * Ação: Isso levanta a questão se a baixa umidade é causada por fatores geográficos (vento forte, baixa precipitação histórica) e se a previsão de chuva é baixa, apesar das nuvens.
+* Variedade de Condições: A presença de múltiplas condições (sol, chuva, névoa) em um curto período sugere instabilidade atmosférica.
+
+
 ## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Banco de Dados:
 
 A persistência do projeto é feita utilizando MongoDB em conjunto com Mongoose no backend NestJS. As tabelas a seguir representam os principais schemas e coleções de dados da aplicação.
