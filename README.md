@@ -6,7 +6,7 @@
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React e Go), serviços (APIs, Workers, Bancos de Dados) e ferramentas de containerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
-A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades.Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
+A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
 
 ## <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhjemhhdjZ2dWxyZ3FxcjV3OWRwaHpyN3p2ODdrYTd6aWpmNDd1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7aD9CIy1AfFDTJ3W/giphy.gif" alt="class" width="35" height="35" /> Arquitetura do Projeto
 
@@ -54,7 +54,7 @@ Esta etapa garante a captura de dados em tempo real e seu processamento assíncr
 ### <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWN1YmhhOG5qamp0anBhcThvcHkydGpvNTloMDZrbzlleTkyZW96MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SFyIZ3qHSCA9EueRrj/giphy.gif" alt="class" width="25" height="25" /> Backend Core (backend-nestjs)
 A API central que serve como a fonte única de verdade para toda a aplicação.
 * API de Dados Climáticos:
-  * Funcionalidade: Rotas para gerenciar os logs climáticos no MongoDB e criaçãode rotas personalizadas para as visualizações do dashboard.
+  * Funcionalidade: Rotas para gerenciar os logs climáticos no MongoDB e criação de rotas personalizadas para as visualizações do dashboard.
   * Funcionalidade: Endpoints otimizados para consulta paginada e filtrada dos dados de clima.
 
 * Gerenciamento de Usuários (CRUD):
@@ -80,14 +80,14 @@ Este serviço utiliza o FastAPI para fornecer um endpoint de chat baseado nos da
 A interface do usuário, focada em visualização e interação.
 
 * Dashboard de Clima:
-  * Funcionalidade: Exibição gráfica de dados climáticos da minha localização (Toritama) recentes, históricos e insights através de Kpise gráficos.
+  * Funcionalidade: Exibição gráfica de dados climáticos da minha localização (Toritama) recentes, históricos e insights através de KPIs e gráficos.
   * Funcionalidade: Filtros e paginação para navegar pelos logs climáticos.
 
 * Página de Perfil:
-  * Funcionalidade: Página para o usuário logado gerenciar suas informações de cadastro, como edição e deleção dos próprios dados.
+  * Funcionalidade: Página para o usuário logado gerenciar suas informações de cadastro, como edição e deleção dos próprios dados (do perfil).
 
 * Página de Explorar:
- * Funcionalidade: Chama a API do backend de dados externos (pokemon) e renderiza uma lista com os pokemons e dados detalhados deste.
+ * Funcionalidade: Chama a API do backend de dados externos (pokemon) e renderiza uma lista com os Pokémon e dados detalhados deles..
 
 * Página de Chat IA:
   * Funcionalidade: Chat interativo que traz informações relevantes conforme as perguntas enviadas pelo usuário e de acordo com os logs de clima do banco.
@@ -198,7 +198,7 @@ Certifique-se de ter instalado em sua máquina:
      AI_API_KEY=[SUA_CHAVE_DE_IA]
      ```
 
-3. **Subir os serviços com Docker Compose**
+3. **Subir os serviços com Docker Compose (o frontend será rodado localmente no próximo passo)**
    - Na raiz do projeto, execute:
      ```bash
      docker-compose up --build -d
@@ -209,7 +209,7 @@ Certifique-se de ter instalado em sua máquina:
 4. **Verificar o status**
    - Use `docker-compose ps` para garantir que todos os serviços (mongo, rabbitmq, backend, worker, collector, frontend) estejam `Up`.
 
-5. **Executar o front-end**
+5. **Instalar e Executar o Frontend Localmente (Desenvolvimento)**
   - Entre na pasta, execute:
      ```bash
      cd frontend-project
@@ -267,16 +267,16 @@ Certifique-se de ter instalado em sua máquina:
 
 ## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Testando as Rotas da API
 
-### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" /> Tabela de Endpoints da API (nestjs)
+### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" /> Tabela de Endpoints da API (NestJS))
 
 * Para testar os endpoints do backend NestJS, utilize ferramentas como Postman ou Insomnia. O backend geralmente está disponível em http://localhost:4000 (ou a porta configurada no seu .env).
 * Dica: A maioria das rotas requer autenticação. Comece sempre pelas rotas de Auth para obter seu token JWT.
 
 | Entidade      | Método | Rota Base | Rota Completa                   | Descrição                                               |
 | ------------- | ------ | --------- | ------------------------------- | ------------------------------------------------------- |
-| **Auth**      | POST   | /auth     | /auth/login                     | Realiza o login e retorna o token JWT                   |
+| **Auth**  ❌   | POST   | /auth     | /auth/login                     | Realiza o login e retorna o token JWT                   |
 | **Users** ❌   | POST   | /users    | /users                          | Cria um novo usuário (rota pública)                     |
-| **Users** ❌   | GET    | /users    | /users                          | Lista todos os usuários (paginação via `?page=&limit=`) |
+| **Users** ✅   | GET    | /users    | /users                          | Lista todos os usuários (paginação via `?page=&limit=`) |
 | **Users** ✅   | GET    | /users    | /users/:id                      | Busca um usuário por ID                                 |
 | **Users** ✅   | PATCH  | /users    | /users/:id                      | Atualiza campos de um usuário                           |
 | **Users** ✅   | DELETE | /users    | /users/:id                      | Remove um usuário por ID                                |
@@ -311,10 +311,10 @@ Devido ao pouco tempo de desenvolvimento, essa integração ainda não foi imple
 
 | Entidade | Método | Rota Base | Rota Completa   | Descrição                                                                                |
 | -------- | ------ | --------- | --------------- | ---------------------------------------------------------------------------------------- |
-| **AI** ❌ | POST   | /         | /ingest         | Recebe logs climáticos enviados automaticamente pelo Worker Go (rota pública temporária) |
-| **AI** ❌ | POST   | /         | /chat           | Envia uma pergunta ao Chat IA, que responde com base nos dados climáticos armazenados    |
-| **AI** ❌ | GET    | /         | /weather/latest | Retorna o último registro climático salvo e o status do serviço                          |
-| **AI** ❌ | GET    | /         | /health         | Endpoint de verificação de saúde do serviço (healthcheck)                                |
+| **AI** ❌ | POST   | /         | /api/v1/ingest         | Recebe logs climáticos enviados automaticamente pelo Worker Go (rota pública temporária) |
+| **AI** ❌ | POST   | /         | /api/v1/chat           | Envia uma pergunta ao Chat IA, que responde com base nos dados climáticos armazenados    |
+| **AI** ❌ | GET    | /         | /api/v1/weather/latest | Retorna o último registro climático salvo e o status do serviço                          |
+| **AI** ❌ | GET    | /         | /api/v1/health         | Endpoint de verificação de saúde do serviço (healthcheck)                                |
 
 1. Observação sobre Autenticação:
 
