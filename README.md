@@ -4,9 +4,13 @@
 ![logo](readme/climatebrainlogo.png)
 
 ## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto:
-Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React, e Go), serviços (APIs, Workers, Bancos de Dados), e ferramentas de conteinerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
+Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React e Go), serviços (APIs, Workers, Bancos de Dados) e ferramentas de containerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
 A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades.Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
+
+## <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhjemhhdjZ2dWxyZ3FxcjV3OWRwaHpyN3p2ODdrYTd6aWpmNDd1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7aD9CIy1AfFDTJ3W/giphy.gif" alt="class" width="35" height="35" /> Arquitetura do Projeto:
+
+![arquitetura](readme/arquitetura_desafio_dev_fullstack.gif)
 
 
 ##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto:
