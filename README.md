@@ -192,10 +192,37 @@ Certifique-se de ter instalado em sua máquina:
    - Preencha chaves de API (clima, IA), strings de conexão do MongoDB, credenciais do RabbitMQ e segredos de JWT.
    - Exemplo (raiz do projeto):
      ```bash
-     # Configurações globais
-     MONGODB_URI=mongodb://root:example@mongo:27017/weatherdb?authSource=admin
-     WEATHER_API_KEY=[SUA_CHAVE_OPENWEATHER_OU_OPENMETEO]
-     AI_API_KEY=[SUA_CHAVE_DE_IA]
+     
+          # Configurações de API de Clima
+          WEATHER_API_KEY=fe63c67d0813ed1c54564caf75149e1a
+          WEATHER_API_URL=http://nestjs-api:4000/weather/logs
+          CITY_NAME=Toritama
+          
+          # Configurações de IA (Gemini & AI-Service)
+          GEMINI_API_KEY=AIzaSyD7ctMN7zFeP9d7DWiEazWdUYwfThnwOM4
+          GEMINI_MODEL=gemini-1.5-flash
+          AI_SERVICE_URL=http://ai-service:8000/api/v1/ingest
+          
+          # Configurações de Banco de Dados (MongoDB)
+          MONGO_ROOT_USER=root
+          MONGO_ROOT_PASSWORD=senha123
+          MONGO_DB=weatherdb
+          MONGO_URI=mongodb://mongodb:27017/weatherdb
+          
+          # Autenticação / Segurança
+          JWT_SECRET=dfd54564f4fr4f4sd54f53sd4f489
+          ADMIN_EMAIL=admin@example.com
+          ADMIN_PASSWORD=123456
+          
+          # ache / Mensageria (Redis)
+          REDIS_HOST=redis
+          REDIS_PORT=6379
+          
+          # Configurações do Servidor
+          PORT=4000
+          NODE_ENV=production
+
+     
      ```
 
 3. **Subir os serviços com Docker Compose (o frontend será rodado localmente no próximo passo)**
