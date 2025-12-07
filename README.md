@@ -3,17 +3,17 @@
 
 ![logo](readme/climatebrainlogo.png)
 
-## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZm5sZjZmMTdvZnRteGIyaGttbHVuNXo5a3l0NzlyejNpNjhweXZhbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l1J9vbuzm0F0AlUOI/giphy.gif" alt="class" width="35" height="35" /> Introdução do Projeto
 Este projeto é uma aplicação full-stack moderna desenvolvida como parte do Desafio G-DASH. Ele integra múltiplas linguagens de programação (TypeScript com NestJS e React e Go), serviços (APIs, Workers, Bancos de Dados) e ferramentas de containerização (Docker Compose) para criar um sistema robusto de coleta, processamento, análise e visualização de dados climáticos.
 
 A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades.Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
 
-## <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhjemhhdjZ2dWxyZ3FxcjV3OWRwaHpyN3p2ODdrYTd6aWpmNDd1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7aD9CIy1AfFDTJ3W/giphy.gif" alt="class" width="35" height="35" /> Arquitetura do Projeto:
+## <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhjemhhdjZ2dWxyZ3FxcjV3OWRwaHpyN3p2ODdrYTd6aWpmNDd1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7aD9CIy1AfFDTJ3W/giphy.gif" alt="class" width="35" height="35" /> Arquitetura do Projeto
 
 ![arquitetura](readme/arquitetura_desafio_dev_fullstack.gif)
 
 
-##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto:
+##  <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWd5NXp2M3d6cTlidGwybjh1Njkwejl4b3g2YTYyYzBqeXI0cmM5NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/26n7akkYdGGOk7fPy/giphy.gif" alt="class" width="35" height="35" /> Objetivo do Projeto
 O principal objetivo deste projeto é construir um sistema completo e resiliente que demonstre proficiência na integração de stacks tecnológicas diversas e modernas. Especificamente, o projeto visa:
 
 * Coleta de Dados em Tempo Real: Estabelecer um serviço (collector em Python) para obter dados climáticos periódicos e reais de uma localização específica (Toritama).
@@ -24,7 +24,7 @@ O principal objetivo deste projeto é construir um sistema completo e resiliente
 * Gerenciamento de Dados: Incluir recursos de exportação de dados (CSV/XLSX).
 * Conteinerização Completa: Garantir que toda a aplicação, incluindo backend, worker, collector e banco de dados, possa ser inicializada de maneira consistente e rápida através de Docker Compose.
 
-## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMGEwMnhiemI0ZHN1c2Z1Ynd5MXl4b2Rpc2s1NXozanczMHgwZjNjMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/46yPfgO81ZalJSKu74/giphy.gif" alt="class" width="35" height="35" /> Tecnologias Utilizadas:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMGEwMnhiemI0ZHN1c2Z1Ynd5MXl4b2Rpc2s1NXozanczMHgwZjNjMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/46yPfgO81ZalJSKu74/giphy.gif" alt="class" width="35" height="35" /> Tecnologias Utilizadas
 
 <p align="center">
   <img src="https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white" />
@@ -93,11 +93,11 @@ A interface do usuário, focada em visualização e interação.
   * Funcionalidade: Chat interativo que traz informações relevantes conforme as perguntas enviadas pelo usuário e de acordo com os logs de clima do banco.
 
 
-## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNtdHd0a2F4ZWMyejF4bWxuMXV2OWp0ank2Y3Z4ZGRlbnhwcDNtcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mmpkmOp2fA84o/giphy.gif" alt="class" width="35" height="35" /> Visualização da Plataforma:
+## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNtdHd0a2F4ZWMyejF4bWxuMXV2OWp0ank2Y3Z4ZGRlbnhwcDNtcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mmpkmOp2fA84o/giphy.gif" alt="class" width="35" height="35" /> Visualização da Plataforma
 
 ![plataforma](readme/plataforma.gif)
 
-##  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzI2ZjA5bnA2dXVmejNlMGRkM2QwZGNtcGF4dm9jczFuN2d5amE5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LoNV9fDvRFTDZC9znd/giphy.gif" alt="class" width="35" height="35" /> Orientações para Análise e Insights (Dashboard):
+##  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzI2ZjA5bnA2dXVmejNlMGRkM2QwZGNtcGF4dm9jczFuN2d5amE5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LoNV9fDvRFTDZC9znd/giphy.gif" alt="class" width="35" height="35" /> Orientações para Análise e Insights (Dashboard)
 
 A seção de Insights do Climate Brain foi projetada para apoiar a análise exploratória dos dados climáticos. Em vez de apresentar conclusões estáticas, esta seção orienta o usuário sobre como interpretar as tendências e correlações nos gráficos.
 
@@ -123,7 +123,7 @@ O gráfico de Distribuição de Condições Climáticas é essencial para entend
 * Variedade de Condições: A presença de múltiplas condições (sol, chuva, névoa) em um curto período sugere instabilidade atmosférica.
 
 
-## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Banco de Dados:
+## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Banco de Dados
 
 A persistência do projeto é feita utilizando MongoDB em conjunto com Mongoose no backend NestJS. As tabelas a seguir representam os principais schemas e coleções de dados da aplicação.
 
@@ -169,7 +169,7 @@ Este módulo não armazena dados em uma coleção interna, mas sim normaliza a r
 | `stats`     | Object[] | Estatísticas base (ex: `{ name: 'hp', base_stat: 45 }`) |
 
  
-## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZnVscGxwcWdweGdrZ2pwbWM2aHl0OW4xczlwcG5sMDZyemI2OWMwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l378zKVk7Eh3yHoJi/giphy.gif" alt="class" width="35" height="35" />  Como Executar o Projeto:
+## <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZnVscGxwcWdweGdrZ2pwbWM2aHl0OW4xczlwcG5sMDZyemI2OWMwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/l378zKVk7Eh3yHoJi/giphy.gif" alt="class" width="35" height="35" />  Como Executar o Projeto
 
 ### <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzVmMXo3b3lhYW5tc2RybXAxZmh0NWxqMWowcnBuZG5ueWUwNG52cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/rgmUYLyvByaO7OfhI3/giphy.gif" alt="class" width="25" height="25" />  Pré-requisitos
 Certifique-se de ter instalado em sua máquina:
@@ -265,7 +265,7 @@ Certifique-se de ter instalado em sua máquina:
 - Use `docker-compose logs -f <servico>` para depurar problemas específicos.
 - Execute `docker-compose down` ao final do dia para liberar recursos da máquina, se necessário.
 
-## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Testando as Rotas da API:
+## <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG92ZGV3b29seGViYWMzaXNncGwxNnhmYzlpcTVjaGxpNXZxemJ6eiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/209EXKSzNdqD77AatR/giphy.gif" alt="class" width="35" height="35" /> Testando as Rotas da API
 
 ### <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzlneGM1YjJ1ZXE3MHUxZXI2ZTFoYmxqdWJiNDQ3M21mdW4zaWFyYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7cHN73YZtel3gfod6Z/giphy.gif" alt="class" width="25" height="25" /> Tabela de Endpoints da API (nestjs)
 
@@ -329,7 +329,7 @@ Por falta de tempo, este refinamento ainda não foi implementado.
 
 
 
-## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGw4eDUzd3dybzhnY3Q3bG1md243ZmtsM2R0M2hwN3lsc3I1bTlmbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KhdHwaqRgo8JB3omMg/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Repositório:
+## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGw4eDUzd3dybzhnY3Q3bG1md243ZmtsM2R0M2hwN3lsc3I1bTlmbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KhdHwaqRgo8JB3omMg/giphy.gif" alt="class" width="35" height="35" /> Estrutura do Repositório
 
 ```
 DESAFIO-GDASH-2025-02/
@@ -408,7 +408,7 @@ DESAFIO-GDASH-2025-02/
 
 ```
 
-## <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHZxNm5zdGlqMzEzNWNoc3lxaThmb202YnZvZWVpeGVnYW8wODZqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3ohhwApOcJ6sh2VT7W/giphy.gif" alt="class" width="35" height="35" /> Conclusão:
+## <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHZxNm5zdGlqMzEzNWNoc3lxaThmb202YnZvZWVpeGVnYW8wODZqciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3ohhwApOcJ6sh2VT7W/giphy.gif" alt="class" width="35" height="35" /> Conclusão
 
 O Climate Brain demonstrou proficiência na implementação de uma arquitetura de microsserviços heterogêneos totalmente conteinerizada pelo Docker Compose.
 Os principais desenvolvimentos envolveram:
