@@ -8,6 +8,8 @@ Este projeto é uma aplicação full-stack moderna desenvolvida como parte do De
 
 A arquitetura do sistema é orientada a serviços, garantindo escalabilidade e separação de responsabilidades. Um ponto central é a integração de Inteligência Artificial (IA) através do serviço dedicado **`ai-service` (FastAPI/Python)**. Este serviço transforma dados brutos em *insights* acionáveis sobre o clima, permitindo uma análise interativa via **Chat IA**.
 
+* [Explicação No YouTube](https://youtu.be/Jjl_cxBWDFo)
+
 ## <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmhjemhhdjZ2dWxyZ3FxcjV3OWRwaHpyN3p2ODdrYTd6aWpmNDd1cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7aD9CIy1AfFDTJ3W/giphy.gif" alt="class" width="35" height="35" /> Arquitetura do Projeto
 
 ![arquitetura](readme/arquitetura_desafio_dev_fullstack.gif)
