@@ -97,7 +97,7 @@ A interface do usuário, focada em visualização e interação.
 
 ## <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmNtdHd0a2F4ZWMyejF4bWxuMXV2OWp0ank2Y3Z4ZGRlbnhwcDNtcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/mmpkmOp2fA84o/giphy.gif" alt="class" width="35" height="35" /> Visualização da Plataforma
 
-![plataforma](readme/plataforma.gif)
+![plataforma](readme/climatebrain-apresentacao-readme.gif)
 
 ##  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzI2ZjA5bnA2dXVmejNlMGRkM2QwZGNtcGF4dm9jczFuN2d5amE5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LoNV9fDvRFTDZC9znd/giphy.gif" alt="class" width="35" height="35" /> Orientações para Análise e Insights (Dashboard)
 
