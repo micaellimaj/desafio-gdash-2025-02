@@ -1,1010 +1,228 @@
-[00:00:03.064] Server  LOG      ✓ Ready in 2.1s
-[00:00:09.975] Server  LOG      ○ Compiling / ...
-[00:00:30.948] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:34.218] Server  LOG      ○ Compiling /dashboard ...
-[00:00:47.216] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:47.217] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:47.217] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050927637}
-[00:00:47.834] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050928073}
-[00:00:47.834] Browser ERROR   ERRO: Token JWT não encontrado. Redirecionando...
-[00:00:50.292] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-in color: rgb(120, 120, 120) color: inherit {"dp":"/sign-in","o":"http://localhost:3000/sign-in","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050930739}
-[00:01:04.565] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050944840}
-[00:01:05.621] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:00:02.028] Server  LOG      ✓ Ready in 1392ms
+[00:00:17.990] Server  LOG      ○ Compiling / ...
+[00:00:21.462] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:24.504] Server  LOG      ○ Compiling /dashboard ...
+[00:00:26.109] Browser ERROR   ERRO: Token JWT não encontrado. Redirecionando...
+[00:00:26.109] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:26.109] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:26.109] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:00:26.109] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151132927}
+[00:00:26.110] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151132928}
+[00:00:27.040] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-in color: rgb(120, 120, 120) color: inherit {"dp":"/sign-in","o":"http://localhost:3000/sign-in","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151133859}
+[00:00:42.088] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-up color: rgb(120, 120, 120) color: inherit {"dp":"/sign-up","o":"http://localhost:3000/sign-up","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151148905}
+[00:00:45.775] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-in color: rgb(120, 120, 120) color: inherit {"dp":"/sign-in","o":"http://localhost:3000/sign-in","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151152593}
+[00:00:53.092] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-up color: rgb(120, 120, 120) color: inherit {"dp":"/sign-up","o":"http://localhost:3000/sign-up","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151159901}
+[00:01:43.892] Server  LOG      ✓ Compiled in 142ms
+[00:02:00.255] Server  LOG      ✓ Compiled in 537ms
+[00:04:19.295] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-in color: rgb(120, 120, 120) color: inherit {"dp":"/sign-in","o":"http://localhost:3000/sign-in","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151366113}
+[00:08:49.623] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765151636429}
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:49.999] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:50.000] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:05.623] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:08:50.000] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:01:21.961] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050962420}
-[00:01:33.378] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore/3 color: rgb(120, 120, 120) color: inherit {"dp":"/explore/[id]","o":"http://localhost:3000/explore/3","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050973617}
-[00:01:36.172] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050976603}
-[00:01:39.562] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050979889}
-[00:01:46.136] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tables color: rgb(120, 120, 120) color: inherit {"dp":"/tables","o":"http://localhost:3000/tables","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050986423}
-[00:01:51.969] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050992237}
-[00:01:53.513] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765050993953}
-[00:01:59.647] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tables color: rgb(120, 120, 120) color: inherit {"dp":"/tables","o":"http://localhost:3000/tables","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051000017}
-[00:02:47.113] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:47.298] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:02:47.298] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/tables","route":"/tables"}
-[00:02:47.298] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tables color: rgb(120, 120, 120) color: inherit {"dp":"/tables","o":"http://localhost:3000/tables","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051047757}
-[00:05:44.338] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:44.420] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:44.421] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/tables","route":"/tables"}
-[00:05:44.421] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tables color: rgb(120, 120, 120) color: inherit {"dp":"/tables","o":"http://localhost:3000/tables","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051224852}
-[00:05:55.783] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:57.121] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:57.121] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:05:57.121] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051237510}
-[00:07:15.995] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051316413}
-[00:07:17.248] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051317699}
-[00:07:38.518] Server  LOG      ✓ Compiled in 140ms
-[00:07:51.457] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:51.699] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:07:51.699] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:07:51.699] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051352151}
-[00:07:54.678] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051354855}
-[00:07:55.772] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051356215}
-[00:07:57.375] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051357818}
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:09:33.603] Server  LOG      ✓ Compiled in 105ms
+[00:09:37.401] Server  LOG      ✓ Compiled in 72ms
+[00:35:03.641] Server  LOG      ○ Compiling /explore ...
+[00:35:09.939] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153216727}
+[00:35:29.568] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore/1 color: rgb(120, 120, 120) color: inherit {"dp":"/explore/[id]","o":"http://localhost:3000/explore/1","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153236379}
+[00:35:35.889] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153242694}
+[00:35:44.864] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153251659}
+[00:36:25.454] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153292266}
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:07:58.284] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:08:03.628] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051363867}
-[00:08:05.826] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051366264}
-[00:08:08.050] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051368501}
-[00:08:42.562] Server  LOG      ✓ Compiled in 1038ms
-[00:08:48.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:48.575] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:08:48.575] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:08:48.575] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051409035}
-[00:09:08.329] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051428589}
-[00:09:11.110] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051431560}
-[00:09:25.135] Server  LOG      ✓ Compiled in 155ms
-[00:09:27.469] Server  LOG      ✓ Compiled in 130ms
-[00:09:29.204] Server  LOG      ✓ Compiled in 177ms
-[00:09:31.900] Server  LOG      ✓ Compiled in 116ms
-[00:09:39.377] Server  LOG      ✓ Compiled in 153ms
-[00:09:55.721] Server  LOG      ✓ Compiled in 151ms
-[00:10:01.215] Server  LOG      ✓ Compiled in 146ms
-[00:12:07.479] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\_3b15923b._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:07.505] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:08.824] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.021] Server  ERROR    ⨯ ReferenceError: Table is not defined
-[00:12:09.087] Server  LOG      ✓ Compiled in 917ms
-[00:12:09.224] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\_3b15923b._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.226] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.240] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.241] Server  ERROR    ⨯ ReferenceError: Table is not defined
-[00:12:09.391] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\_3b15923b._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.392] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\[turbopack]_runtime.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.394] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:12:09.396] Server  ERROR    ⨯ ReferenceError: Table is not defined
-[00:12:09.772] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:10.958] Browser ERROR   uncaughtError: ReferenceError: Table is not defined
-[00:12:10.958] Browser ERROR   unhandledRejection: TypeError: Cannot assign to read only property 'Component' of object '#<Object>'
-[00:12:14.587] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:12:14.591] Server  LOG      ✓ Compiled in 467ms
-[00:12:14.608] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:12:14.612] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/(dashboard)/layout.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:12:14.613] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:12:15.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:15.964] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:12:15.964] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:12:15.964] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765051615885}
-[00:19:50.629] Server  LOG      ✓ Compiled in 271ms
-[00:19:50.963] Browser ERROR   ./app/(dashboard)/chatIA/page.tsx:2:5
-Parsing ecmascript source code failed
-  1 |
-> 2 |     </div>
-    |     ^
-  3 |   )
-  4 | }
-  5 |
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./app/(dashboard)/chatIA/page.tsx [Client Component Browser]
-    ./app/(dashboard)/chatIA/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/(dashboard)/chatIA/page.tsx [Client Component SSR]
-    ./app/(dashboard)/chatIA/page.tsx [Server Component]
-[00:19:50.963] Browser ERROR   ./app/(dashboard)/chatIA/page.tsx:2:6
-Parsing ecmascript source code failed
-  1 |
-> 2 |     </div>
-    |      ^^^^^
-  3 |   )
-  4 | }
-  5 |
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./app/(dashboard)/chatIA/page.tsx [Client Component Browser]
-    ./app/(dashboard)/chatIA/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/(dashboard)/chatIA/page.tsx [Client Component SSR]
-    ./app/(dashboard)/chatIA/page.tsx [Server Component]
-[00:19:57.777] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./app/(dashboard)/chatIA/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:19:57.798] Server  LOG      ✓ Compiled in 324ms
-[00:19:58.537] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:58.971] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:58.971] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:19:58.971] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052079392}
-[00:20:31.677] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052111957}
-[00:20:33.138] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052113551}
-[00:20:47.553] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052127994}
-[00:20:49.050] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052129426}
-[00:20:50.752] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052131189}
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.866] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.867] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:36:27.867] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:30.075] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153596889}
+[00:41:31.408] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153598217}
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:51.609] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:20:52.484] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052132935}
-[00:21:46.368] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052186658}
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:41:31.777] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:46:13.663] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153880480}
+[00:46:24.412] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore/1 color: rgb(120, 120, 120) color: inherit {"dp":"/explore/[id]","o":"http://localhost:3000/explore/1","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153891229}
+[00:46:36.311] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153903128}
+[00:46:43.664] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153910481}
+[00:47:37.367] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765153964176}
+[00:48:45.782] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765154032604}
+[00:48:47.638] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765154034455}
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:47.043] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:21:50.833] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052191100}
-[00:21:52.907] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052193362}
-[00:21:54.680] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052194985}
-[00:21:55.963] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052196413}
-[00:28:07.796] Server  LOG      ✓ Compiled in 150ms
-[00:28:34.716] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:28:35.090] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:28:35.090] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/chatIA","route":"/chatIA"}
-[00:28:35.090] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052595549}
-[00:30:01.229] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052681676}
-[00:30:03.826] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052684274}
-[00:30:10.635] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052691079}
-[00:30:11.742] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052692183}
-[00:30:13.149] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052693564}
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
+[00:48:48.092] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
        please check the style of container, or the props width(100%) and height(100%),
        or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
        height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:14.065] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:15.124] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052695576}
-[00:30:30.406] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052710840}
-[00:30:31.600] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052712052}
-[00:30:33.029] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052713470}
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.803] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.804] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.804] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.804] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.804] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:33.804] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:30:35.355] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052715806}
-[00:31:24.504] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052764953}
-[00:31:25.892] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052766261}
-[00:31:29.938] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052770382}
-[00:31:32.131] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052772585}
-[00:31:36.182] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052776622}
-[00:31:37.638] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052778094}
-[00:31:38.989] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052779427}
-[00:31:39.979] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052780420}
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:40.629] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:31:41.505] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052781964}
-[00:32:36.451] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052836899}
-[00:32:37.536] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052837907}
-[00:32:38.808] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052839255}
-[00:32:39.538] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:32:39.539] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:33:02.892] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052863278}
-[00:33:04.944] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765052865390}
-[00:37:49.547] Server  LOG      ✓ Compiled in 258ms
-[00:38:02.734] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:38:02.952] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:38:02.952] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/profile","route":"/profile"}
-[00:38:02.952] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053163405}
-[00:38:12.755] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:38:13.169] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:38:13.169] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/profile","route":"/profile"}
-[00:38:13.169] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053173447}
-[00:38:18.889] Server  LOG      ✓ Compiled in 1464ms
-[00:38:20.187] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:38:20.405] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:38:20.406] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/profile","route":"/profile"}
-[00:38:20.406] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053180866}
-[00:38:24.067] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053184511}
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:25.017] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:30.026] Server  LOG      ✓ Compiled in 186ms
-[00:38:43.341] Server  LOG      ✓ Compiled in 464ms
-[00:38:47.636] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:38:47.888] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:38:47.888] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:38:47.888] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053208343}
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:38:48.695] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:42:45.705] Server  LOG      ✓ Compiled in 1246ms
-[00:42:45.965] Browser ERROR   ./app/(dashboard)/layout.tsx:2:3
-Parsing ecmascript source code failed
-  1 |
-> 2 |   )
-    |   ^
-  3 | }
-  4 |
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./app/(dashboard)/layout.tsx [Client Component Browser]
-    ./app/(dashboard)/layout.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/(dashboard)/layout.tsx [Client Component SSR]
-    ./app/(dashboard)/layout.tsx [Server Component]
-[00:42:47.478] Server  LOG      ✓ Compiled in 1536ms
-[00:42:47.781] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.814] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\node_modules_next_dist_07290b68._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.821] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.829] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.834] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.836] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.840] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.847] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.854] Server  ERROR    ⨯ Error: The default export is not a React Component in "/dashboard/layout"
-[00:42:47.859] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.860] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\node_modules_next_dist_07290b68._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.861] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.862] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.863] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.864] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.865] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.865] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.883] Server  ERROR    ⨯ Error: The default export is not a React Component in "/dashboard/layout"
-[00:42:47.977] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.978] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\node_modules_next_dist_07290b68._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.979] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.981] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.982] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.983] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.985] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.986] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:47.987] Server  ERROR    ⨯ Error: The default export is not a React Component in "/dashboard/layout"
-[00:42:48.009] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\compiled\next-server\app-page-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.011] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\.next\dev\server\chunks\ssr\node_modules_next_dist_07290b68._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.012] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.017] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.022] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.023] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.024] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.025] Server  ERROR   C:\Users\micae\eclipse-workspace\desafio-gdash-2025-02\frontend-project\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:42:48.039] Server  ERROR    ⨯ Error: The default export is not a React Component in "/dashboard/layout"
-[00:42:50.656] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/layout"
-[00:42:52.733] Server  LOG      ✓ Compiled in 963ms
-[00:43:04.080] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:43:05.607] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:43:05.607] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:43:05.607] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053465204}
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:05.607] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:16.314] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053476725}
-[00:43:19.473] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053479926}
-[00:43:21.685] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053482131}
-[00:43:22.915] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053483280}
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:23.546] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:25.556] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053485841}
-[00:43:28.006] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053488455}
-[00:43:28.625] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:28.626] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:43:55.716] Server  LOG      ✓ Compiled in 225ms
-[00:43:55.833] Browser ERROR   ./app/(dashboard)/layout.tsx:169:17
-Parsing ecmascript source code failed
-  167 |               </DropdownMenu>
-  168 |             )}
-> 169 |           </div>
-      |                 ^
-> 170 |         </header>
-      | ^^^^^^^^^
-  171 |
-  172 |         {/* Page Content */}
-  173 |         <main className="flex-1 overflow-auto">
-
-Expected '</', got 'jsx text (
-        )'
-
-Import traces:
-  Client Component Browser:
-    ./app/(dashboard)/layout.tsx [Client Component Browser]
-    ./app/(dashboard)/layout.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/(dashboard)/layout.tsx [Client Component SSR]
-    ./app/(dashboard)/layout.tsx [Server Component]
-[00:44:10.030] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:44:10.395] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:44:10.395] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:44:10.395] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053530851}
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:12.131] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:44:21.364] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053541823}
-[00:44:22.803] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053543096}
-[00:44:24.111] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/chatIA color: rgb(120, 120, 120) color: inherit {"dp":"/chatIA","o":"http://localhost:3000/chatIA","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053544494}
-[00:46:31.916] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053672065}
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:32.433] Browser WARN    The width(-1) and height(-1) of chart should be greater than 0,
-       please check the style of container, or the props width(100%) and height(100%),
-       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
-       height and width.
-[00:46:35.970] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/explore color: rgb(120, 120, 120) color: inherit {"dp":"/explore","o":"http://localhost:3000/explore","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765053676423}
+[00:48:53.017] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/sign-in color: rgb(120, 120, 120) color: inherit {"dp":"/sign-in","o":"http://localhost:3000/sign-in","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765154039838}

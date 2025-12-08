@@ -1,5 +1,3 @@
-// src/users/schemas/user.schema.ts
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger'; // 💡 IMPORT
@@ -7,10 +5,9 @@ import { ApiProperty } from '@nestjs/swagger'; // 💡 IMPORT
 export type UserDocument = User & Document;
 
 @Schema({
-  timestamps: true,
+    timestamps: true,
 })
 export class User {
-    // Adicionado para documentação, pois o Mongoose o inclui.
     @ApiProperty({ description: 'ID único do usuário.', example: '60c72b2f9b1d8c001f8e9a0c' })
     _id: string;
 
@@ -22,7 +19,6 @@ export class User {
     @Prop({ required: true, unique: true })
     email: string;
 
-    // Não documentamos o password aqui para evitar que apareça como campo de resposta no Swagger
     @Prop({ required: true })
     password: string;
 
@@ -39,8 +35,6 @@ export class User {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-// 💡 UserResponse: Classe de resposta segura para o Swagger (sem a senha)
 export class UserResponse extends User {
-    // Garantimos que a senha não seja listada como campo de retorno.
     password: never;
 }

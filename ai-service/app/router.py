@@ -5,42 +5,40 @@ from datetime import datetime
 import asyncio
 from app.gemini import generate_weather_response
 
-router = APIRouter()
+router = APIRouter(tags=["Dados Climáticos", "Chat com IA"])
 
-# Armazenamento em memória para dados climáticos
 weather_data_store: List[Dict[str, Any]] = []
 data_lock = asyncio.Lock()
 
-# Modelos Pydantic para validação (compatíveis com worker-go)
 class WeatherData(BaseModel):
-    city: str = Field(..., min_length=1, max_length=100)
-    temperatureCelsius: float = Field(..., ge=-100, le=100)
-    humidityPercent: int = Field(..., ge=0, le=100)
-    windSpeedMS: float = Field(..., ge=0)
-    conditionDescription: str = Field(..., min_length=1, max_length=200)
-    timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
+    city: str = Field(..., min_length=1, max_length=100, example="São Paulo", description="Nome da cidade para a previsão.")
+    temperatureCelsius: float = Field(..., ge=-100, le=100, example=25.5, description="Temperatura em graus Celsius.")
+    humidityPercent: int = Field(..., ge=0, le=100, example=70, description="Percentual de umidade no ar (0-100).")
+    windSpeedMS: float = Field(..., ge=0, example=3.2, description="Velocidade do vento em metros por segundo.")
+    conditionDescription: str = Field(..., min_length=1, max_length=200, example="Céu limpo com poucas nuvens.", description="Descrição da condição climática.")
+    timestamp: str = Field(default_factory=lambda: datetime.now().isoformat(), example="2025-12-07T17:00:00.000000", description="Timestamp ISO 8601 da leitura.")
 
 class ChatRequest(BaseModel):
-    question: str = Field(..., min_length=1, max_length=500)
+    question: str = Field(..., min_length=1, max_length=500, example="Qual a temperatura mais alta registrada hoje?")
 
 class ChatResponse(BaseModel):
-    answer: str
-    has_weather_data: bool
-    data_count: int
+    answer: str = Field(..., description="A resposta gerada pelo modelo de IA.")
+    has_weather_data: bool = Field(..., description="Indica se havia dados climáticos disponíveis no cache para a IA usar.")
+    data_count: int = Field(..., description="Número total de registros climáticos armazenados no momento da consulta.")
 
-@router.post("/ingest", response_model=Dict[str, Any])
+
+@router.post(
+    "/ingest", 
+    response_model=Dict[str, Any],
+    summary="Receber Dados Climáticos Automáticos (Ingestão)",
+    description="Endpoint interno para receber logs climáticos automáticos do worker-go. Os dados são armazenados em um cache de até 100 registros. Idealmente, este endpoint deve ser protegido por uma chave de API." 
+)
 async def ingest_weather(weather_data: WeatherData):
-    """
-    Recebe dados do worker-go automaticamente.
-    Não requer autenticação - chamado internamente pelo worker.
-    """
     try:
         async with data_lock:
-            # Adiciona dados ao armazenamento
             log_data = weather_data.dict()
             weather_data_store.append(log_data)
             
-            # Mantém apenas os últimos 100 registros para evitar sobrecarga
             if len(weather_data_store) > 100:
                 weather_data_store.pop(0)
         
@@ -55,25 +53,25 @@ async def ingest_weather(weather_data: WeatherData):
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-@router.post("/chat", response_model=ChatResponse)
+@router.post(
+    "/chat", 
+    response_model=ChatResponse,
+    summary="Consulta de Chat sobre o Clima com IA",
+    description="Permite que o usuário faça perguntas em linguagem natural sobre o clima. A IA utiliza os dados climáticos armazenados (via /ingest) como contexto para gerar respostas inteligentes."
+)
 async def weather_chat(request: ChatRequest):
-    """
-    Processa perguntas usando dados já recebidos automaticamente.
-    """
     try:
         question = request.question.strip()
         
         if not question:
             raise HTTPException(status_code=400, detail="Pergunta é obrigatória")
         
-        # Obtém dados armazenados automaticamente
         async with data_lock:
             available_data = weather_data_store.copy()
         
         has_data = len(available_data) > 0
-        
-        # Gera resposta usando IA com contexto dos dados
-        answer = generate_weather_response(question, available_data)
+
+        answer = generate_weather_response(question, available_data) 
         
         return ChatResponse(
             answer=answer,
@@ -86,21 +84,27 @@ async def weather_chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Erro interno ao processar pergunta")
 
-@router.get("/weather/latest")
+@router.get(
+    "/weather/latest",
+    summary="Obter Últimos Dados Climáticos (Cache)",
+    description="Retorna os 10 registros climáticos mais recentes armazenados no cache, ordenados do mais antigo para o mais novo. Útil para monitoramento em tempo real."
+)
 async def get_latest_weather():
-    """Retorna os dados recebidos automaticamente."""
     async with data_lock:
         latest_data = weather_data_store.copy()
     
     return {
         "count": len(latest_data),
         "last_updated": latest_data[-1]["timestamp"] if latest_data else None,
-        "data": latest_data[-10:] if latest_data else []  # Últimos 10 registros
+        "data": latest_data[-10:] if latest_data else [] 
     }
 
-@router.get("/health")
+@router.get(
+    "/health",
+    summary="Verificação de Saúde e Status do Serviço",
+    description="Verifica o estado operacional da API e fornece detalhes sobre o cache de dados automáticos, incluindo o número de registros armazenados e o timestamp do último dado recebido."
+)
 async def health_check():
-    """Verificação de saúde com status dos dados."""
     async with data_lock:
         data_count = len(weather_data_store)
     

@@ -239,7 +239,7 @@ function Dashboard() {
                 setCurrentWeather(safeLogs[0]);
             }
         } catch (error) {
-            console.error("Error fetching weather data:", error);
+            console.error("Erro ao buscar dados meteorológicos:", error);
         } finally{
             setLoading(false);
         }
@@ -275,7 +275,7 @@ function Dashboard() {
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
         } catch (error) {
-            console.error("Error exporting CSV:", error);
+            console.error("Erro ao exportar CSV:", error);
         } finally{
             setExporting(false);
         }
@@ -303,7 +303,7 @@ function Dashboard() {
             window.URL.revokeObjectURL(url);
             document.body.removeChild(a);
         } catch (error) {
-            console.error("Error exporting XLSX:", error);
+            console.error("Erro ao exportar XLSX:", error);
         } finally{
             setExporting(false);
         }
@@ -334,7 +334,7 @@ function Dashboard() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 className: "text-3xl font-bold text-foreground",
-                                children: "Weather Dashboard"
+                                children: "Painel Meteorológico"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 230,
@@ -342,7 +342,7 @@ function Dashboard() {
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-muted-foreground mt-1",
-                                children: "Real-time weather insights and analytics"
+                                children: "Dados e análises meteorológicas em tempo real da cidade de Toritama - PE"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 231,
@@ -370,7 +370,7 @@ function Dashboard() {
                                         lineNumber: 240,
                                         columnNumber: 13
                                     }, this),
-                                    exporting ? "Exporting..." : "Export CSV"
+                                    exporting ? "Exportando..." : "Exportar CSV"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
@@ -389,7 +389,7 @@ function Dashboard() {
                                         lineNumber: 248,
                                         columnNumber: 13
                                     }, this),
-                                    exporting ? "Exporting..." : "Export XLSX"
+                                    exporting ? "Exportando..." : "Exportar XLSX"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
@@ -419,7 +419,7 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground font-medium",
-                                        children: "Current Temperature"
+                                        children: "Temperatura Atual"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 257,
@@ -427,7 +427,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-4xl font-bold text-foreground mt-2",
-                                        children: currentWeather?.temperatureCelsius ? `${currentWeather.temperatureCelsius.toFixed(1)}°C` : "N/A"
+                                        children: currentWeather?.temperatureCelsius ? `${currentWeather.temperatureCelsius.toFixed(1)}°C` : "N/D"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 258,
@@ -443,7 +443,7 @@ function Dashboard() {
                                                 lineNumber: 262,
                                                 columnNumber: 15
                                             }, this),
-                                            " Updated now"
+                                            " Atualizado agora"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
@@ -484,7 +484,7 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground font-medium",
-                                        children: "Humidity"
+                                        children: "Umidade"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 272,
@@ -492,7 +492,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-4xl font-bold text-foreground mt-2",
-                                        children: currentWeather?.humidityPercent ? `${currentWeather.humidityPercent}%` : "N/A"
+                                        children: currentWeather?.humidityPercent ? `${currentWeather.humidityPercent}%` : "N/D"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 273,
@@ -500,7 +500,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-green-600 mt-2",
-                                        children: currentWeather?.humidityPercent > 70 ? "High" : currentWeather?.humidityPercent > 40 ? "Comfortable" : "Low"
+                                        children: currentWeather?.humidityPercent > 70 ? "Alta" : currentWeather?.humidityPercent > 40 ? "Confortável" : "Baixa"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 276,
@@ -540,7 +540,7 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground font-medium",
-                                        children: "Wind Speed"
+                                        children: "Velocidade do Vento"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 291,
@@ -548,7 +548,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-4xl font-bold text-foreground mt-2",
-                                        children: currentWeather?.windSpeedMS ? `${(currentWeather.windSpeedMS * 3.6).toFixed(1)} km/h` : "N/A"
+                                        children: currentWeather?.windSpeedMS ? `${(currentWeather.windSpeedMS * 3.6).toFixed(1)} km/h` : "N/D"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 292,
@@ -556,7 +556,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground mt-2",
-                                        children: currentWeather?.windSpeedMS < 5 ? "Calm" : currentWeather?.windSpeedMS < 15 ? "Light breeze" : "Windy"
+                                        children: currentWeather?.windSpeedMS < 5 ? "Calmo" : currentWeather?.windSpeedMS < 15 ? "Brisa Leve" : "Ventoso"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 295,
@@ -596,7 +596,7 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground font-medium",
-                                        children: "Condition"
+                                        children: "Condição"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 306,
@@ -604,7 +604,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-2xl font-bold text-foreground mt-2 line-clamp-2",
-                                        children: currentWeather?.conditionDescription || "N/A"
+                                        children: currentWeather?.conditionDescription || "N/D"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 307,
@@ -612,7 +612,7 @@ function Dashboard() {
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground mt-2",
-                                        children: "Current conditions"
+                                        children: "Condições atuais"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                         lineNumber: 310,
@@ -658,7 +658,7 @@ function Dashboard() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-lg font-semibold text-foreground mb-4",
-                                children: "Temperature Timeline"
+                                children: "Linha do Tempo de Temperatura"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 320,
@@ -758,7 +758,7 @@ function Dashboard() {
                                                 strokeWidth: 2,
                                                 fillOpacity: 1,
                                                 fill: "url(#colorTemp)",
-                                                name: "Temperature (°C)"
+                                                name: "Temperatura (°C)"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                                 lineNumber: 342,
@@ -795,7 +795,7 @@ function Dashboard() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "text-lg font-semibold text-white",
-                                            children: "Humidity Composition"
+                                            children: "Composição da Umidade"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                             lineNumber: 359,
@@ -803,7 +803,7 @@ function Dashboard() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-sm text-slate-400 mt-1",
-                                            children: "Moisture level analysis"
+                                            children: "Análise do nível de umidade"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                             lineNumber: 360,
@@ -889,7 +889,7 @@ function Dashboard() {
                                                     0,
                                                     0
                                                 ],
-                                                name: "Humidity (%)"
+                                                name: "Umidade (%)"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                                 lineNumber: 384,
@@ -901,7 +901,7 @@ function Dashboard() {
                                                 stroke: "#06b6d4",
                                                 strokeWidth: 2,
                                                 dot: false,
-                                                name: "Humidity Trend"
+                                                name: "Tendência de Umidade"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                                 lineNumber: 385,
@@ -934,7 +934,7 @@ function Dashboard() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-lg font-semibold text-foreground mb-4",
-                                children: "Wind Speed Trends"
+                                children: "Tendências de Velocidade do Vento"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 399,
@@ -1034,7 +1034,7 @@ function Dashboard() {
                                                 strokeWidth: 2,
                                                 fillOpacity: 1,
                                                 fill: "url(#colorWind)",
-                                                name: "Wind Speed (m/s)"
+                                                name: "Velocidade do Vento (m/s)"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                                 lineNumber: 425,
@@ -1067,7 +1067,7 @@ function Dashboard() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-lg font-semibold text-foreground mb-4",
-                                children: "Weather Conditions Distribution"
+                                children: "Distribuição de Condições Climáticas"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 440,
@@ -1138,7 +1138,7 @@ function Dashboard() {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 className: "text-lg font-semibold text-foreground mb-4",
-                                children: "Temperature & Humidity Correlation"
+                                children: "Correlação entre Temperatura e Umidade"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
                                 lineNumber: 458,
@@ -1168,7 +1168,7 @@ function Dashboard() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XAxis"], {
                                                 dataKey: "temperatureCelsius",
                                                 type: "number",
-                                                name: "Temperature (°C)",
+                                                name: "Temperatura (°C)",
                                                 stroke: "#9ca3af",
                                                 style: {
                                                     fontSize: "12px"
@@ -1181,7 +1181,7 @@ function Dashboard() {
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                                 dataKey: "humidityPercent",
                                                 type: "number",
-                                                name: "Humidity (%)",
+                                                name: "Umidade (%)",
                                                 stroke: "#9ca3af",
                                                 style: {
                                                     fontSize: "12px"
@@ -1201,7 +1201,7 @@ function Dashboard() {
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Scatter$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Scatter"], {
-                                                name: "Temp vs Humidity",
+                                                name: "Temp vs Umidade",
                                                 data: tempHumidityData,
                                                 fill: "#0ea5e9"
                                             }, void 0, false, {
@@ -1240,29 +1240,29 @@ function Dashboard() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                             className: "text-lg font-semibold text-white",
-                                            children: "Wind × Humidity × Temp"
+                                            children: "Correlação entre Vento & Umidade"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                            lineNumber: 488,
+                                            lineNumber: 489,
                                             columnNumber: 9
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-sm text-slate-400 mt-1",
-                                            children: "Wind impact on moisture (temp-colored)"
+                                            children: "Relação entre vento, umidade e temperatura"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                            lineNumber: 489,
+                                            lineNumber: 490,
                                             columnNumber: 9
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                    lineNumber: 487,
+                                    lineNumber: 488,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 486,
+                                lineNumber: 487,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1280,36 +1280,36 @@ function Dashboard() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CartesianGrid"], {
                                                 strokeDasharray: "3 3",
-                                                stroke: "rgba(100,116,139,0.2)"
+                                                stroke: "rgba(255,255,255,0.2)"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 496,
+                                                lineNumber: 497,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["XAxis"], {
                                                 dataKey: "windSpeedMS",
                                                 type: "number",
-                                                name: "Wind (m/s)",
-                                                stroke: "rgb(148,163,184)",
+                                                name: "Velocidade do Vento (m/s)",
+                                                stroke: "rgb(203,213,225)",
                                                 style: {
                                                     fontSize: "12px"
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 498,
+                                                lineNumber: 499,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                                 dataKey: "humidityPercent",
                                                 type: "number",
-                                                name: "Humidity (%)",
-                                                stroke: "rgb(148,163,184)",
+                                                name: "Umidade (%)",
+                                                stroke: "rgb(203,213,225)",
                                                 style: {
                                                     fontSize: "12px"
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 506,
+                                                lineNumber: 507,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Tooltip"], {
@@ -1320,72 +1320,48 @@ function Dashboard() {
                                                     backgroundColor: "#1e293b",
                                                     border: "1px solid #475569",
                                                     borderRadius: "8px",
-                                                    color: "#fff"
+                                                    color: "#EAB308"
                                                 },
-                                                formatter: (value, name)=>{
-                                                    if (name === "windSpeedMS") return [
-                                                        `${value} m/s`,
-                                                        "Wind"
-                                                    ];
-                                                    if (name === "humidityPercent") return [
-                                                        `${value}%`,
-                                                        "Humidity"
-                                                    ];
-                                                    if (name === "temperatureCelsius") return [
-                                                        `${value}°C`,
-                                                        "Temp"
-                                                    ];
-                                                    return [
-                                                        value,
-                                                        name
-                                                    ];
+                                                labelStyle: {
+                                                    color: "#EAB308"
+                                                },
+                                                itemStyle: {
+                                                    color: "#EAB308"
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 514,
+                                                lineNumber: 515,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Scatter$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Scatter"], {
-                                                name: "Wind × Humidity × Temp",
+                                                name: "Vento x Umidade",
                                                 data: scatterTempHumidityData,
-                                                fill: "#3b82f6",
-                                                shape: "circle",
-                                                children: scatterTempHumidityData.map((item, index)=>{
-                                                    const temp = item.temperatureCelsius || 0;
-                                                    const color = temp < 20 ? "#0ea5e9" : temp < 28 ? "#22c55e" : temp < 33 ? "#eab308" : "#ef4444";
-                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Cell$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Cell"], {
-                                                        fill: color
-                                                    }, `cell-${index}`, false, {
-                                                        fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                        lineNumber: 537,
-                                                        columnNumber: 22
-                                                    }, this);
-                                                })
+                                                fill: "#EAB308"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 530,
+                                                lineNumber: 527,
                                                 columnNumber: 11
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 495,
+                                        lineNumber: 496,
                                         columnNumber: 9
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                    lineNumber: 494,
+                                    lineNumber: 495,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 493,
+                                lineNumber: 494,
                                 columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                        lineNumber: 485,
+                        lineNumber: 486,
                         columnNumber: 3
                     }, this)
                 ]
@@ -1399,10 +1375,10 @@ function Dashboard() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                         className: "text-xl font-semibold text-foreground mb-4",
-                        children: "Weather Extremes & Summary"
+                        children: "Extremos e Resumo Meteorológico"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                        lineNumber: 548,
+                        lineNumber: 541,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1413,10 +1389,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Highest Temperature"
+                                        children: "Temperatura Mais Alta"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 556,
+                                        lineNumber: 549,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1427,7 +1403,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 557,
+                                        lineNumber: 550,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1440,7 +1416,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 560,
+                                        lineNumber: 553,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1448,13 +1424,13 @@ function Dashboard() {
                                         children: extremes.maxTemperature?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 564,
+                                        lineNumber: 557,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 555,
+                                lineNumber: 548,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1462,10 +1438,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Lowest Temperature"
+                                        children: "Temperatura Mais Baixa"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 571,
+                                        lineNumber: 564,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1476,7 +1452,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 572,
+                                        lineNumber: 565,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1489,7 +1465,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 575,
+                                        lineNumber: 568,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1497,13 +1473,13 @@ function Dashboard() {
                                         children: extremes.minTemperature?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 579,
+                                        lineNumber: 572,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 570,
+                                lineNumber: 563,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1511,10 +1487,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Max Humidity"
+                                        children: "Umidade Máxima"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 586,
+                                        lineNumber: 579,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1525,7 +1501,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 587,
+                                        lineNumber: 580,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1538,7 +1514,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 590,
+                                        lineNumber: 583,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1546,13 +1522,13 @@ function Dashboard() {
                                         children: extremes.maxHumidity?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 594,
+                                        lineNumber: 587,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 585,
+                                lineNumber: 578,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1560,10 +1536,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Min Humidity"
+                                        children: "Umidade Mínima"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 601,
+                                        lineNumber: 594,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1574,7 +1550,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 602,
+                                        lineNumber: 595,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1587,7 +1563,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 605,
+                                        lineNumber: 598,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1595,13 +1571,13 @@ function Dashboard() {
                                         children: extremes.minHumidity?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 609,
+                                        lineNumber: 602,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 600,
+                                lineNumber: 593,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1609,10 +1585,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Max Wind Speed"
+                                        children: "Velocidade Máxima do Vento"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 616,
+                                        lineNumber: 609,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1623,7 +1599,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 617,
+                                        lineNumber: 610,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1636,7 +1612,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 620,
+                                        lineNumber: 613,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1644,13 +1620,13 @@ function Dashboard() {
                                         children: extremes.maxWindSpeed?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 624,
+                                        lineNumber: 617,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 615,
+                                lineNumber: 608,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1658,10 +1634,10 @@ function Dashboard() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         className: "text-sm text-muted-foreground",
-                                        children: "Min Wind Speed"
+                                        children: "Velocidade Mínima do Vento"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 631,
+                                        lineNumber: 624,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1672,7 +1648,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 632,
+                                        lineNumber: 625,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1685,7 +1661,7 @@ function Dashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 635,
+                                        lineNumber: 628,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1693,25 +1669,25 @@ function Dashboard() {
                                         children: extremes.minWindSpeed?.conditionDescription
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 639,
+                                        lineNumber: 632,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                lineNumber: 630,
+                                lineNumber: 623,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                        lineNumber: 552,
+                        lineNumber: 545,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                lineNumber: 547,
+                lineNumber: 540,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Card"], {
@@ -1719,10 +1695,10 @@ function Dashboard() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                         className: "text-xl font-semibold text-foreground mb-4",
-                        children: "Recent Weather Records"
+                        children: "Registros Meteorológicos Recentes"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                        lineNumber: 650,
+                        lineNumber: 643,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1736,53 +1712,53 @@ function Dashboard() {
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left py-3 px-4 font-semibold text-foreground",
-                                                children: "Date/Time"
+                                                children: "Data/Hora"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 655,
+                                                lineNumber: 648,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left py-3 px-4 font-semibold text-foreground",
-                                                children: "Condition"
+                                                children: "Condição"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 656,
+                                                lineNumber: 649,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left py-3 px-4 font-semibold text-foreground",
-                                                children: "Temperature"
+                                                children: "Temperatura"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 657,
+                                                lineNumber: 650,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left py-3 px-4 font-semibold text-foreground",
-                                                children: "Humidity"
+                                                children: "Umidade"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 658,
+                                                lineNumber: 651,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                                 className: "text-left py-3 px-4 font-semibold text-foreground",
-                                                children: "Wind Speed"
+                                                children: "Velocidade do Vento"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                lineNumber: 659,
+                                                lineNumber: 652,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                        lineNumber: 654,
+                                        lineNumber: 647,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                    lineNumber: 653,
+                                    lineNumber: 646,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1794,7 +1770,7 @@ function Dashboard() {
                                                     children: new Date(log.timestamp).toLocaleString("pt-BR")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                    lineNumber: 665,
+                                                    lineNumber: 658,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1802,7 +1778,7 @@ function Dashboard() {
                                                     children: log.conditionDescription
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                    lineNumber: 666,
+                                                    lineNumber: 659,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1813,7 +1789,7 @@ function Dashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                    lineNumber: 667,
+                                                    lineNumber: 660,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1824,7 +1800,7 @@ function Dashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                    lineNumber: 668,
+                                                    lineNumber: 661,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1835,35 +1811,35 @@ function Dashboard() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                                    lineNumber: 669,
+                                                    lineNumber: 662,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, index, true, {
                                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                            lineNumber: 664,
+                                            lineNumber: 657,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                                    lineNumber: 662,
+                                    lineNumber: 655,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                            lineNumber: 652,
+                            lineNumber: 645,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                        lineNumber: 651,
+                        lineNumber: 644,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/dashboard/page.tsx",
-                lineNumber: 649,
+                lineNumber: 642,
                 columnNumber: 7
             }, this)
         ]

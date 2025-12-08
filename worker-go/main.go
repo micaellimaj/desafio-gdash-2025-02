@@ -57,8 +57,8 @@ var (
 	adminEmail     string
 	adminPassword  string
 	authToken      string
-	aiServiceURL   string // <- NOVO
-	enableAISend   bool   // <- NOVO
+	aiServiceURL   string
+	enableAISend   bool
 )
 
 func main() {
@@ -68,7 +68,6 @@ func main() {
 	adminEmail = os.Getenv("ADMIN_EMAIL")
 	adminPassword = os.Getenv("ADMIN_PASSWORD")
 
-	// NOVO — leitura opcional do serviço de IA
 	aiServiceURL = os.Getenv("AI_SERVICE_URL")
 	enableAISend = aiServiceURL != ""
 
@@ -225,9 +224,6 @@ func sendToNestJSAPI(jsonPayload string, url string, token string) error {
 	return nil
 }
 
-//
-// 🔥 NOVO — Função para enviar ao AI-Service
-//
 func sendToAIService(payload NestJSPayload) error {
 	client := http.Client{Timeout: API_TIMEOUT}
 

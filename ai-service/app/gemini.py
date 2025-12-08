@@ -2,7 +2,6 @@ import google.generativeai as genai
 import os
 from typing import List, Dict, Any
 
-# Configuração da API Gemini
 api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("GEMINI_API_KEY não encontrada nas variáveis de ambiente")
@@ -15,19 +14,18 @@ def generate_weather_response(question: str, weather_data: List[Dict[str, Any]] 
     Gera resposta sobre clima usando dados recebidos automaticamente.
     """
     try:
-        # Prepara contexto com dados disponíveis
         context = ""
         if weather_data and len(weather_data) > 0:
-            latest = weather_data[-1]  # Dados mais recentes
+            latest = weather_data[-1] 
             context = f"""
-Dados climáticos disponíveis:
-- Cidade: {latest['city']}
-- Temperatura: {latest['temperatureCelsius']}°C
-- Umidade: {latest['humidityPercent']}%
-- Velocidade do vento: {latest['windSpeedMS']} m/s
-- Condição: {latest['conditionDescription']}
-- Atualizado em: {latest['timestamp']}
-"""
+                Dados climáticos disponíveis:
+                - Cidade: {latest['city']}
+                - Temperatura: {latest['temperatureCelsius']}°C
+                - Umidade: {latest['humidityPercent']}%
+                - Velocidade do vento: {latest['windSpeedMS']} m/s
+                - Condição: {latest['conditionDescription']}
+                - Atualizado em: {latest['timestamp']}
+                """
         else:
             context = "Nenhum dado climático disponível no momento."
         

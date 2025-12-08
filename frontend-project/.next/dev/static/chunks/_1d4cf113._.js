@@ -200,6 +200,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/pen.js [app-client] (ecmascript) <export default as Edit2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/circle-alert.js [app-client] (ecmascript) <export default as AlertCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/user.js [app-client] (ecmascript) <export default as User>");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -220,11 +221,13 @@ function Profile() {
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [success, setSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [openDeleteModal, setOpenDeleteModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         name: "",
         email: "",
         password: ""
     });
+    // Buscar usuário real no backend
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Profile.useEffect": ()=>{
             const fetchUser = {
@@ -236,11 +239,18 @@ function Profile() {
                             router.push("/sign-in");
                             return;
                         }
-                        const parsedUser = JSON.parse(storedUser);
-                        setUser(parsedUser);
+                        const parsed = JSON.parse(storedUser);
+                        const response = await fetch(`${API_BASE_URL}/users/${parsed._id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        });
+                        if (!response.ok) throw new Error("Falha ao buscar dados do usuário.");
+                        const userData = await response.json();
+                        setUser(userData);
                         setFormData({
-                            name: parsedUser.name,
-                            email: parsedUser.email,
+                            name: userData.name,
+                            email: userData.email,
                             password: ""
                         });
                     } catch (err) {
@@ -269,16 +279,13 @@ function Profile() {
         setIsLoading(true);
         try {
             const token = localStorage.getItem("token");
-            if (!user || !token) {
-                throw new Error("User not authenticated");
-            }
-            const updatePayload = {
+            if (!user || !token) throw new Error("Usuário não autenticado.");
+            const body = {
                 name: formData.name,
                 email: formData.email
             };
-            // Only include password if it was changed
             if (formData.password) {
-                updatePayload.password = formData.password;
+                body.password = formData.password;
             }
             const response = await fetch(`${API_BASE_URL}/users/${user._id}`, {
                 method: "PATCH",
@@ -286,54 +293,43 @@ function Profile() {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`
                 },
-                body: JSON.stringify(updatePayload)
+                body: JSON.stringify(body)
             });
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || "Update failed");
+                const err = await response.json();
+                throw new Error(err.message || "Erro ao atualizar usuário.");
             }
-            const updatedUser = await response.json();
-            localStorage.setItem("user", JSON.stringify(updatedUser));
-            setUser(updatedUser);
+            const updated = await response.json();
+            localStorage.setItem("user", JSON.stringify(updated));
+            setUser(updated);
             setFormData((prev)=>({
                     ...prev,
                     password: ""
                 }));
-            setSuccess("Profile updated successfully!");
+            setSuccess("Perfil atualizado com sucesso!");
             setIsEditing(false);
         } catch (err) {
-            setError(err instanceof Error ? err.message : "An error occurred");
+            setError(err instanceof Error ? err.message : "Erro desconhecido");
         } finally{
             setIsLoading(false);
         }
     };
     const handleDeleteAccount = async ()=>{
-        if (!confirm("Are you sure? This action cannot be undone.")) {
-            return;
-        }
-        setError("");
-        setIsLoading(true);
         try {
             const token = localStorage.getItem("token");
-            if (!user || !token) {
-                throw new Error("User not authenticated");
-            }
+            if (!user || !token) throw new Error("Usuário não autenticado.");
             const response = await fetch(`${API_BASE_URL}/users/${user._id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            if (!response.ok) {
-                throw new Error("Failed to delete account");
-            }
+            if (!response.ok) throw new Error("Erro ao deletar conta.");
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             router.push("/sign-in");
         } catch (err) {
-            setError(err instanceof Error ? err.message : "An error occurred");
-        } finally{
-            setIsLoading(false);
+            setError(err instanceof Error ? err.message : "Erro desconhecido.");
         }
     };
     if (isFetching) {
@@ -341,15 +337,15 @@ function Profile() {
             className: "flex items-center justify-center min-h-screen",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                 className: "text-muted-foreground",
-                children: "Loading..."
+                children: "Carregando..."
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                lineNumber: 156,
+                lineNumber: 157,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-            lineNumber: 155,
+            lineNumber: 156,
             columnNumber: 7
         }, this);
     }
@@ -360,24 +356,24 @@ function Profile() {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                         className: "text-3xl font-bold text-foreground",
-                        children: "Profile"
+                        children: "Perfil"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 165,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-muted-foreground mt-1",
-                        children: "Manage your account information"
+                        children: "Gerencie suas informações de conta"
                     }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 166,
+                        lineNumber: 167,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                lineNumber: 164,
+                lineNumber: 165,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -389,11 +385,17 @@ function Profile() {
                             className: "flex items-center gap-6",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-24 h-24 rounded-lg bg-primary text-primary-foreground flex items-center justify-center text-3xl font-bold",
-                                    children: formData.name.split(" ").map((n)=>n[0]).join("").toUpperCase().slice(0, 2)
+                                    className: "w-24 h-24 rounded-lg bg-primary text-primary-foreground flex items-center justify-center",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"], {
+                                        size: 48
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                                        lineNumber: 177,
+                                        columnNumber: 15
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                    lineNumber: 173,
+                                    lineNumber: 176,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -403,7 +405,7 @@ function Profile() {
                                             children: formData.name
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 181,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -411,35 +413,34 @@ function Profile() {
                                             children: formData.email
                                         }, void 0, false, {
                                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                            lineNumber: 183,
+                                            lineNumber: 182,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 180,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                            lineNumber: 172,
+                            lineNumber: 175,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                            variant: "outline",
                             onClick: ()=>setIsEditing(!isEditing),
-                            className: "gap-2",
-                            disabled: isLoading,
+                            variant: "outline",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$pen$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Edit2$3e$__["Edit2"], {
+                                    className: "mr-2",
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
                                     lineNumber: 187,
                                     columnNumber: 13
                                 }, this),
-                                isEditing ? "Cancel" : "Edit Profile"
+                                isEditing ? "Cancelar" : "Editar Perfil"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
@@ -449,74 +450,57 @@ function Profile() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                    lineNumber: 171,
+                    lineNumber: 174,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                lineNumber: 170,
+                lineNumber: 173,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                 className: "p-8",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mb-6",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "text-xl font-semibold text-foreground mb-6",
-                                children: "Account Information"
-                            }, void 0, false, {
-                                fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 196,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-muted-foreground mb-6",
-                                children: isEditing ? "Update your account details below." : "View and manage your account information."
-                            }, void 0, false, {
-                                fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 197,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-xl font-semibold mb-4",
+                        children: "Informações da Conta"
+                    }, void 0, false, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
                         lineNumber: 195,
                         columnNumber: 9
                     }, this),
                     error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mb-6 p-4 bg-destructive/10 border border-destructive/30 rounded-lg flex items-start gap-3",
+                        className: "mb-4 p-4 bg-red-100 border border-red-300 rounded-lg flex gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                                className: "w-5 h-5 text-destructive flex-shrink-0 mt-0.5"
+                                className: "w-5 h-5 text-red-600"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 204,
+                                lineNumber: 199,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-destructive text-sm",
+                                className: "text-red-600 text-sm",
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 205,
+                                lineNumber: 200,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 203,
+                        lineNumber: 198,
                         columnNumber: 11
                     }, this),
                     success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3",
+                        className: "mb-4 p-4 bg-green-100 border border-green-300 rounded-lg flex gap-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                                className: "w-5 h-5 text-green-600 flex-shrink-0 mt-0.5"
+                                className: "w-5 h-5 text-green-600"
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 211,
+                                lineNumber: 206,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -524,13 +508,13 @@ function Profile() {
                                 children: success
                             }, void 0, false, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 212,
+                                lineNumber: 207,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 210,
+                        lineNumber: 205,
                         columnNumber: 11
                     }, this),
                     isEditing ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -540,25 +524,46 @@ function Profile() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                        htmlFor: "name",
-                                        className: "text-foreground font-medium",
-                                        children: "Full Name"
+                                        children: "Nome Completo"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                                        lineNumber: 214,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                        name: "name",
+                                        value: formData.name,
+                                        onChange: handleChange,
+                                        required: true
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                                        lineNumber: 215,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                                lineNumber: 213,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
+                                        children: "E-mail"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
                                         lineNumber: 219,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                        id: "name",
-                                        name: "name",
-                                        value: formData.name,
+                                        name: "email",
+                                        value: formData.email,
                                         onChange: handleChange,
-                                        className: "mt-2 border-input",
-                                        disabled: isLoading,
+                                        type: "email",
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 222,
+                                        lineNumber: 220,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -570,99 +575,60 @@ function Profile() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                        htmlFor: "email",
-                                        className: "text-foreground font-medium",
-                                        children: "Email"
+                                        children: "Nova senha (opcional)"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 234,
+                                        lineNumber: 224,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                        id: "email",
-                                        name: "email",
-                                        type: "email",
-                                        value: formData.email,
-                                        onChange: handleChange,
-                                        className: "mt-2 border-input",
-                                        disabled: isLoading,
-                                        required: true
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 237,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 233,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$label$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
-                                        htmlFor: "password",
-                                        className: "text-foreground font-medium",
-                                        children: "New Password (leave empty to keep current)"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 250,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
-                                        id: "password",
                                         name: "password",
                                         type: "password",
                                         value: formData.password,
                                         onChange: handleChange,
-                                        className: "mt-2 border-input",
-                                        disabled: isLoading,
                                         placeholder: "••••••••"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 225,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 249,
+                                lineNumber: 223,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex gap-3 pt-4",
+                                className: "flex gap-3",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                         type: "submit",
-                                        className: "bg-primary hover:bg-primary/90 text-primary-foreground",
-                                        disabled: isLoading,
-                                        children: isLoading ? "Saving..." : "Save Changes"
+                                        children: "Salvar Alterações"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 235,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                         type: "button",
                                         variant: "outline",
                                         onClick: ()=>setIsEditing(false),
-                                        disabled: isLoading,
-                                        children: "Cancel"
+                                        children: "Cancelar"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 273,
+                                        lineNumber: 236,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 265,
+                                lineNumber: 234,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 217,
+                        lineNumber: 212,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-4",
@@ -670,55 +636,55 @@ function Profile() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm font-medium text-muted-foreground",
-                                        children: "Nome Completo"
+                                        className: "text-sm text-muted-foreground",
+                                        children: "Nome"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 281,
+                                        lineNumber: 244,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-foreground font-medium mt-1",
+                                        className: "font-medium",
                                         children: formData.name
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 282,
+                                        lineNumber: 245,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 280,
+                                lineNumber: 243,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-sm font-medium text-muted-foreground",
-                                        children: "E-Mail"
+                                        className: "text-sm text-muted-foreground",
+                                        children: "E-mail"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 249,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-foreground font-medium mt-1",
+                                        className: "font-medium",
                                         children: formData.email
                                     }, void 0, false, {
                                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                        lineNumber: 286,
+                                        lineNumber: 250,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                lineNumber: 284,
+                                lineNumber: 248,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                        lineNumber: 279,
+                        lineNumber: 242,
                         columnNumber: 11
                     }, this)
                 ]
@@ -728,81 +694,116 @@ function Profile() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
-                className: "p-8 border-destructive/50 bg-destructive/5",
+                className: "p-8 border-red-400 bg-red-50",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-lg font-bold text-red-600 mb-4",
+                        children: "Excluir Conta"
+                    }, void 0, false, {
+                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                        lineNumber: 258,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-red-600 mb-4",
+                        children: "Esta ação é permanente e apagará todos os seus dados."
+                    }, void 0, false, {
+                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                        lineNumber: 259,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                        variant: "destructive",
+                        onClick: ()=>setOpenDeleteModal(true),
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
+                                size: 18,
+                                className: "mr-2"
+                            }, void 0, false, {
+                                fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                                lineNumber: 264,
+                                columnNumber: 11
+                            }, this),
+                            "Deletar Conta"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                        lineNumber: 263,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                lineNumber: 257,
+                columnNumber: 7
+            }, this),
+            openDeleteModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex items-start gap-4",
+                    className: "bg-white rounded-xl p-8 w-full max-w-md shadow-xl border",
                     children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
-                            className: "w-6 h-6 text-destructive flex-shrink-0 mt-1"
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "text-xl font-bold text-red-600 mb-4",
+                            children: "Confirmar Exclusão"
                         }, void 0, false, {
                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                            lineNumber: 295,
-                            columnNumber: 11
+                            lineNumber: 273,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-muted-foreground mb-6",
+                            children: "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita."
+                        }, void 0, false, {
+                            fileName: "[project]/app/(dashboard)/profile/page.tsx",
+                            lineNumber: 277,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1",
+                            className: "flex justify-end gap-3",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-lg font-bold text-destructive mb-2",
-                                    children: "Excluir Conta"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                    variant: "outline",
+                                    onClick: ()=>setOpenDeleteModal(false),
+                                    children: "Cancelar"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                    lineNumber: 297,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-destructive/80 mb-4",
-                                    children: "Esta ação é permanente e resultará na perda de todos os seus dados."
-                                }, void 0, false, {
-                                    fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                    lineNumber: 298,
-                                    columnNumber: 13
+                                    lineNumber: 282,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     variant: "destructive",
-                                    className: "gap-2",
                                     onClick: handleDeleteAccount,
-                                    disabled: isLoading,
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
-                                            size: 18
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                            lineNumber: 302,
-                                            columnNumber: 15
-                                        }, this),
-                                        isLoading ? "Deletando..." : "DELETAR CONTA"
-                                    ]
-                                }, void 0, true, {
+                                    children: "Sim, excluir"
+                                }, void 0, false, {
                                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                                    lineNumber: 301,
-                                    columnNumber: 13
+                                    lineNumber: 289,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                            lineNumber: 296,
-                            columnNumber: 11
+                            lineNumber: 281,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                    lineNumber: 294,
-                    columnNumber: 9
+                    lineNumber: 272,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(dashboard)/profile/page.tsx",
-                lineNumber: 293,
-                columnNumber: 7
+                lineNumber: 271,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(dashboard)/profile/page.tsx",
-        lineNumber: 162,
+        lineNumber: 163,
         columnNumber: 5
     }, this);
 }
-_s(Profile, "8chKu2TXeQ8VI3qy+acMPtFMuUo=", false, function() {
+_s(Profile, "u+xFfHx0BGrgr+8mDr8Jho5ZU+E=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

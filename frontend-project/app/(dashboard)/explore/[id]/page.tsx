@@ -59,6 +59,7 @@ export default function PokemonDetailPage() {
     const user = localStorage.getItem("user")
 
     if (!token || !user) {
+      // Redireciona para a tela de login se o token ou usuário não existirem
       router.push("/sign-in")
       return
     }
@@ -76,14 +77,14 @@ export default function PokemonDetailPage() {
         })
 
         if (!response.ok) {
-          throw new Error("Failed to fetch Pokémon details")
+          throw new Error("Falha ao buscar detalhes do Pokémon")
         }
 
         const data: PokemonDetail = await response.json()
         setPokemon(data)
       } catch (error) {
-        console.error("Error fetching Pokemon detail:", error)
-        setError("Failed to load Pokémon details. Please try again.")
+        console.error("Erro ao buscar detalhes do Pokémon:", error)
+        setError("Falha ao carregar detalhes do Pokémon. Por favor, tente novamente.")
       } finally {
         setLoading(false)
       }
@@ -95,6 +96,7 @@ export default function PokemonDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
+        {/* Ícone de Carregamento */}
         <Loader className="animate-spin text-primary" size={32} />
       </div>
     )
@@ -103,9 +105,9 @@ export default function PokemonDetailPage() {
   if (!pokemon || error) {
     return (
       <div className="flex flex-col items-center justify-center py-12">
-        <p className="text-lg text-muted-foreground mb-4">{error || "Pokémon not found"}</p>
+        <p className="text-lg text-muted-foreground mb-4">{error || "Pokémon não encontrado"}</p>
         <Link href="/explore">
-          <Button>Back to Explore</Button>
+          <Button>Voltar para Explorar</Button>
         </Link>
       </div>
     )
@@ -113,21 +115,21 @@ export default function PokemonDetailPage() {
 
   return (
     <div className="space-y-6">
-      {/* Back Button */}
+      {/* Botão Voltar */}
       <Link href="/explore">
         <Button variant="outline" size="sm">
           <ArrowLeft size={18} className="mr-2" />
-          Back to Explore
+          Voltar para Explorar
         </Button>
       </Link>
 
-      {/* Main Detail Card */}
+      {/* Cartão de Detalhes Principal */}
       <Card>
         <CardHeader>
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="text-3xl capitalize mb-2">{pokemon.name}</CardTitle>
-              <CardDescription>Pokémon ID: #{pokemon.id}</CardDescription>
+              <CardDescription>ID do Pokémon: #{pokemon.id}</CardDescription>
             </div>
 
             <img
@@ -140,14 +142,14 @@ export default function PokemonDetailPage() {
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Types */}
+        {/* Tipos */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Classification</CardTitle>
+            <CardTitle className="text-lg">Classificação</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-2">Types</p>
+              <p className="text-sm font-semibold text-muted-foreground mb-2">Tipos</p>
 
               <div className="flex flex-wrap gap-2">
                 {pokemon.types.map((type) => (
@@ -160,28 +162,28 @@ export default function PokemonDetailPage() {
           </CardContent>
         </Card>
 
-        {/* Physical Characteristics */}
+        {/* Características Físicas */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Physical Characteristics</CardTitle>
+            <CardTitle className="text-lg">Características Físicas</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex justify-between items-center py-2 border-b border-border">
-              <span className="text-sm font-medium text-muted-foreground">Height</span>
+              <span className="text-sm font-medium text-muted-foreground">Altura</span>
               <span className="text-lg font-semibold text-foreground">{(pokemon.height / 10).toFixed(1)} m</span>
             </div>
             <div className="flex justify-between items-center py-2">
-              <span className="text-sm font-medium text-muted-foreground">Weight</span>
+              <span className="text-sm font-medium text-muted-foreground">Peso</span>
               <span className="text-lg font-semibold text-foreground">{(pokemon.weight / 10).toFixed(1)} kg</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Stats */}
+      {/* Estatísticas */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Base Stats</CardTitle>
+          <CardTitle className="text-lg">Estatísticas Base</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">

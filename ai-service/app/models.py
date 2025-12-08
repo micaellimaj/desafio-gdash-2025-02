@@ -2,7 +2,6 @@ import time
 from typing import List, Dict, Optional
 from datetime import datetime, timedelta
 
-# Cache com TTL (Time To Live)
 class WeatherCache:
     def __init__(self, max_size: int = 100, ttl_hours: int = 24):
         self._cache: List[Dict] = []
@@ -16,10 +15,8 @@ class WeatherCache:
         
         self._cache.append(log)
         
-        # Remove logs antigos (baseado no TTL)
         self._cleanup_old_logs()
         
-        # Mantém somente os últimos max_size registros
         if len(self._cache) > self.max_size:
             self._cache = self._cache[-self.max_size:]
     
@@ -45,10 +42,8 @@ class WeatherCache:
         ]
         return city_logs[-1] if city_logs else None
 
-# Instância global do cache
 weather_cache = WeatherCache(max_size=100, ttl_hours=24)
 
-# Funções de compatibilidade
 def add_weather_log(log: Dict):
     weather_cache.add_weather_log(log)
     

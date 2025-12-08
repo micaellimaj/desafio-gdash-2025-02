@@ -28,7 +28,7 @@ import {
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Home },
   { href: "/explore", label: "Explore", icon: Compass },
-  { href: "/profile", label: "Profile", icon: User },
+  { href: "/profile", label: "Perfil", icon: User },
   { href: "/chatIA", label: "ChatIA", icon: Bot },
 ]
 
@@ -98,27 +98,61 @@ export default function DashboardLayout({
           })}
         </nav>
 
-        {/* Help Card */}
-        <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl p-4 text-white mb-3 shadow-md">
-          <div className="flex items-center gap-2 mb-2">
-            <HelpCircle size={18} />
-            <p className="font-semibold text-sm">Need help?</p>
-          </div>
-          <p className="text-xs mb-3 opacity-90">Check our documentation</p>
-          <Button
-            size="sm"
-            variant="secondary"
-            className="w-full bg-white text-blue-600 hover:bg-white/90 font-semibold text-xs"
-          >
-            Documentation
-          </Button>
-        </div>
+        {/* Docs & Tools Card */}
+        {/* Docs & Tools Card */}
+<div className="bg-[#0F172B] rounded-xl p-4 text-foreground mb-3 shadow-md border border-border">
+  <div className="flex items-center gap-2 mb-3">
+    <HelpCircle size={18} className="text-white" />
+    <p className="font-semibold text-sm text-white">Documentação da API</p>
+  </div>
 
-        {/* Upgrade Card */}
-        <Button className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white font-semibold text-sm">
-          <Zap size={16} className="mr-2" />
-          Upgrade to Pro
-        </Button>
+  {/* Swagger NestJS */}
+  <Link
+    href="http://localhost:4000/api-docs/"
+    target="_blank"
+    className="flex items-center gap-2 bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs w-full p-2 rounded-md mb-2 transition"
+  >
+    <img
+      src="https://nestjs.com/img/logo-small.svg"
+      alt="NestJS Logo"
+      className="w-4 h-4"
+    />
+    Swagger - Backend NestJS
+  </Link>
+
+  {/* Swagger FastAPI */}
+  <Link
+    href="http://localhost:8000/docs"
+    target="_blank"
+    className="flex items-center gap-2 bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs w-full p-2 rounded-md mb-2 transition"
+  >
+    <img
+      src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
+      alt="FastAPI Logo"
+      className="w-4 h-4"
+    />
+    Swagger - AI Service FastAPI
+  </Link>
+
+  {/* GitHub Repo */}
+  <Link
+    href="https://github.com/micaellimaj/desafio-gdash-2025-02"
+    target="_blank"
+    className="flex items-center gap-2 bg-secondary hover:bg-secondary/80 text-foreground font-medium text-xs w-full p-2 rounded-md transition"
+  >
+    <img
+      src="https://github.githubassets.com/favicons/favicon.svg"
+      alt="GitHub Logo"
+      className="w-4 h-4"
+    />
+    Repositório no GitHub
+  </Link>
+</div>
+
+
+
+
+    
       </aside>
 
       {/* Main Content */}
@@ -154,17 +188,17 @@ export default function DashboardLayout({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:opacity-90 transition-opacity">
-                    <User size={20} /> {/* ÍCONE EM VEZ DE RD */}
+                    <User size={20} /> 
                   </button>
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={() => router.push("/profile")}>
-                    Profile
+                    Perfil
                   </DropdownMenuItem>
 
                   <DropdownMenuItem onClick={handleLogout} className="text-destructive">
-                    Logout
+                    Sair
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

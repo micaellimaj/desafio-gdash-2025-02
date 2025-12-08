@@ -63,7 +63,7 @@ export default function SignUp() {
             <span>AI Weather Insights</span>
           </div>
           <p className="mt-6 text-center text-sm opacity-80">
-            Advanced weather forecasting powered by artificial intelligence
+            Previsão meteorológica avançada com tecnologia de inteligência artificial.
           </p>
         </div>
 

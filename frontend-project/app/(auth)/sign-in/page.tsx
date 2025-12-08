@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { AlertCircle } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { AlertCircle } from "lucide-react";
 
-const API_BASE_URL = "http://localhost:4000"
+const API_BASE_URL = "http://localhost:4000";
 
 export default function SignIn() {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError("")
-    setIsLoading(true)
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${API_BASE_URL}/auth/login`, {
@@ -34,43 +34,52 @@ export default function SignIn() {
           email,
           password,
         }),
-      })
+      });
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || "Login failed")
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Login failed");
       }
 
-      const data = await response.json()
+      const data = await response.json();
 
-      localStorage.setItem("token", data.access_token)
-      localStorage.setItem("user", JSON.stringify(data.user))
+      // 👉 SALVA TOKEN
+      localStorage.setItem("token", data.access_token);
 
-      router.push("/dashboard")
+      // 👉 SE O BACKEND ENVIAR O USER, SALVA
+      if (data.user) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+      }
+
+      // Redireciona para o dashboard
+      router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
+      setError(err instanceof Error ? err.message : "An error occurred");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Left Panel - Branding */}
+
+        {/* Left Panel */}
         <div className="hidden md:flex flex-col items-center justify-center bg-primary rounded-2xl p-12 text-primary-foreground min-h-96">
           <div className="text-6xl mb-6">🌦️</div>
           <h1 className="text-4xl font-bold mb-2 text-center">ClimateBrain</h1>
+
           <div className="text-xl opacity-90 flex items-center gap-2">
             <span className="text-2xl">🧠</span>
             <span>AI Weather Insights</span>
           </div>
+
           <p className="mt-6 text-center text-sm opacity-80">
-            Advanced weather forecasting powered by artificial intelligence
+            Previsão meteorológica avançada com tecnologia de inteligência artificial.
           </p>
         </div>
 
-        {/* Right Panel - Form */}
+        {/* Right Panel */}
         <Card className="p-8 md:p-12 shadow-lg">
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-foreground mb-2">Acessar Sua Conta</h2>
@@ -137,5 +146,5 @@ export default function SignIn() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

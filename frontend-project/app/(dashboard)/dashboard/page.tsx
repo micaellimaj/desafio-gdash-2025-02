@@ -130,7 +130,7 @@ export default function Dashboard() {
             setCurrentWeather(safeLogs[0]);
           }
         } catch (error) {
-          console.error("Error fetching weather data:", error);
+          console.error("Erro ao buscar dados meteorológicos:", error);
         } finally {
           setLoading(false);
         }
@@ -172,7 +172,7 @@ export default function Dashboard() {
       document.body.removeChild(a);
 
     } catch (error) {
-      console.error("Error exporting CSV:", error);
+      console.error("Erro ao exportar CSV:", error);
     } finally {
       setExporting(false);
     }
@@ -208,7 +208,7 @@ export default function Dashboard() {
       document.body.removeChild(a);
 
     } catch (error) {
-      console.error("Error exporting XLSX:", error);
+      console.error("Erro ao exportar XLSX:", error);
     } finally {
       setExporting(false);
     }
@@ -227,8 +227,8 @@ export default function Dashboard() {
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Weather Dashboard</h1>
-          <p className="text-muted-foreground mt-1">Real-time weather insights and analytics</p>
+          <h1 className="text-3xl font-bold text-foreground">Painel Meteorológico</h1>
+          <p className="text-muted-foreground mt-1">Dados e análises meteorológicas em tempo real da cidade de Toritama - PE</p>
         </div>
         <div className="flex gap-2">
           <Button
@@ -238,7 +238,7 @@ export default function Dashboard() {
             className="flex items-center gap-2 bg-transparent"
           >
             <Download size={16} />
-            {exporting ? "Exporting..." : "Export CSV"}
+            {exporting ? "Exportando..." : "Exportar CSV"}
           </Button>
           <Button
             className="bg-primary hover:bg-primary/90 flex items-center gap-2"
@@ -246,7 +246,7 @@ export default function Dashboard() {
             disabled={exporting}
           >
             <Download size={16} />
-            {exporting ? "Exporting..." : "Export XLSX"}
+            {exporting ? "Exportando..." : "Exportar XLSX"}
           </Button>
         </div>
       </div>
@@ -254,12 +254,12 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-6 flex items-start justify-between bg-white border border-border hover:shadow-lg transition-shadow">
           <div className="flex flex-col">
-            <p className="text-sm text-muted-foreground font-medium">Current Temperature</p>
+            <p className="text-sm text-muted-foreground font-medium">Temperatura Atual</p>
             <p className="text-4xl font-bold text-foreground mt-2">
-              {currentWeather?.temperatureCelsius ? `${currentWeather.temperatureCelsius.toFixed(1)}°C` : "N/A"}
+              {currentWeather?.temperatureCelsius ? `${currentWeather.temperatureCelsius.toFixed(1)}°C` : "N/D"}
             </p>
             <p className="text-sm text-green-600 mt-2 flex items-center gap-1">
-              <TrendingUp size={14} /> Updated now
+              <TrendingUp size={14} /> Atualizado agora
             </p>
           </div>
           <div className="bg-blue-100 p-4 rounded-xl">
@@ -269,16 +269,16 @@ export default function Dashboard() {
 
         <Card className="p-6 flex items-start justify-between bg-white border border-border hover:shadow-lg transition-shadow">
           <div className="flex flex-col">
-            <p className="text-sm text-muted-foreground font-medium">Humidity</p>
+            <p className="text-sm text-muted-foreground font-medium">Umidade</p>
             <p className="text-4xl font-bold text-foreground mt-2">
-              {currentWeather?.humidityPercent ? `${currentWeather.humidityPercent}%` : "N/A"}
+              {currentWeather?.humidityPercent ? `${currentWeather.humidityPercent}%` : "N/D"}
             </p>
             <p className="text-sm text-green-600 mt-2">
               {currentWeather?.humidityPercent > 70
-                ? "High"
+                ? "Alta"
                 : currentWeather?.humidityPercent > 40
-                  ? "Comfortable"
-                  : "Low"}
+                  ? "Confortável"
+                  : "Baixa"}
             </p>
           </div>
           <div className="bg-emerald-100 p-4 rounded-xl">
@@ -288,12 +288,12 @@ export default function Dashboard() {
 
         <Card className="p-6 flex items-start justify-between bg-white border border-border hover:shadow-lg transition-shadow">
           <div className="flex flex-col">
-            <p className="text-sm text-muted-foreground font-medium">Wind Speed</p>
+            <p className="text-sm text-muted-foreground font-medium">Velocidade do Vento</p>
             <p className="text-4xl font-bold text-foreground mt-2">
-              {currentWeather?.windSpeedMS ? `${(currentWeather.windSpeedMS * 3.6).toFixed(1)} km/h` : "N/A"}
+              {currentWeather?.windSpeedMS ? `${(currentWeather.windSpeedMS * 3.6).toFixed(1)} km/h` : "N/D"}
             </p>
             <p className="text-sm text-muted-foreground mt-2">
-              {currentWeather?.windSpeedMS < 5 ? "Calm" : currentWeather?.windSpeedMS < 15 ? "Light breeze" : "Windy"}
+              {currentWeather?.windSpeedMS < 5 ? "Calmo" : currentWeather?.windSpeedMS < 15 ? "Brisa Leve" : "Ventoso"}
             </p>
           </div>
           <div className="bg-orange-100 p-4 rounded-xl">
@@ -303,11 +303,11 @@ export default function Dashboard() {
 
         <Card className="p-6 flex items-start justify-between bg-white border border-border hover:shadow-lg transition-shadow">
           <div className="flex flex-col">
-            <p className="text-sm text-muted-foreground font-medium">Condition</p>
+            <p className="text-sm text-muted-foreground font-medium">Condição</p>
             <p className="text-2xl font-bold text-foreground mt-2 line-clamp-2">
-              {currentWeather?.conditionDescription || "N/A"}
+              {currentWeather?.conditionDescription || "N/D"}
             </p>
-            <p className="text-sm text-muted-foreground mt-2">Current conditions</p>
+            <p className="text-sm text-muted-foreground mt-2">Condições atuais</p>
           </div>
           <div className="bg-purple-100 p-4 rounded-xl">
             <Eye className="w-6 h-6 text-purple-500" />
@@ -317,7 +317,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
   <Card className="p-6 bg-white border border-border shadow-lg">
-    <h2 className="text-lg font-semibold text-foreground mb-4">Temperature Timeline</h2>
+    <h2 className="text-lg font-semibold text-foreground mb-4">Linha do Tempo de Temperatura</h2>
     <div className="h-[200px]">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={temperatureData}>
@@ -346,7 +346,7 @@ export default function Dashboard() {
             strokeWidth={2}
             fillOpacity={1}
             fill="url(#colorTemp)"
-            name="Temperature (°C)"
+            name="Temperatura (°C)"
           />
         </AreaChart>
       </ResponsiveContainer>
@@ -356,8 +356,8 @@ export default function Dashboard() {
   <Card className="p-6 bg-slate-900 border-0 shadow-lg">
     <div className="flex justify-between items-start mb-4">
       <div>
-        <h2 className="text-lg font-semibold text-white">Humidity Composition</h2>
-        <p className="text-sm text-slate-400 mt-1">Moisture level analysis</p>
+        <h2 className="text-lg font-semibold text-white">Composição da Umidade</h2>
+        <p className="text-sm text-slate-400 mt-1">Análise do nível de umidade</p>
       </div>
     </div>
     <div className="h-[200px]">
@@ -381,14 +381,14 @@ export default function Dashboard() {
             labelFormatter={(value) => new Date(value).toLocaleString()}
           />
           <Legend wrapperStyle={{ color: "#94a3b8" }} />
-          <Bar dataKey="humidityPercent" fill="#10b981" radius={[4, 4, 0, 0]} name="Humidity (%)" />
+          <Bar dataKey="humidityPercent" fill="#10b981" radius={[4, 4, 0, 0]} name="Umidade (%)" />
           <Line
             type="monotone"
             dataKey="humidityPercent"
             stroke="#06b6d4"
             strokeWidth={2}
             dot={false}
-            name="Humidity Trend"
+            name="Tendência de Umidade"
           />
         </ComposedChart>
       </ResponsiveContainer>
@@ -396,7 +396,7 @@ export default function Dashboard() {
   </Card>
 
   <Card className="p-6 bg-white border border-border shadow-lg">
-    <h2 className="text-lg font-semibold text-foreground mb-4">Wind Speed Trends</h2>
+    <h2 className="text-lg font-semibold text-foreground mb-4">Tendências de Velocidade do Vento</h2>
     <div className="h-[200px]">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={windData}>
@@ -429,7 +429,7 @@ export default function Dashboard() {
             strokeWidth={2}
             fillOpacity={1}
             fill="url(#colorWind)"
-            name="Wind Speed (m/s)"
+            name="Velocidade do Vento (m/s)"
           />
         </AreaChart>
       </ResponsiveContainer>
@@ -437,7 +437,7 @@ export default function Dashboard() {
   </Card>
 
   <Card className="p-6 bg-white border border-border shadow-lg">
-    <h2 className="text-lg font-semibold text-foreground mb-4">Weather Conditions Distribution</h2>
+    <h2 className="text-lg font-semibold text-foreground mb-4">Distribuição de Condições Climáticas</h2>
     <div className="h-[200px]">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
@@ -453,9 +453,9 @@ export default function Dashboard() {
     </div>
   </Card>
 
-  {/* Temp × Humidity Correlation (LEFT of the pair) */}
+  {/* Correlação Temp × Umidade (ESQUERDA do par) */}
   <Card className="p-6 bg-white border border-border shadow-lg">
-    <h2 className="text-lg font-semibold text-foreground mb-4">Temperature & Humidity Correlation</h2>
+    <h2 className="text-lg font-semibold text-foreground mb-4">Correlação entre Temperatura e Umidade</h2>
     <div className="h-[200px]">
       <ResponsiveContainer width="100%" height="100%">
         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
@@ -463,51 +463,52 @@ export default function Dashboard() {
           <XAxis
             dataKey="temperatureCelsius"
             type="number"
-            name="Temperature (°C)"
+            name="Temperatura (°C)"
             stroke="#9ca3af"
             style={{ fontSize: "12px" }}
           />
           <YAxis
             dataKey="humidityPercent"
             type="number"
-            name="Humidity (%)"
+            name="Umidade (%)"
             stroke="#9ca3af"
             style={{ fontSize: "12px" }}
           />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-          <Scatter name="Temp vs Humidity" data={tempHumidityData} fill="#0ea5e9" />
+          <Scatter name="Temp vs Umidade" data={tempHumidityData} fill="#0ea5e9" />
         </ScatterChart>
       </ResponsiveContainer>
     </div>
   </Card>
 
-  {/* Wind × Humidity × Temp (RIGHT of the pair) */}
+  {/* Vento × Umidade × Temp (DIREITA do par) */}
+  
   <Card className="p-6 bg-slate-900 border-0 shadow-lg">
     <div className="flex justify-between items-start mb-4">
       <div>
-        <h2 className="text-lg font-semibold text-white">Wind × Humidity × Temp</h2>
-        <p className="text-sm text-slate-400 mt-1">Wind impact on moisture (temp-colored)</p>
+        <h2 className="text-lg font-semibold text-white">Correlação entre Vento & Umidade</h2>
+        <p className="text-sm text-slate-400 mt-1">Relação entre vento e umidade</p>
       </div>
     </div>
 
     <div className="h-[200px]">
       <ResponsiveContainer width="100%" height="100%">
         <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(100,116,139,0.2)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.2)" />
 
           <XAxis
             dataKey="windSpeedMS"
             type="number"
-            name="Wind (m/s)"
-            stroke="rgb(148,163,184)"
+            name="Velocidade do Vento (m/s)"
+            stroke="rgb(203,213,225)"
             style={{ fontSize: "12px" }}
           />
 
           <YAxis
             dataKey="humidityPercent"
             type="number"
-            name="Humidity (%)"
-            stroke="rgb(148,163,184)"
+            name="Umidade (%)"
+            stroke="rgb(203,213,225)"
             style={{ fontSize: "12px" }}
           />
 
@@ -517,43 +518,35 @@ export default function Dashboard() {
               backgroundColor: "#1e293b",
               border: "1px solid #475569",
               borderRadius: "8px",
-              color: "#fff",
+              color: "#EAB308",   // <<< COR DO TEXTO DA TOOLTIP
             }}
-            formatter={(value, name) => {
-              if (name === "windSpeedMS") return [`${value} m/s`, "Wind"];
-              if (name === "humidityPercent") return [`${value}%`, "Humidity"];
-              if (name === "temperatureCelsius") return [`${value}°C`, "Temp"];
-              return [value, name];
-            }}
+            labelStyle={{ color: "#EAB308" }} // <<< GARANTE QUE O TÍTULO TAMBÉM FIQUE AMARELO
+            itemStyle={{ color: "#EAB308" }}   // <<< COR EXATA DOS ITENS DA TOOLTIP
           />
 
-          <Scatter name="Wind × Humidity × Temp" data={scatterTempHumidityData} fill="#3b82f6" shape="circle">
-            {scatterTempHumidityData.map((item, index) => {
-              const temp = item.temperatureCelsius || 0;
-
-              const color =
-                temp < 20 ? "#0ea5e9" : temp < 28 ? "#22c55e" : temp < 33 ? "#eab308" : "#ef4444";
-
-              return <Cell key={`cell-${index}`} fill={color} />;
-            })}
-          </Scatter>
+          <Scatter
+            name="Vento x Umidade"
+            data={scatterTempHumidityData}
+            fill="#EAB308" // <<< COR DOS PONTOS
+          />
         </ScatterChart>
       </ResponsiveContainer>
     </div>
   </Card>
-</div>
+
+  </div>
 
       {extremes && (
         <Card className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
           <h2 className="text-xl font-semibold text-foreground mb-4">
-            Weather Extremes & Summary
+            Extremos e Resumo Meteorológico
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            {/* Max Temperature */}
+            {/* Temperatura Máxima */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Highest Temperature</p>
+              <p className="text-sm text-muted-foreground">Temperatura Mais Alta</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.maxTemperature?.temperatureCelsius?.toFixed(1)}°C
               </p>
@@ -566,9 +559,9 @@ export default function Dashboard() {
               </p>
             </div>
 
-            {/* Min Temperature */}
+            {/* Temperatura Mínima */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Lowest Temperature</p>
+              <p className="text-sm text-muted-foreground">Temperatura Mais Baixa</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.minTemperature?.temperatureCelsius?.toFixed(1)}°C
               </p>
@@ -581,9 +574,9 @@ export default function Dashboard() {
               </p>
             </div>
 
-            {/* Max Humidity */}
+            {/* Umidade Máxima */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Max Humidity</p>
+              <p className="text-sm text-muted-foreground">Umidade Máxima</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.maxHumidity?.humidityPercent}%
               </p>
@@ -596,9 +589,9 @@ export default function Dashboard() {
               </p>
             </div>
 
-            {/* Min Humidity */}
+            {/* Umidade Mínima */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Min Humidity</p>
+              <p className="text-sm text-muted-foreground">Umidade Mínima</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.minHumidity?.humidityPercent}%
               </p>
@@ -611,9 +604,9 @@ export default function Dashboard() {
               </p>
             </div>
 
-            {/* Max Wind */}
+            {/* Vento Máximo */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Max Wind Speed</p>
+              <p className="text-sm text-muted-foreground">Velocidade Máxima do Vento</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.maxWindSpeed?.windSpeedMS?.toFixed(1)} m/s
               </p>
@@ -626,9 +619,9 @@ export default function Dashboard() {
               </p>
             </div>
 
-            {/* Min Wind */}
+            {/* Vento Mínimo */}
             <div className="p-4 rounded-xl bg-background/60 shadow-sm border">
-              <p className="text-sm text-muted-foreground">Min Wind Speed</p>
+              <p className="text-sm text-muted-foreground">Velocidade Mínima do Vento</p>
               <p className="text-3xl font-bold text-foreground">
                 {extremes.minWindSpeed?.windSpeedMS?.toFixed(1)} m/s
               </p>
@@ -647,16 +640,16 @@ export default function Dashboard() {
 
 
       <Card className="p-6">
-        <h2 className="text-xl font-semibold text-foreground mb-4">Recent Weather Records</h2>
+        <h2 className="text-xl font-semibold text-foreground mb-4">Registros Meteorológicos Recentes</h2>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left py-3 px-4 font-semibold text-foreground">Date/Time</th>
-                <th className="text-left py-3 px-4 font-semibold text-foreground">Condition</th>
-                <th className="text-left py-3 px-4 font-semibold text-foreground">Temperature</th>
-                <th className="text-left py-3 px-4 font-semibold text-foreground">Humidity</th>
-                <th className="text-left py-3 px-4 font-semibold text-foreground">Wind Speed</th>
+                <th className="text-left py-3 px-4 font-semibold text-foreground">Data/Hora</th>
+                <th className="text-left py-3 px-4 font-semibold text-foreground">Condição</th>
+                <th className="text-left py-3 px-4 font-semibold text-foreground">Temperatura</th>
+                <th className="text-left py-3 px-4 font-semibold text-foreground">Umidade</th>
+                <th className="text-left py-3 px-4 font-semibold text-foreground">Velocidade do Vento</th>
               </tr>
             </thead>
             <tbody>

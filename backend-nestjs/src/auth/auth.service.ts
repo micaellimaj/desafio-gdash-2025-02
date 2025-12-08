@@ -23,12 +23,21 @@ export class AuthService {
         return null;
         }
 
-    async login(user: UserSafe) {
-        const payload = { email: user.email, sub: user.id };
+    async login(user: any) {
+        const payload = { email: user.email, sub: user._id };
+
         return {
             access_token: this.jwtService.sign(payload),
+            user: {
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            isActive: user.isActive,
+            createdAt: user.createdAt
+            }
         };
-    }
+}
+
 
     async createDefaultAdmin(email: string, password: string, name: string) {
         const existing = await this.userModel.findOne({ email });

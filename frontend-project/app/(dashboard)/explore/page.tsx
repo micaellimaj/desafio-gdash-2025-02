@@ -83,8 +83,8 @@ export default function ExplorePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Explore Pokémon</h1>
-        <p className="text-muted-foreground">Discover and learn about different Pokémon from the Pokédex</p>
+        <h1 className="text-3xl font-bold text-foreground mb-2">Explore Pokémons</h1>
+        <p className="text-muted-foreground">Descubra e aprenda sobre diferentes Pokémon na Pokédex.</p>
       </div>
 
       {error && <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">{error}</div>}
@@ -99,7 +99,7 @@ export default function ExplorePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {pokemon.map((poke) => {
               const pokemonId = poke.id
-              const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/pokemon/other/official-artwork/${pokemonId}.png`
+              const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`
 
               return (
                 <Link key={poke.id} href={`/explore/${pokemonId}`}>
@@ -119,6 +119,7 @@ export default function ExplorePage() {
                 </Link>
               )
             })}
+
           </div>
 
           {/* Pagination */}
@@ -126,17 +127,17 @@ export default function ExplorePage() {
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={handlePrevious} disabled={currentPage === 1}>
                 <ChevronLeft size={18} />
-                Previous
+                Anterior
               </Button>
               <div className="px-4 py-2 text-sm font-medium text-foreground">
-                Page {currentPage} of {totalPages}
+                Página {currentPage} de {totalPages}
               </div>
               <Button variant="outline" size="sm" onClick={handleNext} disabled={currentPage === totalPages}>
-                Next
+                Próximo
                 <ChevronRight size={18} />
               </Button>
             </div>
-            <div className="text-sm text-muted-foreground">Total: {totalCount} Pokémon</div>
+            <div className="text-sm text-muted-foreground">Total: {totalCount} Pokémons</div>
           </div>
         </>
       )}
