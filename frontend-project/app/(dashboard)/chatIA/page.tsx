@@ -27,7 +27,6 @@ export default function ChatIA() {
 
     const question = input.trim()
 
-    // adiciona mensagem do usuário
     setMessages((prev) => [...prev, { sender: "user", text: question }])
     setInput("")
     setLoading(true)

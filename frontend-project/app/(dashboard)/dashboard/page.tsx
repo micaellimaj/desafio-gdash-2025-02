@@ -481,7 +481,7 @@ export default function Dashboard() {
     </div>
   </Card>
 
-  {/* Vento × Umidade × Temp (DIREITA do par) */}
+  {/* Vento × Umidade  */}
   
   <Card className="p-6 bg-slate-900 border-0 shadow-lg">
     <div className="flex justify-between items-start mb-4">
@@ -518,16 +518,16 @@ export default function Dashboard() {
               backgroundColor: "#1e293b",
               border: "1px solid #475569",
               borderRadius: "8px",
-              color: "#EAB308",   // <<< COR DO TEXTO DA TOOLTIP
+              color: "#EAB308",
             }}
-            labelStyle={{ color: "#EAB308" }} // <<< GARANTE QUE O TÍTULO TAMBÉM FIQUE AMARELO
-            itemStyle={{ color: "#EAB308" }}   // <<< COR EXATA DOS ITENS DA TOOLTIP
+            labelStyle={{ color: "#EAB308" }}
+            itemStyle={{ color: "#EAB308" }}  
           />
 
           <Scatter
             name="Vento x Umidade"
             data={scatterTempHumidityData}
-            fill="#EAB308" // <<< COR DOS PONTOS
+            fill="#EAB308"
           />
         </ScatterChart>
       </ResponsiveContainer>

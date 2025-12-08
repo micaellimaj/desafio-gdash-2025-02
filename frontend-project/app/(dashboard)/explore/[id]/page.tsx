@@ -59,7 +59,6 @@ export default function PokemonDetailPage() {
     const user = localStorage.getItem("user")
 
     if (!token || !user) {
-      // Redireciona para a tela de login se o token ou usuário não existirem
       router.push("/sign-in")
       return
     }

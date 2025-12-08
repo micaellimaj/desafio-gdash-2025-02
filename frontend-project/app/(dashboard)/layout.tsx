@@ -46,7 +46,7 @@ export default function DashboardLayout({
     setIsMounted(true)
   }, [])
 
-  // 🔥 Função de logout
+
   const handleLogout = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("user")

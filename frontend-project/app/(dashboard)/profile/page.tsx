@@ -36,7 +36,6 @@ export default function Profile() {
     password: "",
   });
 
-  // Buscar usuário real no backend
   useEffect(() => {
     const fetchUser = async () => {
       try {
