@@ -190,6 +190,7 @@ Certifique-se de ter instalado em sua máquina:
 2. **Configurar variáveis de ambiente**
    - Copie os arquivos `.env.example` para `.env` em cada pasta relevante.
    - Preencha chaves de API (clima, IA), strings de conexão do MongoDB, credenciais do RabbitMQ e segredos de JWT.
+   - A API do meu Gemini pode não está mais funcionando, por ter limitação de uso (versão gratuita), mas pode pegar sua chave de API gratuita para substituir no .env e testar pelo seguinte [link](https://aistudio.google.com/app/api-keys)
    - Exemplo (raiz do projeto):
      ```bash
      
